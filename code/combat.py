@@ -64,3 +64,76 @@ def special_attack(tp1,at_spc1,df_spc1,tp2,df_spc2):
     coef = table_type[i1][i2]
     return m.ceil(formule_attack(at_spc1,df_spc1,df_spc2)*coef)
 
+
+
+
+
+
+
+
+def tour_joueur(poke_att, poke_def):
+    '''
+    poke_att : pokémon actif du joueur
+    poke_def : pokémon sauvage
+    
+    Au tour du joueur, il peut choisir entre attaquer, choisir un autre pokémon ou fuir
+    '''
+    pass
+
+
+def tour_environnement(poke_att, poke_def):
+    '''
+    poke_att : pokémon sauvage
+    poke_def : pokémon actif du joueur
+    
+    Au tour du pokémon sauvage, il attaque le pokémon adverse
+    '''
+    ## Le pokémon sauvage considère ses options : il utilisera l'attaque la plus efficace    
+    degats = attack(poke_att.at,poke_att.df,poke_def.df)
+    degats_spc = special_attack(poke_att.tp,poke_att.at,poke_att.df,poke_def.tp,poke_def.df)
+    
+    ## Il inflige des dommages au pokémon actif du joueur
+    damage = max(degats,degats_spc)
+    poke_def.pv = poke_def.pv - damage
+    
+    
+    
+    
+    
+
+def combat(Equipe,poke_sauvage):
+    fleeing = False ##Flag déterminant si la fuite et donc fin du combat est active.
+    
+    ## Choix pokémon
+    choix = input("Veuillez entrer l'indice du pokémon choisi dans votre équipe: ")
+    poke_actif = Equipe[choix]
+    
+    ## Détermination de l'ordre du tour
+    if poke_actif.sp >= poke_sauvage.sp:
+        initiative = True     
+    else:
+        initiative = False
+    
+    while poke_sauvage.pv > 0  or fleeing == False:
+        if initiative:
+            tour_joueur(poke_actif, poke_sauvage)
+        else:
+            tour_environnement(poke_sauvage,poke_actif)
+    
+        ## Inversion de l'initiative
+        initiative = not initiative 
+        
+        
+    
+        
+    ## Pokemon actif doit avoir vie > 0
+    ## Si le pokemon actif meurt, on doit en choisir un autre
+    ## 
+        
+        
+    
+
+
+
+
+
