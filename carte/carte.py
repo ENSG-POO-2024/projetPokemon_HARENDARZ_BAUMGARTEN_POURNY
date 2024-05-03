@@ -10,15 +10,16 @@ import numpy as np
 from PIL import Image
 
 im = np.array(Image.open("..\code\gui\Safari_Zone_entrance_RBY.png").convert('L'))
-im2 = np.array(Image.open("..\code\gui\Safari_Zone_area_3_RBY.png").convert('L'))
+im1 = np.array(Image.open("..\code\gui\Safari_Zone_area_1_RBY.png").convert('L'))
+im2 = np.array(Image.open("..\code\gui\Safari_Zone_area_2_RBY.png").convert('L'))
+im3 = np.array(Image.open("..\code\gui\Safari_Zone_area_3_RBY.png").convert('L'))
 
 def convertion_case(carte):
     n,m = np.shape(carte)
     i = int(n/8)
-    j = int(n/8)
+    j = int(m/8)
     new_map = np.zeros((i,j))
     for x in range(i):
-        print(x)
         for y in range(j):
             moy = 0
             for h in range(x*8,x*8+8):
@@ -28,28 +29,28 @@ def convertion_case(carte):
     return new_map
 
 test = convertion_case(im)
+test1 = convertion_case(im1)
 test2 = convertion_case(im2)
+test3 = convertion_case(im3)
 
-
-class area:
-    def __init__(self,id,n,m,tab):
+class Area:
+    def __init__(self,id,tab):
         self.id = id
-        self.size = (n,m)
-        tab = tab
+        self.tab = tab
 
-class map:
+class Map:
     def __init__(self,area_tab):
         self.area_tab = area_tab
         
         
-class case:
-    def __init__(self,x,y,area_id):
+class Case:
+    def __init__(self,x,y,area):
         self.x = x
         self.y = y
-        self.area_id = area_id
+        self.area = area
         
     def type_case(self,map):
-        num_pix = map.area_tab[self.area_id][self.x,self.y]
+        num_pix = self.area.tab[self.x,self.y]
         if num_pix == 183 or num_pix == 193:
             return "Herbe"
         elif num_pix > 200:
@@ -61,5 +62,10 @@ class case:
     
 
 
-
+if __name__ == "__main__":
+    test_area0 = Area(0,test)
+    test_area1 = Area(1,test2)
+    test_case = Case(10,6,test_area0)
+    test_map = Map([test_area0,test_area1])
+    test_type = test_case.type_case(test_map)
 
