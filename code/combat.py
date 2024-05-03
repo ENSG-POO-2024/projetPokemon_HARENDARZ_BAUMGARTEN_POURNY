@@ -130,8 +130,16 @@ def combat(Equipe,poke_sauvage):
     ## Si le pokemon actif meurt, on doit en choisir un autre
     ## 
         
+    if not poke_sauvage.pv > 0:
+        Equipe.append(poke_sauvage)
+    else:
+        poke_sauvage.pv = poke_sauvage.pv_totaux
         
+    for pokemon in Equipe:
+        pokemon.pv = pokemon.pv_totaux
+
     
+
 
 
 

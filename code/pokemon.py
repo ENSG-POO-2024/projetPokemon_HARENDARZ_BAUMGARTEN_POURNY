@@ -16,7 +16,8 @@ class Pokemon:
     def __init__(self,name,tp,pv,at,df,at_spc,df_spc,sp,coord = None):
         self.name = name
         self.tp = tp            #type
-        self.pv = pv            #points de vie
+        self.pv = pv            #points de vie actuels
+        self.pv_totaux = pv     #points de vie totaux
         self.at = at            #attaque
         self.df = df            #défense
         self.at_spc = at_spc    #attaque spéciale
