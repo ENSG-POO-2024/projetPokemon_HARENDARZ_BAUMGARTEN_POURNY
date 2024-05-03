@@ -9,7 +9,8 @@ Created on Fri May  3 14:52:49 2024
 import numpy as np
 from PIL import Image
 
-im = np.array(Image.open('Safari_Zone_entrance_RBY.png').convert('L'))
+im = np.array(Image.open("..\code\gui\Safari_Zone_entrance_RBY.png").convert('L'))
+im2 = np.array(Image.open("..\code\gui\Safari_Zone_area_3_RBY.png").convert('L'))
 
 def convertion_case(carte):
     n,m = np.shape(carte)
@@ -27,6 +28,7 @@ def convertion_case(carte):
     return new_map
 
 test = convertion_case(im)
+test2 = convertion_case(im2)
 
 
 class area:
@@ -50,7 +52,12 @@ class case:
         num_pix = map.area_tab[self.area_id][self.x,self.y]
         if num_pix == 183 or num_pix == 193:
             return "Herbe"
-        elif 
+        elif num_pix > 200:
+            return "sol"
+        elif num_pix <= 175 and num_pix != 101:
+            return "obstacle"
+        else:
+            return "inconnu"
     
 
 
