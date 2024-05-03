@@ -129,7 +129,9 @@ def combat(Equipe,poke_sauvage):
     ## Pokemon actif doit avoir vie > 0
     ## Si le pokemon actif meurt, on doit en choisir un autre
     ## 
-        
+    
+    
+    ## Soin après bataille, ajout du pokémon vaincu à l'Equipe
     if not poke_sauvage.pv > 0:
         Equipe.append(poke_sauvage)
     else:
@@ -138,7 +140,9 @@ def combat(Equipe,poke_sauvage):
     for pokemon in Equipe:
         pokemon.pv = pokemon.pv_totaux
 
-    
+    ## Doit supprimer le pokémon de la case si vaincu
+    ## Doit bouger de la case si perdu
+        
 
 
 
