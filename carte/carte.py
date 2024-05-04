@@ -55,6 +55,18 @@ class Case:
             return "obstacle"
     
 
+def repertoire_herbe(map):
+    tab_herbe = []
+    for i in range(len(map.area_tab)):
+        n,m = np.shape(map.area_tab[i].tab)
+        for x in range(n):
+            for y in range(m):
+                case_t = Case(x,y,map.area_tab[i])
+                if case_t.type_case(map) == "Herbe":
+                    tab_herbe.append(case_t)
+    return tab_herbe
+        
+    
 
 if __name__ == "__main__":
     im = np.array(Image.open("..\code\gui\Safari_Zone_entrance_RBY.png").convert('L'))
@@ -72,4 +84,5 @@ if __name__ == "__main__":
     test_case = Case(10,6,test_area0)
     test_map = Map([test_area0,test_area1])
     test_type = test_case.type_case(test_map)
-
+    
+    test_herbe = repertoire_herbe(test_map)
