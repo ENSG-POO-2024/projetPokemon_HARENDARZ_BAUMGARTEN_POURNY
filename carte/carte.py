@@ -9,10 +9,7 @@ Created on Fri May  3 14:52:49 2024
 import numpy as np
 from PIL import Image
 
-im = np.array(Image.open("..\code\gui\Safari_Zone_entrance_RBY.png").convert('L'))
-im1 = np.array(Image.open("..\code\gui\Safari_Zone_area_1_RBY.png").convert('L'))
-im2 = np.array(Image.open("..\code\gui\Safari_Zone_area_2_RBY.png").convert('L'))
-im3 = np.array(Image.open("..\code\gui\Safari_Zone_area_3_RBY.png").convert('L'))
+
 
 def convertion_case(carte):
     n,m = np.shape(carte)
@@ -28,10 +25,7 @@ def convertion_case(carte):
             new_map[x,y] = int(moy/64)
     return new_map
 
-test = convertion_case(im)
-test1 = convertion_case(im1)
-test2 = convertion_case(im2)
-test3 = convertion_case(im3)
+
 
 class Area:
     def __init__(self,id,tab):
@@ -53,16 +47,26 @@ class Case:
         num_pix = self.area.tab[self.x,self.y]
         if num_pix == 183 or num_pix == 193:
             return "Herbe"
-        elif num_pix > 200:
+        elif num_pix > 210:
             return "sol"
         elif num_pix <= 175 and num_pix != 101:
             return "obstacle"
         else:
-            return "inconnu"
+            return "obstacle"
     
 
 
 if __name__ == "__main__":
+    im = np.array(Image.open("..\code\gui\Safari_Zone_entrance_RBY.png").convert('L'))
+    im1 = np.array(Image.open("..\code\gui\Safari_Zone_area_1_RBY.png").convert('L'))
+    im2 = np.array(Image.open("..\code\gui\Safari_Zone_area_2_RBY.png").convert('L'))
+    im3 = np.array(Image.open("..\code\gui\Safari_Zone_area_3_RBY.png").convert('L'))
+    
+    test = convertion_case(im)
+    test1 = convertion_case(im1)
+    test2 = convertion_case(im2)
+    test3 = convertion_case(im3)
+    
     test_area0 = Area(0,test)
     test_area1 = Area(1,test2)
     test_case = Case(10,6,test_area0)
