@@ -11,6 +11,7 @@ from PyQt5.QtWidgets import QMainWindow, QApplication, QLabel, QWidget
 from PyQt5.QtCore import Qt
 from PIL import Image
 import numpy as np
+from PyQt5 import QtCore, QtWidgets, QtMultimedia
 
 import carte as c
 import deplacement as d
@@ -70,6 +71,7 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.initUI()
+        self.son()
         
 
     def initUI(self):
@@ -82,6 +84,19 @@ class MainWindow(QMainWindow):
         label.setScaledContents(True)
         self.setCentralWidget(label)
         self.show()
+        
+    def son(self):
+        app = QtWidgets.QApplication(sys.argv)
+        filename = "..\code\gui\The Great Marsh & Pal Park [Pokémon Diamond & Pearl].mp3"
+        fullpath = QtCore.QDir.current().absoluteFilePath(filename) 
+        url = QtCore.QUrl.fromLocalFile(fullpath)
+        content = QtMultimedia.QMediaContent(url)
+        player = QtMultimedia.QMediaPlayer()
+        player.setMedia(content)
+        player.play()
+        sys.exit(app.exec_())
+        
+       
     
     def keyPressEvent(self, e):
         global j1
@@ -161,6 +176,7 @@ app = QApplication(sys.argv)
 w = MainWindow()
 w.show()
 sys.exit(app.exec_())
+
 
 
 
