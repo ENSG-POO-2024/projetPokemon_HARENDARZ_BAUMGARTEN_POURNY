@@ -38,16 +38,16 @@ class Map:
         
         
 class Case:
-    def __init__(self,x,y,area):
+    def __init__(self,x,y,area_id):
         self.x = x
         self.y = y
-        self.area = area
+        self.area_id = area_id
         
     def type_case(self,map):
-        num_pix = self.area.tab[self.x,self.y]
+        num_pix = map.area_tab[self.area_id].tab[self.x,self.y]
         if num_pix == 183 or num_pix == 193:
             return "Herbe"
-        elif num_pix > 210:
+        elif num_pix > 210 or num_pix == 202 or num_pix == 101:
             return "sol"
         elif num_pix <= 175 and num_pix != 101:
             return "obstacle"
@@ -81,8 +81,8 @@ if __name__ == "__main__":
     
     test_area0 = Area(0,test)
     test_area1 = Area(1,test2)
-    test_case = Case(10,6,test_area0)
+    test_case = Case(10,6,0)
     test_map = Map([test_area0,test_area1])
     test_type = test_case.type_case(test_map)
     
-    test_herbe = repertoire_herbe(test_map)
+    #test_herbe = repertoire_herbe(test_map)
