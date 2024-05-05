@@ -125,7 +125,7 @@ class MainWindow(QMainWindow):
             img1 = Image.open("..\code\gui\Safari_Zone_area_1_RBY.png")
             img2 = Image.open("..\code\gui\Safari_Zone_area_2_RBY.png")
             img3 = Image.open("..\code\gui\Safari_Zone_area_3_RBY.png")
-            img4 = Image.open("..\code\gui\player_front.png")
+            img4 = Image.open("..\code\gui\player_left.png")
             all_img = [img0,img1,img2,img3]
             new_image = all_img[j1.case.area_id]
             new_image.paste(img4, (j1.case.y * 8, j1.case.x * 8), mask = img4)
@@ -141,7 +141,7 @@ class MainWindow(QMainWindow):
             img1 = Image.open("..\code\gui\Safari_Zone_area_1_RBY.png")
             img2 = Image.open("..\code\gui\Safari_Zone_area_2_RBY.png")
             img3 = Image.open("..\code\gui\Safari_Zone_area_3_RBY.png")
-            img4 = Image.open("..\code\gui\player_front.png")
+            img4 = Image.open("..\code\gui\player_right.png")
             all_img = [img0,img1,img2,img3]
             new_image = all_img[j1.case.area_id]
             new_image.paste(img4, (j1.case.y * 8, j1.case.x * 8), mask = img4)
