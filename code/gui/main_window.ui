@@ -5,6 +5,14 @@
   <property name="enabled">
    <bool>false</bool>
   </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>640</width>
+    <height>640</height>
+   </rect>
+  </property>
   <property name="minimumSize">
    <size>
     <width>640</width>
@@ -21,7 +29,8 @@
    <string>Pykémon : Attrapy-les tous !</string>
   </property>
   <property name="windowIcon">
-   <iconset theme="py"/>
+   <iconset resource="gui_resources.qrc">
+    <normaloff>:/logos/py_symbol.png</normaloff>:/logos/py_symbol.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(255, 255, 255);</string>
@@ -30,7 +39,7 @@
    <bool>true</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="MM_PykemonLogo">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -40,27 +49,10 @@
      </rect>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;:/MainLogo/main_logo.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;:/logos/main_logo.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>640</width>
-      <height>640</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgba(255, 255, 255, 0);
-background-color: rgba(255, 255, 255, 0);</string>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QLabel" name="MM_ClickOnWindowStart_text">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -84,6 +76,22 @@ background-color: rgba(255, 255, 255, 0);</string>
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;CLICK ON THE WINDOW TO START&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>370</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>PushButton</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -91,14 +99,14 @@ background-color: rgba(255, 255, 255, 0);</string>
      <x>0</x>
      <y>0</y>
      <width>640</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
-  <include location="../logos/main_logo.qrc"/>
+  <include location="gui_resources.qrc"/>
  </resources>
  <connections/>
 </ui>
