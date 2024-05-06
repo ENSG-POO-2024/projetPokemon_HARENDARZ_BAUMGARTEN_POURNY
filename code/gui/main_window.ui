@@ -82,11 +82,15 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>370</y>
-      <width>75</width>
-      <height>23</height>
+      <x>0</x>
+      <y>0</y>
+      <width>640</width>
+      <height>640</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(255, 255, 255, 0);
+color: rgba(255, 255, 255, 0);</string>
     </property>
     <property name="text">
      <string>PushButton</string>
@@ -99,7 +103,7 @@
      <x>0</x>
      <y>0</y>
      <width>640</width>
-     <height>21</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>
