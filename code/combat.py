@@ -12,7 +12,7 @@ import pokemon
 
 List_type = ['Steel','Fighting', 'Dragon','Water','Electric','Fire','Fairy','Ice','Bug','Normal','Grass','Poison','Psychic','Rock','Ground','Ghost','Dark','Flying']
 
-##Permet de récupérer les indices des types. Traduction de ténèbres à vérifier ? 
+##Permet de récupérer les indices des types.
 
 
 table_type = np.genfromtxt('../data/Types.csv',delimiter = ',')

@@ -34,7 +34,7 @@ def gestion_collection(Equipe, Collection):
         pass
     nom_poke_2 = input('Par quel pokémon souhaitez vous le remplacer ? ')
     while nom_poke_2 in Equipe:
-        nom_poke_2 = input('Ce pokémon est déjà dans votre équipe ! Il ne peut pas se dédoubler. Choisissez-en un autre :')
+        nom_poke_2 = input('Ce pokémon est déjà dans votre équipe ! Il ne peut pas se dédoubler. Choisissez-en un autre : ')
     del Equipe[str(nom_poke_1)]
     Equipe[str(nom_poke_2)] = Collection[str(nom_poke_2)]
     gestion_collection(Equipe, Collection)
@@ -47,12 +47,18 @@ def gestion(Equipe, Collection):
     Si la collection contient moins de 6 pokémons, ajoute plutôt l intégralité des pokémons à l équipe.
 
     '''
-    if len(Collection) > 6:
+    if len(Collection) > 6 and len(Equipe)>=6:
         gestion_collection(Equipe, Collection)
-    if len(Collection) <= 6:
+    elif len(Collection) <= 6:
         Equipe = Collection
         print("Tous les pokémons de votre collection ont été ajoutés à votre équipe.")
-        
+    
+    else: 
+        while len(Equipe)<6:
+            nom_poke = input('Quel est le pokémon que vous souhaitez ajouter à votre équipe ? ')
+            while nom_poke in Equipe:
+                nom_poke = input('Ce pokémon est déjà dans votre équipe ! Il ne peut pas se dédoubler. Choisissez-en un autre : ')
+            Equipe[str(nom_poke)] = Collection[str(nom_poke)]
         
     
     
@@ -64,3 +70,11 @@ def soin(Equipe):
     for pokemon in Equipe:
         pokemon.pv = pokemon.pv_totaux
         pokemon.etat = True
+        
+        
+        
+        
+        
+##tests : 
+        
+Equipe, Collection = starter(Pokedex)
