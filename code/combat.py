@@ -8,6 +8,7 @@ Created on Fri May  3 14:16:37 2024
 import csv
 import numpy as np
 import math as m
+import pokemon
 
 List_type = ['Steel','Fighting', 'Dragon','Water','Electric','Fire','Fairy','Ice','Bug','Normal','Grass','Poison','Psychic','Rock','Ground','Ghost','Shadow','Flying']
 
@@ -43,7 +44,7 @@ def attack(at1,df1,df2):
     -------
     Dégâts.
     '''
-    return formule_attack(at, df1, df2)
+    return round(formule_attack(at1, df1, df2))
 
 
 def special_attack(tp1,at_spc1,df_spc1,tp2,df_spc2):
@@ -62,7 +63,7 @@ def special_attack(tp1,at_spc1,df_spc1,tp2,df_spc2):
     """
     i1,i2 = List_type.index(tp1), List_type.index(tp2)
     coef = table_type[i1][i2]
-    return m.ceil(formule_attack(at_spc1,df_spc1,df_spc2)*coef)
+    return round(formule_attack(at_spc1,df_spc1,df_spc2)*coef)
 
 
 
@@ -70,6 +71,7 @@ def special_attack(tp1,at_spc1,df_spc1,tp2,df_spc2):
 
 
 
+## INTERFACE!! ##
 
 def tour_joueur(poke_att, poke_def):
     '''
@@ -79,7 +81,8 @@ def tour_joueur(poke_att, poke_def):
     Attaque du joueur.
     '''
     choix_attaque = None
-    ## à construire avec l'interface
+    ##Interface
+    ## à construire avec l'interface, le joueur doit choisir entre une attaque spéciale et une attaque normale
     
     if str(choix_attaque) == 'normale':
         damage = attack(poke_att.at, poke_att.df,poke_def.df)
@@ -89,7 +92,7 @@ def tour_joueur(poke_att, poke_def):
     
     poke_def.pv = poke_def.pv - damage
 
-
+## INTERFACE!! ##
 
 
 
@@ -107,6 +110,7 @@ def tour_environnement(poke_att, poke_def,reserve):
     
     ## Il inflige des dommages au pokémon actif du joueur
     damage = max(degats,degats_spc)
+    print(damage)
     poke_def.pv = poke_def.pv - damage
     if poke_def.pv <= 0:
         reserve -=1
@@ -114,8 +118,11 @@ def tour_environnement(poke_att, poke_def,reserve):
         return True
     return False
     
-    
 
+
+
+
+## INTERFACE!! ##
 def choix_pokemon(Equipe):
     '''
     Parameters
@@ -126,7 +133,7 @@ def choix_pokemon(Equipe):
     Fonction permettant au dresseur de choisir son pokémon actif
     '''
     
-    
+    ##Interface
     choix = input("Veuillez entrer le nom du pokémon choisi dans votre équipe: ")
     
     ## On vérifie que le pokémon est en état de se battre
@@ -135,9 +142,13 @@ def choix_pokemon(Equipe):
     
     return Equipe[str(choix)]
 
-    
-    
+## INTERFACE!! ##
 
+
+
+
+
+## INTERFACE!! ##
 def combat(Equipe,poke_sauvage):
     '''
     Parameters
@@ -167,15 +178,17 @@ def combat(Equipe,poke_sauvage):
     
     while poke_sauvage.pv > 0  or fleeing == False or reserve != 0:
         if initiative:
+            ##Interface
             choix_joueur = None 
-            ###devra être modifié pour inclure le choix
+            ## devra être modifié pour inclure le choix
+            ## Choix entre Fuir, Changer de pokémon, Attaquer
             
             if choix_joueur == 'Fuir':
-                fleeing == True
+                fleeing == True ## doit changer le booléen fleeing en True pour atteindre la fin du combat
             elif choix_joueur == 'Changer':
-                poke_actif = choix_pokemon(Equipe)
+                poke_actif = choix_pokemon(Equipe) ## doit déclencher la fonction choix_pokemon
             elif choix_joueur == 'Attaquer':
-                tour_joueur(poke_actif, poke_sauvage)
+                tour_joueur(poke_actif, poke_sauvage)  ## doit déclencher la fonction tour_joueur
                            
         else:
             changement = tour_environnement(poke_sauvage,poke_actif,reserve)
@@ -198,7 +211,7 @@ def combat(Equipe,poke_sauvage):
     
     ## Soin après bataille, ajout du pokémon vaincu à l'Equipe
     if not poke_sauvage.pv > 0:
-        Equipe.append(poke_sauvage)
+        Equipe[str(poke_sauvage.name)] = poke_sauvage
     else:
         poke_sauvage.pv = poke_sauvage.pv_totaux
         
@@ -209,7 +222,7 @@ def combat(Equipe,poke_sauvage):
     ## Doit supprimer le pokémon de la case si vaincu
     ## Doit bouger de la case si perdu
         
-
+## INTERFACE!! ##
 
 
 

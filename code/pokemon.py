@@ -14,16 +14,16 @@ import numpy as np
 
 class Pokemon:
     def __init__(self,name,tp,pv,at,df,at_spc,df_spc,sp):
-        self.name = name
+        self.name = name        #nom
         self.tp = tp            #type
-        self.pv = pv            #points de vie actuels
-        self.pv_totaux = pv     #points de vie totaux
-        self.at = at            #attaque
-        self.df = df            #défense
-        self.at_spc = at_spc    #attaque spéciale
-        self.df_spc = df_spc    #défense spéciale
-        self.sp = sp            #vitesse(speed)
-        self.etat = True        #capacité à combattre
+        self.pv = int(pv)            #points de vie actuels
+        self.pv_totaux = int(pv)     #points de vie totaux
+        self.at = int(at)            #attaque
+        self.df = int(df)            #défense
+        self.at_spc = int(at_spc)    #attaque spéciale
+        self.df_spc = int(df_spc)    #défense spéciale
+        self.sp = int(sp)            #vitesse(speed)
+        self.etat = True        #en état de combat
 
 
 
@@ -48,6 +48,8 @@ for elt in Pokelist:
     
     
     
-print(Pokelist)
-print(Pokelist_legende)
-print(Pokedex[0].name)
+# =============================================================================
+# print(Pokelist)
+# print(Pokelist_legende)
+# print(Pokedex[0].name)
+# =============================================================================
