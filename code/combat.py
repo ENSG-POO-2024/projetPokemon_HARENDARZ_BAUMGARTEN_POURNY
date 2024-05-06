@@ -10,7 +10,7 @@ import numpy as np
 import math as m
 import pokemon
 
-List_type = ['Steel','Fighting', 'Dragon','Water','Electric','Fire','Fairy','Ice','Bug','Normal','Grass','Poison','Psychic','Rock','Ground','Ghost','Shadow','Flying']
+List_type = ['Steel','Fighting', 'Dragon','Water','Electric','Fire','Fairy','Ice','Bug','Normal','Grass','Poison','Psychic','Rock','Ground','Ghost','Dark','Flying']
 
 ##Permet de récupérer les indices des types. Traduction de ténèbres à vérifier ? 
 
@@ -152,7 +152,7 @@ def choix_pokemon(Equipe):
 
 
 ## INTERFACE!! ##
-def combat(Equipe,poke_sauvage):
+def combat(Equipe,Collection,poke_sauvage):
     '''
     Parameters
     ----------
@@ -179,7 +179,7 @@ def combat(Equipe,poke_sauvage):
     else:
         initiative = False
     
-    while poke_sauvage.pv > 0  or fleeing == False or reserve != 0:
+    while poke_sauvage.pv > 0  or fleeing == False or reserve > 0:
         if initiative:
             ##Interface
             choix_joueur = None 

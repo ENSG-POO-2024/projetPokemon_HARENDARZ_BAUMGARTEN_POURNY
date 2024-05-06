@@ -10,9 +10,9 @@ import csv
 import numpy as np
 
 
-List_type = ['Steel','Fighting', 'Dragon','Water','Electric','Fire','Fairy','Ice','Bug','Normal','Grass','Poison','Psychic','Rock','Ground','Ghost','Shadow','Flying']
+List_type = ['Steel','Fighting', 'Dragon','Water','Electric','Fire','Fairy','Ice','Bug','Normal','Grass','Poison','Psychic','Rock','Ground','Ghost','Dark','Flying']
 
-##Permet de récupérer les indices des types. Traduction de ténèbres à vérifier ? 
+##Permet de récupérer les indices des types.
 
 
 table_type = np.genfromtxt('../data/Types.csv',delimiter = ',')
@@ -73,7 +73,14 @@ class Pokemon:
         i1,i2 = List_type.index(self.tp), List_type.index(poke_def.tp)
         coef = table_type[i1][i2]
         return round(self.formule_attack(self.at_spc,self.df_spc,poke_def.df_spc)*coef)
-        
+    
+    
+    def __str__(self):
+        return self.name
+    
+    def carac(self):
+        print('Mes pv actuels sont : ' + str(self.pv))
+        print('Mon type est : ' + str(self.tp))
     
 
 
@@ -90,12 +97,14 @@ Pokelist_legende = Pokelist.pop(0)
 
 
         
-Pokedex = []
+Pokedex = {}
 
 for elt in Pokelist:
-    Pokedex.append(Pokemon(elt[0],elt[1],elt[2],elt[3],elt[4],elt[5],elt[6],elt[7]))
-    
-    
+    Pokedex[elt[0]] = Pokemon(elt[0],elt[1],elt[2],elt[3],elt[4],elt[5],elt[6],elt[7])
+
+
+
+
     
     
     
