@@ -45,8 +45,8 @@ for elt in Pokelist:
     
     
     
-if __name__ == "__main__":
     
-    print(Pokelist)
-    print(Pokelist_legende)
-    print(Pokedex[0].name)
+    
+print(Pokelist)
+print(Pokelist_legende)
+print(Pokedex[0].name)

@@ -15,8 +15,47 @@ from PyQt5 import QtCore, QtWidgets, QtMultimedia
 
 import carte as c
 import deplacement as d
+import random as rd
 
 
+
+
+import csv
+import numpy as np
+
+
+
+
+class Pokemon:
+    def __init__(self,name,tp,pv,at,df,at_spc,df_spc,sp,coord = None):
+        self.name = name
+        self.tp = tp            #type
+        self.pv = pv            #points de vie
+        self.at = at            #attaque
+        self.df = df            #défense
+        self.at_spc = at_spc    #attaque spéciale
+        self.df_spc = df_spc    #défense spéciale
+        self.sp = sp            #vitesse(speed)
+        self.coord = coord
+
+
+
+Pokelist = []
+
+with open('../data/pokemon_first_gen.csv') as csvfile:
+    fichier = csv.reader(csvfile,delimiter = ',')
+    for row in fichier:
+        Pokelist.append([row[1],row[2],row[5],row[6],row[7],row[8],row[9],row[10]])
+
+
+Pokelist_legende = Pokelist.pop(0)
+
+
+        
+Pokedex = []
+
+for elt in Pokelist:
+    Pokedex.append(Pokemon(elt[0],elt[1],elt[2],elt[3],elt[4],elt[5],elt[6],elt[7]))
 
 pix = 232
 piy = 400
@@ -60,11 +99,14 @@ a = 1
 
 j1 = d.joueur(case_depart, test_map)
 
-def nouv_j(j):
-    re = j.deplacement("Up")
-    return re
- 
-jsp = nouv_j(j1)    
+
+def affiche_id(pid):
+    idd = str(pid)
+    nb_0 = 3 - len(idd)
+    nom = ""
+    for i in range(nb_0):
+        nom = nom + "0"
+    return nom + idd
 
 class MainWindow(QMainWindow):
 
@@ -76,7 +118,7 @@ class MainWindow(QMainWindow):
 
     def initUI(self):
         super(MainWindow, self).__init__()
-        self.title = "Image Viewer"
+        self.title = "Pykémon"
         self.setWindowTitle(self.title)
         label = QLabel(self)
         pixmap = QPixmap("game.png")
@@ -112,6 +154,12 @@ class MainWindow(QMainWindow):
             all_img = [img0,img1,img2,img3]
             new_image = all_img[j1.case.area_id]
             new_image.paste(img4, (j1.case.y * 8, j1.case.x * 8), mask = img4)
+            if j1.case.type_case(j1.map) == "Herbe":
+                id_Poke = rd.randint(1, 1000)
+                if id_Poke <= 151:
+                    print(Pokedex[id_Poke].name) ### A modifier pour lancer le combat
+                    img5 = Image.open("..\code\gui\spr_rb-supgb_" + affiche_id(id_Poke) + ".png")
+                    new_image.paste(img5, (j1.case.y * 8, j1.case.x * 8))
             new_image.save("game.png")
             label = QLabel(self)
             pixmap = QPixmap("game.png")
@@ -119,7 +167,7 @@ class MainWindow(QMainWindow):
             label.setScaledContents(True)
             self.setCentralWidget(label)
         if e.key() == Qt.Key_Down:
-            j1.deplacement("down").case.x
+            j1.deplacement("down")
             img0 = Image.open("..\code\gui\Safari_Zone_entrance_RBY.png")
             img1 = Image.open("..\code\gui\Safari_Zone_area_1_RBY.png")
             img2 = Image.open("..\code\gui\Safari_Zone_area_2_RBY.png")
@@ -128,6 +176,12 @@ class MainWindow(QMainWindow):
             all_img = [img0,img1,img2,img3]
             new_image = all_img[j1.case.area_id]
             new_image.paste(img4, (j1.case.y * 8, j1.case.x * 8), mask = img4)
+            if j1.case.type_case(j1.map) == "Herbe":
+                id_Poke = rd.randint(1, 1000)
+                if id_Poke <= 151:
+                    print(Pokedex[id_Poke].name) ### A modifier pour lancer le combat
+                    img5 = Image.open("..\code\gui\spr_rb-supgb_" + affiche_id(id_Poke) + ".png")
+                    new_image.paste(img5, (j1.case.y * 8, j1.case.x * 8))
             new_image.save("game.png")
             label = QLabel(self)
             pixmap = QPixmap("game.png")
@@ -135,7 +189,7 @@ class MainWindow(QMainWindow):
             label.setScaledContents(True)
             self.setCentralWidget(label)
         if e.key() == Qt.Key_Left:
-            j1.deplacement("left").case.x
+            j1.deplacement("left")
             img0 = Image.open("..\code\gui\Safari_Zone_entrance_RBY.png")
             img1 = Image.open("..\code\gui\Safari_Zone_area_1_RBY.png")
             img2 = Image.open("..\code\gui\Safari_Zone_area_2_RBY.png")
@@ -144,6 +198,12 @@ class MainWindow(QMainWindow):
             all_img = [img0,img1,img2,img3]
             new_image = all_img[j1.case.area_id]
             new_image.paste(img4, (j1.case.y * 8, j1.case.x * 8), mask = img4)
+            if j1.case.type_case(j1.map) == "Herbe":
+                id_Poke = rd.randint(1, 1000)
+                if id_Poke <= 151:
+                    print(Pokedex[id_Poke].name) ### A modifier pour lancer le combat
+                    img5 = Image.open("..\code\gui\spr_rb-supgb_" + affiche_id(id_Poke) + ".png")
+                    new_image.paste(img5, (j1.case.y * 8, j1.case.x * 8))
             new_image.save("game.png")
             label = QLabel(self)
             pixmap = QPixmap("game.png")
@@ -151,7 +211,7 @@ class MainWindow(QMainWindow):
             label.setScaledContents(True)
             self.setCentralWidget(label)
         if e.key() == Qt.Key_Right:
-            j1.deplacement("right").case.x
+            j1.deplacement("right")
             img0 = Image.open("..\code\gui\Safari_Zone_entrance_RBY.png")
             img1 = Image.open("..\code\gui\Safari_Zone_area_1_RBY.png")
             img2 = Image.open("..\code\gui\Safari_Zone_area_2_RBY.png")
@@ -160,6 +220,12 @@ class MainWindow(QMainWindow):
             all_img = [img0,img1,img2,img3]
             new_image = all_img[j1.case.area_id]
             new_image.paste(img4, (j1.case.y * 8, j1.case.x * 8), mask = img4)
+            if j1.case.type_case(j1.map) == "Herbe":
+                id_Poke = rd.randint(1, 1000)
+                if id_Poke <= 151:
+                    print(Pokedex[id_Poke].name) ### A modifier pour lancer le combat
+                    img5 = Image.open("..\code\gui\spr_rb-supgb_" + affiche_id(id_Poke) + ".png")
+                    new_image.paste(img5, (j1.case.y * 8, j1.case.x * 8))
             new_image.save("game.png")
             label = QLabel(self)
             pixmap = QPixmap("game.png")
