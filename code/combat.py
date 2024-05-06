@@ -76,15 +76,28 @@ def tour_joueur(poke_att, poke_def):
     poke_att : pokémon actif du joueur
     poke_def : pokémon sauvage
     
-    Au tour du joueur, il peut choisir entre attaquer, choisir un autre pokémon ou fuir
+    Attaque du joueur.
     '''
-    pass
+    choix_attaque = None
+    ## à construire avec l'interface
+    
+    if str(choix_attaque) == 'normale':
+        damage = attack(poke_att.at, poke_att.df,poke_def.df)
+        
+    elif str(choix_attaque) == 'speciale':
+        damage = special_attack(poke_att.tp,poke_att.at,poke_att.df,poke_def.tp,poke_def.df)
+    
+    poke_def.pv = poke_def.pv - damage
 
 
-def tour_environnement(poke_att, poke_def):
+
+
+
+def tour_environnement(poke_att, poke_def,reserve):
     '''
     poke_att : pokémon sauvage
     poke_def : pokémon actif du joueur
+    reserve : nombre de pokémons combattants restants du dresseur
     
     Au tour du pokémon sauvage, il attaque le pokémon adverse
     '''
@@ -95,18 +108,56 @@ def tour_environnement(poke_att, poke_def):
     ## Il inflige des dommages au pokémon actif du joueur
     damage = max(degats,degats_spc)
     poke_def.pv = poke_def.pv - damage
+    if poke_def.pv <= 0:
+        reserve -=1
+        poke_def.etat = False
+        return True
+    return False
     
     
+
+def choix_pokemon(Equipe):
+    '''
+    Parameters
+    ----------
+    Equipe : Dictionnaire des pokémons dans l équipe du dresseur
+        Le pokémon actif au combat sera choisi dans ce dictionnaire
+
+    Fonction permettant au dresseur de choisir son pokémon actif
+    '''
     
+    
+    choix = input("Veuillez entrer le nom du pokémon choisi dans votre équipe: ")
+    
+    ## On vérifie que le pokémon est en état de se battre
+    while not Equipe[str(choix)].etat:
+        choix = input("Ce pokémon est hors de combat! Laissez le un peu tranquille. Veuillez choisir un pokémon capable de se battre: ")
+    
+    return Equipe[str(choix)]
+
     
     
 
 def combat(Equipe,poke_sauvage):
-    fleeing = False ##Flag déterminant si la fuite et donc fin du combat est active.
+    '''
+    Parameters
+    ----------
+    Equipe : Dictionnaire des pokémons dans l équipe du dresseur
+        Le pokémon actif au combat sera choisi dans ce dictionnaire
+    poke_sauvage : Objet de classe pokémon, Adversaire
+         Pokémon rencontré dans la nature
+         
+    ----------
+    Fonction gérant le combat
+    Fait appel aux Fonctions de Tour, qui permettant aux participants de choisir leur action
+    A la fin du combat, tous les pokémons sont soignés. Un éventuel pokémon sauvage vaincu est ajouté à l équipe.
+    '''
+    fleeing = False         ## Flag déterminant si la fuite et donc fin du combat est active.
+    reserve = len(Equipe)   ## Compteur des pokémons du dresseur. Si atteint 0, fin du combat.
+    changement = False      ## Flag déterminant si le dresseur doit choisir un nouveau pokémon suite à une attaque du pokémon sauvage
     
     ## Choix pokémon
-    choix = input("Veuillez entrer l'indice du pokémon choisi dans votre équipe: ")
-    poke_actif = Equipe[choix]
+    poke_actif = choix_pokemon(Equipe)
     
     ## Détermination de l'ordre du tour
     if poke_actif.sp >= poke_sauvage.sp:
@@ -114,14 +165,28 @@ def combat(Equipe,poke_sauvage):
     else:
         initiative = False
     
-    while poke_sauvage.pv > 0  or fleeing == False:
+    while poke_sauvage.pv > 0  or fleeing == False or reserve != 0:
         if initiative:
-            tour_joueur(poke_actif, poke_sauvage)
+            choix_joueur = None 
+            ###devra être modifié pour inclure le choix
+            
+            if choix_joueur == 'Fuir':
+                fleeing == True
+            elif choix_joueur == 'Changer':
+                poke_actif = choix_pokemon(Equipe)
+            elif choix_joueur == 'Attaquer':
+                tour_joueur(poke_actif, poke_sauvage)
+                           
         else:
-            tour_environnement(poke_sauvage,poke_actif)
-    
+            changement = tour_environnement(poke_sauvage,poke_actif,reserve)
+        
+        ## Si le pokémon combattant est vaincu, le dresseur en choisit un autre
+        if changement == True:
+            poke_actif = choix_pokemon(Equipe)
+            changement = False
+            
         ## Inversion de l'initiative
-        initiative = not initiative 
+        initiative = not initiative
         
         
     
@@ -139,6 +204,7 @@ def combat(Equipe,poke_sauvage):
         
     for pokemon in Equipe:
         pokemon.pv = pokemon.pv_totaux
+        pokemon.etat = True
 
     ## Doit supprimer le pokémon de la case si vaincu
     ## Doit bouger de la case si perdu

@@ -13,7 +13,7 @@ import numpy as np
 
 
 class Pokemon:
-    def __init__(self,name,tp,pv,at,df,at_spc,df_spc,sp,coord = None):
+    def __init__(self,name,tp,pv,at,df,at_spc,df_spc,sp):
         self.name = name
         self.tp = tp            #type
         self.pv = pv            #points de vie actuels
@@ -23,7 +23,7 @@ class Pokemon:
         self.at_spc = at_spc    #attaque spéciale
         self.df_spc = df_spc    #défense spéciale
         self.sp = sp            #vitesse(speed)
-        self.coord = coord
+        self.etat = True        #capacité à combattre
 
 
 
