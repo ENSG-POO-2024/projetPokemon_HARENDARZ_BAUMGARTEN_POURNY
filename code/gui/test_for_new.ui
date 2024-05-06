@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>640</width>
-    <height>640</height>
+    <width>933</width>
+    <height>868</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -21,8 +21,8 @@
   </property>
   <property name="maximumSize">
    <size>
-    <width>640</width>
-    <height>640</height>
+    <width>3000</width>
+    <height>3000</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -47,131 +47,120 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>640</width>
-      <height>640</height>
+      <width>454</width>
+      <height>236</height>
      </rect>
     </property>
-    <widget class="QLabel" name="MainMenu_Logo">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>150</y>
-       <width>640</width>
-       <height>211</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;:/logos/main_logo.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="MainMenu_ClickToStart">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>350</y>
-       <width>640</width>
-       <height>50</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Comic Sans MS</family>
-       <pointsize>14</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#386abb;&quot;&gt;CLICK ON THE WINDOW TO START&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="MainMenu_PushButton">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>640</width>
-       <height>640</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: rgba(255, 255, 255, 0);
+    <property name="setVisible" stdset="0">
+     <bool>true</bool>
+    </property>
+    <layout class="QGridLayout" name="gridLayout_2">
+     <item row="0" column="0">
+      <widget class="QPushButton" name="MainMenu_PushButton">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgba(255, 255, 255, 0);
 background-color: rgba(255, 255, 255, 0);</string>
-     </property>
-     <property name="text">
-      <string>PushButton</string>
-     </property>
-    </widget>
+       </property>
+       <property name="text">
+        <string>PushButton</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="MainMenu_Logo">
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;:/logos/main_logo.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="scaledContents">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="MainMenu_ClickToStart">
+       <property name="font">
+        <font>
+         <family>Comic Sans MS</family>
+         <pointsize>14</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#386abb;&quot;&gt;CLICK ON THE WINDOW TO START&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="scaledContents">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
     <zorder>MainMenu_ClickToStart</zorder>
     <zorder>MainMenu_Logo</zorder>
     <zorder>MainMenu_PushButton</zorder>
    </widget>
    <widget class="QWidget" name="MainMenu_2" native="true">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>640</width>
-      <height>640</height>
+      <width>178</width>
+      <height>89</height>
      </rect>
     </property>
-    <widget class="QLabel" name="MainMenu_Logo_4">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>150</y>
-       <width>640</width>
-       <height>211</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;:/logos/main_logo.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="MainMenu_ClickToStart_4">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>350</y>
-       <width>640</width>
-       <height>50</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Comic Sans MS</family>
-       <pointsize>14</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#386abb;&quot;&gt;C'EST BON !&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="MainMenu_PushButton_4">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>640</width>
-       <height>640</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: rgba(255, 255, 255, 0);
+    <layout class="QGridLayout" name="gridLayout_3">
+     <item row="0" column="0">
+      <widget class="QPushButton" name="MainMenu_PushButton_4">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgba(255, 255, 255, 0);
 background-color: rgba(255, 255, 255, 0);</string>
-     </property>
-     <property name="text">
-      <string>PushButton</string>
-     </property>
-    </widget>
+       </property>
+       <property name="text">
+        <string>PushButton</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="MainMenu_ClickToStart_4">
+       <property name="font">
+        <font>
+         <family>Comic Sans MS</family>
+         <pointsize>14</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#386abb;&quot;&gt;C'EST BON !&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="scaledContents">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLabel" name="MainMenu_Logo_4">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;:/logos/main_logo.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="scaledContents">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -179,7 +168,7 @@ background-color: rgba(255, 255, 255, 0);</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>640</width>
+     <width>933</width>
      <height>26</height>
     </rect>
    </property>
