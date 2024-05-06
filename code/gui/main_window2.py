@@ -38,13 +38,11 @@ class Ui_Pykemon(object):
         self.MM_ClickOnWindowStart_text.setStyleSheet("color: rgb(55, 104, 184);")
         self.MM_ClickOnWindowStart_text.setObjectName("MM_ClickOnWindowStart_text")
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(0, 0, 640, 640))
-        self.pushButton.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n"
-"color: rgba(255, 255, 255, 0);")
+        self.pushButton.setGeometry(QtCore.QRect(280, 370, 75, 23))
         self.pushButton.setObjectName("pushButton")
         Pykemon.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(Pykemon)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 640, 26))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 640, 21))
         self.menubar.setObjectName("menubar")
         Pykemon.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(Pykemon)
@@ -57,7 +55,8 @@ class Ui_Pykemon(object):
         self.pushButton.clicked.connect(self.affiche)
         
     def affiche(self):
-        print("HELP")
+        QtWidgets.QMessageBox.information(self,"Info","Ça marche !")
+
 
     def retranslateUi(self, Pykemon):
         _translate = QtCore.QCoreApplication.translate
