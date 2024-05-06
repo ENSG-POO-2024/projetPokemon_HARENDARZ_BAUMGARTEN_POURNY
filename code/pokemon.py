@@ -10,6 +10,12 @@ import csv
 import numpy as np
 
 
+List_type = ['Steel','Fighting', 'Dragon','Water','Electric','Fire','Fairy','Ice','Bug','Normal','Grass','Poison','Psychic','Rock','Ground','Ghost','Shadow','Flying']
+
+##Permet de récupérer les indices des types. Traduction de ténèbres à vérifier ? 
+
+
+table_type = np.genfromtxt('../data/Types.csv',delimiter = ',')
 
 
 class Pokemon:
@@ -24,6 +30,51 @@ class Pokemon:
         self.df_spc = int(df_spc)    #défense spéciale
         self.sp = int(sp)            #vitesse(speed)
         self.etat = True        #en état de combat
+    
+    
+    def formule_attack(self,poke_def):
+        '''
+        poke_def : pokémon défenseur
+    
+        Returns
+        -------
+        Formule du calcul de dégâts
+        Sans les coefficients d efficacité de type!
+        
+        '''
+        return self.at*(self.df/poke_def.df)
+    
+    
+    
+    def attack(self,poke_def):
+        '''
+        Parameters
+        ----------
+        poke_def : pokémon défenseur
+            
+        Returns
+        -------
+        Dégâts.
+        '''
+        return round(self.formule_attack(poke_def))
+
+
+    def special_attack(self,poke_def):
+        """
+        poke_def : pokémon défenseur
+        
+    
+        Returns
+        -------
+        Cherche le coefficient d efficacité de type.
+        Multiplie le résultat de la formule d attaque par le coef
+        Renvoie l arrondi si le résultat est relatif
+        """
+        i1,i2 = List_type.index(self.tp), List_type.index(poke_def.tp)
+        coef = table_type[i1][i2]
+        return round(self.formule_attack(self.at_spc,self.df_spc,poke_def.df_spc)*coef)
+        
+    
 
 
 

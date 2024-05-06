@@ -18,52 +18,54 @@ List_type = ['Steel','Fighting', 'Dragon','Water','Electric','Fire','Fairy','Ice
 table_type = np.genfromtxt('../data/Types.csv',delimiter = ',')
 
 
-def formule_attack(at,df1,df2):
-    '''
-    at : attaque de l attaquant
-    df : défenses des pokémons 
-
-    Returns
-    -------
-    Formule du calcul de dégâts
-    Sans les coefficients d efficacité de type!
-    
-    '''
-    return at*(df1/df2)
-
-
-def attack(at1,df1,df2):
-    '''
-    Parameters
-    ----------
-    at1 : attaque de l attaquant
-    df1 : défense de l attaquant
-    df2 : défense du défenseur
-        
-    Returns
-    -------
-    Dégâts.
-    '''
-    return round(formule_attack(at1, df1, df2))
-
-
-def special_attack(tp1,at_spc1,df_spc1,tp2,df_spc2):
-    """
-    tp1 : type de l attaquant
-    at_spc1 : attaque spéciale de l attaquant
-    df_spc1 : défense spéciale de l attaquant
-    tp2 : type du défenseur
-    df_spc2 : défense spécialedu défenseur
-
-    Returns
-    -------
-    Cherche le coefficient d efficacité de type.
-    Multiplie le résultat de la formule d attaque par le coef
-    Renvoie l entier supérieur le plus proche si le résultat est relatif
-    """
-    i1,i2 = List_type.index(tp1), List_type.index(tp2)
-    coef = table_type[i1][i2]
-    return round(formule_attack(at_spc1,df_spc1,df_spc2)*coef)
+# =============================================================================
+# def formule_attack(at,df1,df2):
+#     '''
+#     at : attaque de l attaquant
+#     df : défenses des pokémons 
+# 
+#     Returns
+#     -------
+#     Formule du calcul de dégâts
+#     Sans les coefficients d efficacité de type!
+#     
+#     '''
+#     return at*(df1/df2)
+# 
+# 
+# def attack(at1,df1,df2):
+#     '''
+#     Parameters
+#     ----------
+#     at1 : attaque de l attaquant
+#     df1 : défense de l attaquant
+#     df2 : défense du défenseur
+#         
+#     Returns
+#     -------
+#     Dégâts.
+#     '''
+#     return round(formule_attack(at1, df1, df2))
+# 
+# 
+# def special_attack(tp1,at_spc1,df_spc1,tp2,df_spc2):
+#     """
+#     tp1 : type de l attaquant
+#     at_spc1 : attaque spéciale de l attaquant
+#     df_spc1 : défense spéciale de l attaquant
+#     tp2 : type du défenseur
+#     df_spc2 : défense spécialedu défenseur
+# 
+#     Returns
+#     -------
+#     Cherche le coefficient d efficacité de type.
+#     Multiplie le résultat de la formule d attaque par le coef
+#     Renvoie l arrondi si le résultat est relatif
+#     """
+#     i1,i2 = List_type.index(tp1), List_type.index(tp2)
+#     coef = table_type[i1][i2]
+#     return round(formule_attack(at_spc1,df_spc1,df_spc2)*coef)
+# =============================================================================
 
 
 
@@ -85,10 +87,10 @@ def tour_joueur(poke_att, poke_def):
     ## à construire avec l'interface, le joueur doit choisir entre une attaque spéciale et une attaque normale
     
     if str(choix_attaque) == 'normale':
-        damage = attack(poke_att.at, poke_att.df,poke_def.df)
+        damage = poke_att.attack(poke_def)
         
     elif str(choix_attaque) == 'speciale':
-        damage = special_attack(poke_att.tp,poke_att.at,poke_att.df,poke_def.tp,poke_def.df)
+        damage = poke_att.special_attack(poke_def)
     
     poke_def.pv = poke_def.pv - damage
 
@@ -105,13 +107,14 @@ def tour_environnement(poke_att, poke_def,reserve):
     Au tour du pokémon sauvage, il attaque le pokémon adverse
     '''
     ## Le pokémon sauvage considère ses options : il utilisera l'attaque la plus efficace    
-    degats = attack(poke_att.at,poke_att.df,poke_def.df)
-    degats_spc = special_attack(poke_att.tp,poke_att.at,poke_att.df,poke_def.tp,poke_def.df)
+    degats = poke_att.attack(poke_def)
+    degats_spc = poke_att.special_attack(poke_def)
+    damage = max(degats,degats_spc)
     
     ## Il inflige des dommages au pokémon actif du joueur
-    damage = max(degats,degats_spc)
-    print(damage)
     poke_def.pv = poke_def.pv - damage
+    
+    ## s'il vainc son adversaire, l'équipe du joueur comprend un pokémon de moins et il devra immédiatemment choisir un nouveau pokémon
     if poke_def.pv <= 0:
         reserve -=1
         poke_def.etat = False
