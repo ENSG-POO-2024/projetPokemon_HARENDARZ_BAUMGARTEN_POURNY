@@ -9,13 +9,16 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+import gui_resources
 
 
 class Ui_Pykemon_MainWindow(object):
+    
+    
     def setupUi(self, Pykemon_MainWindow):
         Pykemon_MainWindow.setObjectName("Pykemon_MainWindow")
         Pykemon_MainWindow.setEnabled(True)
-        Pykemon_MainWindow.setWindowFlags(QtCore.Qt.FramelessWindowHint)
+        
         QtGui.QFontDatabase.addApplicationFont("fonts/Retro_Gaming.ttf")
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
         sizePolicy.setHorizontalStretch(0)
@@ -27,7 +30,7 @@ class Ui_Pykemon_MainWindow(object):
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/logos/py_symbol.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         Pykemon_MainWindow.setWindowIcon(icon)
-        Pykemon_MainWindow.setStyleSheet("background-color: rgb(255, 255, 255);")
+        Pykemon_MainWindow.setStyleSheet("background-color: rgb(0, 0, 0);")
         Pykemon_MainWindow.setAnimated(True)
         self.centralwidget = QtWidgets.QWidget(Pykemon_MainWindow)
         self.centralwidget.setEnabled(False)
@@ -71,10 +74,11 @@ class Ui_Pykemon_MainWindow(object):
         self.statusbar = QtWidgets.QStatusBar(Pykemon_MainWindow)
         self.statusbar.setObjectName("statusbar")
         Pykemon_MainWindow.setStatusBar(self.statusbar)
-        Pykemon_MainWindow.showMaximized()
+        
 
         self.retranslateUi(Pykemon_MainWindow)
         QtCore.QMetaObject.connectSlotsByName(Pykemon_MainWindow)
+        
 
     def retranslateUi(self, Pykemon_MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -82,7 +86,12 @@ class Ui_Pykemon_MainWindow(object):
         self.MainMenu_PushButton.setText(_translate("Pykemon_MainWindow", "PushButton"))
         self.MainMenu_ClickToStart.setText(_translate("Pykemon_MainWindow", "<html><head/><body><p align=\"center\"><span style=\" color:#386abb;\">CLICK ON THE WINDOW TO START</span></p></body></html>"))
         self.MainMenu_Logo.setText(_translate("Pykemon_MainWindow", "<html><head/><body><p align=\"center\"><img src=\":/logos/main_logo.png\"/></p></body></html>"))
-import gui_resources
+
+
+        
+
+        
+
 
 
 if __name__ == "__main__":
@@ -90,14 +99,31 @@ if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     Pykemon_MainWindow = QtWidgets.QMainWindow()
     ui = Ui_Pykemon_MainWindow()
+    
     # Créer une fonction pour automatiser le resize
     screen = app.primaryScreen()
     size = screen.size()
     Pykemon_MainWindow.resize(size.width(), size.height())
     ui.ratio = size.width()/1920
-    print(size.width())
+    
+    # Tests animation
+    Pykemon_MainWindow.animation = QtCore.QPropertyAnimation(Pykemon_MainWindow, b'windowOpacity')
+    Pykemon_MainWindow.animation.setDuration(1000)
+    try:
+        Pykemon_MainWindow.animation.finished.disconnect(Pykemon_MainWindow.close)
+    except:
+        pass
+    Pykemon_MainWindow.animation.stop()
+    Pykemon_MainWindow.animation.setStartValue(0)
+    Pykemon_MainWindow.animation.setEndValue(1)
+    Pykemon_MainWindow.animation.start()
+    
 
+    # Lancement
     ui.setupUi(Pykemon_MainWindow)
     Pykemon_MainWindow.show()
+    Pykemon_MainWindow.setWindowFlags(QtCore.Qt.FramelessWindowHint)
+    Pykemon_MainWindow.showMaximized()
 
     sys.exit(app.exec_())
+
