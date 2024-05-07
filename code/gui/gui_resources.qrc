@@ -1,0 +1,6 @@
+<RCC>
+  <qresource>
+    <file>logos/py_symbol.png</file>
+    <file>logos/main_logo.png</file>
+  </qresource>
+</RCC>
