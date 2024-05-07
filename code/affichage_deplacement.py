@@ -33,6 +33,7 @@ def affiche_id(pid):
     return nom + idd
 
 def affiche_deplacement(self,j1,e,Pokedex):
+    global id_Poke
     mode = 1
     if e.key() == Qt.Key_Up:
         j1.deplacement("up")
@@ -52,8 +53,6 @@ def affiche_deplacement(self,j1,e,Pokedex):
                 img5 = Image.open("..\code\gui\spr_rb-supgb_" + affiche_id(id_Poke) + ".png")
                 new_image.paste(img5, (j1.case.y * 8, j1.case.x * 8))
                 new_image.save("gui\maps\game.png")
-                self.hide()
-                self.combatUI()
                 return mode,id_Poke
         new_image.save("gui\maps\game.png")
         label = QLabel(self)
@@ -61,6 +60,7 @@ def affiche_deplacement(self,j1,e,Pokedex):
         label.setPixmap(pixmap)
         label.setScaledContents(True)
         self.setCentralWidget(label)
+        return mode,0
     if e.key() == Qt.Key_Down:
         j1.deplacement("down")
         img0 = Image.open("..\code\gui\Safari_Zone_entrance_RBY.png")
@@ -79,8 +79,6 @@ def affiche_deplacement(self,j1,e,Pokedex):
                 img5 = Image.open("..\code\gui\spr_rb-supgb_" + affiche_id(id_Poke) + ".png")
                 new_image.paste(img5, (j1.case.y * 8, j1.case.x * 8))
                 new_image.save("gui\maps\game.png")
-                self.hide()
-                self.combatUI()
                 return mode,id_Poke
         new_image.save("gui\maps\game.png")
         label = QLabel(self)
@@ -88,6 +86,7 @@ def affiche_deplacement(self,j1,e,Pokedex):
         label.setPixmap(pixmap)
         label.setScaledContents(True)
         self.setCentralWidget(label)
+        return mode,0
     if e.key() == Qt.Key_Left:
         j1.deplacement("left")
         img0 = Image.open("..\code\gui\Safari_Zone_entrance_RBY.png")
@@ -106,8 +105,6 @@ def affiche_deplacement(self,j1,e,Pokedex):
                 img5 = Image.open("..\code\gui\spr_rb-supgb_" + affiche_id(id_Poke) + ".png")
                 new_image.paste(img5, (j1.case.y * 8, j1.case.x * 8))
                 new_image.save("gui\maps\game.png")
-                self.hide()
-                self.combatUI()
                 return mode,id_Poke
         new_image.save("gui\maps\game.png")
         label = QLabel(self)
@@ -115,6 +112,7 @@ def affiche_deplacement(self,j1,e,Pokedex):
         label.setPixmap(pixmap)
         label.setScaledContents(True)
         self.setCentralWidget(label)
+        return mode,0
     if e.key() == Qt.Key_Right:
         j1.deplacement("right")
         img0 = Image.open("..\code\gui\Safari_Zone_entrance_RBY.png")
@@ -133,8 +131,6 @@ def affiche_deplacement(self,j1,e,Pokedex):
                 img5 = Image.open("..\code\gui\spr_rb-supgb_" + affiche_id(id_Poke) + ".png")
                 new_image.paste(img5, (j1.case.y * 8, j1.case.x * 8))
                 new_image.save("gui\maps\game.png")
-                self.hide()
-                self.combatUI()
                 return mode,id_Poke
         new_image.save("gui\maps\game.png")
         label = QLabel(self)
@@ -142,5 +138,7 @@ def affiche_deplacement(self,j1,e,Pokedex):
         label.setPixmap(pixmap)
         label.setScaledContents(True)
         self.setCentralWidget(label)
-    return mode,0
+        return mode,0
+    else:
+        return mode,0
     

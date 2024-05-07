@@ -100,6 +100,7 @@ a = 1
 
 
 j1 = d.joueur(case_depart, test_map)
+id_Poke = 0
 
 
 
@@ -109,6 +110,8 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.setWindowIcon(QtGui.QIcon('gui\logos\py_symbol.png'))
         global mode 
+        global id_Poke
+        id_Poke = 0
         mode = 0
         self.menuUI()
         self.son()
@@ -139,13 +142,19 @@ class MainWindow(QMainWindow):
     def combatUI(self):
         global id_Poke
         super(MainWindow, self).__init__()
-        print(id_Poke)
+        #print(id_Poke)
         self.setWindowIcon(QtGui.QIcon('gui\logos\py_symbol.png'))
         self.title = "Pykémon"
         img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
-        img_fond = ("gui\battle\intro_fight.png")
-        img_fond.paste(img_Poke_ennemie, (0,0))
-        img_fond.save("gui\battle\fight.png")
+        img_fond = Image.open('intro_fight.png')
+        img_fight = img_fond 
+        img_fight.paste(img_Poke_ennemie, (0,0))
+        img_fight.save("fight.png")
+        label = QLabel(self)
+        pixmap = QPixmap("fight.png")
+        label.setPixmap(pixmap)
+        label.setScaledContents(True)
+        self.setCentralWidget(label)
         self.show()
         
         
@@ -182,7 +191,8 @@ class MainWindow(QMainWindow):
             print(id_Poke)
         
         if mode == 2:
-            print("ok")
+            self.hide()
+            self.combatUI()
             
             
                 
