@@ -15,6 +15,8 @@ Collection : Dictionnaire des pokémons possédés par le dresseur
 
 
 
+
+
 ## INTERFACE!! ##
 def starter(Pokedex):
     choix = input('Choisissez votre pokémon de départ: ')
@@ -28,7 +30,16 @@ def starter(Pokedex):
 ## INTERFACE!! ##
 
 
+
+
+
+## Fonctions utilitaires pour le dresseur
+
 def gestion_collection(Equipe, Collection):
+    '''
+    Fonction secondaire de gestion, cas taille Collection > 6 et taille Equipe == 6.
+
+    '''
     nom_poke_1 = input('Quel est le pokémon que vous souhaitez enlever de votre équipe ? ')
     if nom_poke_1 == None:
         pass
@@ -47,7 +58,7 @@ def gestion(Equipe, Collection):
     Si la collection contient moins de 6 pokémons, ajoute plutôt l intégralité des pokémons à l équipe.
 
     '''
-    if len(Collection) > 6 and len(Equipe)>=6:
+    if len(Collection) > 6 and len(Equipe) == 6:
         gestion_collection(Equipe, Collection)
     elif len(Collection) <= 6:
         Equipe = Collection
@@ -60,6 +71,10 @@ def gestion(Equipe, Collection):
                 nom_poke = input('Ce pokémon est déjà dans votre équipe ! Il ne peut pas se dédoubler. Choisissez-en un autre : ')
             Equipe[str(nom_poke)] = Collection[str(nom_poke)]
         
+        choix = input('Souhaitez vous modifier un pokémon de votre équipe ? ')
+        if choix == 'Oui':
+            gestion_collection(Equipe, Collection)
+        
     
     
 
@@ -68,13 +83,15 @@ def soin(Equipe):
     Soigne tous les pokémons de l équipe lors d un passage à un centre de soin.
     '''
     for pokemon in Equipe:
-        pokemon.pv = pokemon.pv_totaux
-        pokemon.etat = True
+        Equipe[pokemon].pv = Equipe[pokemon].pv_totaux
+        Equipe[pokemon].etat = True
         
         
         
-        
+ 
         
 ##tests : 
         
-Equipe, Collection = starter(Pokedex)
+# =============================================================================
+# Equipe, Collection = starter(pokemon.Pokedex)
+# =============================================================================
