@@ -72,7 +72,11 @@ table_type = np.genfromtxt('../data/Types.csv',delimiter = ',')
 
 
 '''
-Lorsque l interface renvoie un pokémon, elle doit renvoyer son id 
+Environnement : Dictionnaire, variable globale, des pokémons dans l environnement
+Equipe : Dictionnaire des pokémons actifs dans l équipe du dresseur
+Collection : Dictionnaire des pokémons possédés par le dresseur
+poke_att : pokémon infligeant les dégâts
+poke_def : pokémon recevant les dégâts
 '''
 
 
@@ -154,6 +158,25 @@ def choix_pokemon(Equipe):
 
 
 
+def fin_combat(Equipe,Collection,poke_sauvage):
+    ## Soin après bataille, ajout du pokémon vaincu à l'Equipe
+    if not poke_sauvage.pv > 0:
+        Equipe[poke_sauvage.id] = poke_sauvage
+        Collection[poke_sauvage.id] = poke_sauvage
+        del Environnement[poke_sauvage.id]
+    else:
+        poke_sauvage.pv = poke_sauvage.pv_totaux
+        
+    utilitaire.soin(Collection)
+
+    ## Doit supprimer le pokémon de la case si vaincu
+    ## Doit bouger de la case si perdu    
+    
+
+
+'''
+La fonction combat va être intégrée dans la structure de l interface.
+'''
 
 ## INTERFACE!! ##
 def combat(Equipe,Collection,poke_sauvage):
@@ -212,26 +235,19 @@ def combat(Equipe,Collection,poke_sauvage):
         
     ## Pokemon actif doit avoir vie > 0
     ## Si le pokemon actif meurt, on doit en choisir un autre
-    ## 
     
-    
-    ## Soin après bataille, ajout du pokémon vaincu à l'Equipe
-    if not poke_sauvage.pv > 0:
-        Equipe[poke_sauvage.id] = poke_sauvage
-        Collection[poke_sauvage.id] = poke_sauvage
-        del Environnement[poke_sauvage.id]
-    else:
-        poke_sauvage.pv = poke_sauvage.pv_totaux
+    ## Appel de la fin du combat
         
-    utilitaire.soin(Collection)
+    fin_combat(Equipe,Collection,poke_sauvage)
+    
+    
+    
 
-    ## Doit supprimer le pokémon de la case si vaincu
-    ## Doit bouger de la case si perdu
         
 ## INTERFACE!! ##
-
-
-
-
     
+    
+    
+    
+
 

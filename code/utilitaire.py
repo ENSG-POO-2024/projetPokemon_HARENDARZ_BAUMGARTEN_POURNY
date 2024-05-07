@@ -14,10 +14,6 @@ Collection : Dictionnaire des pokémons possédés par le dresseur
 '''
 
 
-## Je ne fais pas forcément une fonction simple comme "return Pokedex" pour plusieurs raisons :
-# 1- Question de compréhension de lecture. Le fait de voir les variables créées et nommées facilitent la compréhension.
-# 2- Parfois, comme pour la 
-
 def creation_Environnement(Pokedex):
     '''
     Crée la liste des pokémons trouvés dans l environnement
@@ -28,12 +24,17 @@ def creation_Environnement(Pokedex):
 
 
 ## INTERFACE!! ##
-def starter(Pokedex):
-    choix = input('Choisissez votre pokémon de départ: ')
-    
+def starter(Environnement,choix):
+    '''
+    choix : information venant de l interface sur le pokémon de départ
+    '''    
     ## Choix possibles : Bulbasaur, Charmander, Squirtle, Pikachu
     
-    Equipe, Collection = {int(choix):Pokedex[int(choix)]}, {int(choix):Pokedex[int(choix)]}
+    Equipe, Collection = {int(choix):Environnement[int(choix)]}, {int(choix):Environnement[int(choix)]}
+    
+    ## on supprime le pokémon choisi de l'environnement : ce dictionnaire régit également les pokémons rencontrés dans la nature. 
+    del Environnement[int(choix)]
+    
     return Equipe, Collection
     
     
@@ -44,6 +45,11 @@ def starter(Pokedex):
 
 
 ## Fonctions utilitaires pour le dresseur
+    
+'''
+Les fonctions de gestion vont être intégrées dans la structure de l interface.
+
+'''
 
 def gestion_collection(Equipe, Collection):
     '''
@@ -61,6 +67,7 @@ def gestion_collection(Equipe, Collection):
     gestion_collection(Equipe, Collection)
 
     
+
     
 def gestion(Equipe, Collection):
     '''
@@ -68,6 +75,7 @@ def gestion(Equipe, Collection):
     Si la collection contient moins de 6 pokémons, ajoute plutôt l intégralité des pokémons à l équipe.
 
     '''
+    
     if len(Collection) > 6 and len(Equipe) == 6:
         gestion_collection(Equipe, Collection)
     elif len(Collection) <= 6:
