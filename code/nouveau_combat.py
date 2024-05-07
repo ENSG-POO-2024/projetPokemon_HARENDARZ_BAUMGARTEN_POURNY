@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+t# -*- coding: utf-8 -*-
 """
 Created on Tue May  7 13:58:35 2024
 
@@ -8,6 +8,7 @@ Created on Tue May  7 13:58:35 2024
 import csv
 import numpy as np
 import math as m
+import random as rd
 import pokemon
 import utilitaire
 
@@ -36,9 +37,9 @@ def choix_pokemon(Equipe,choix):
 
     Fonction permettant au dresseur de choisir son pokémon actif
     '''
-
-    poke_actif = Equipe[int(choix)]
-    return 
+    L = list(d.keys())
+    poke_actif = Equipe[L[rd.randint(0,len(L))]]
+    return poke_actif
 
 
 
