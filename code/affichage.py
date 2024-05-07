@@ -186,7 +186,7 @@ class MainWindow(QMainWindow):
         global img4
         global mode
         global id_Poke
-        if e.key() == Qt.Key_Space and mode == 0:
+        if mode == 0:
             mode = 1
             self.hide()
             self.carteUI()
@@ -199,7 +199,7 @@ class MainWindow(QMainWindow):
             self.combatUI()
             mode = 3
         
-        if mode == 3:
+        # if mode == 3:
             
             
             
