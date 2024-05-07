@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+t# -*- coding: utf-8 -*-
 """
 Created on Tue May  7 13:58:35 2024
 
@@ -38,7 +38,7 @@ def choix_pokemon(Equipe,choix):
     '''
 
     poke_actif = Equipe[int(choix)]
-    return 
+    return poke_actif
 
 
 
