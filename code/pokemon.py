@@ -19,7 +19,8 @@ table_type = np.genfromtxt('../data/Types.csv',delimiter = ',')
 
 
 class Pokemon:
-    def __init__(self,name,tp,pv,at,df,at_spc,df_spc,sp):
+    def __init__(self,ident,name,tp,pv,at,df,at_spc,df_spc,sp):
+        self.id = ident         #identifiant
         self.name = name        #nom
         self.tp = tp            #type
         self.pv = int(pv)            #points de vie actuels
@@ -32,7 +33,7 @@ class Pokemon:
         self.etat = True        #en état de combat
     
     
-    def formule_attack(self,poke_def):
+    def formule_attack(self,at,df1,df2):
         '''
         poke_def : pokémon défenseur
     
@@ -42,7 +43,9 @@ class Pokemon:
         Sans les coefficients d efficacité de type!
         
         '''
-        return self.at*(self.df/poke_def.df)
+        return at*(df1/df2)
+    
+    
     
     
     
@@ -56,7 +59,7 @@ class Pokemon:
         -------
         Dégâts.
         '''
-        return round(self.formule_attack(poke_def))
+        return round(self.formule_attack(self.at,self.df,poke_def.df))
 
 
     def special_attack(self,poke_def):
@@ -78,38 +81,42 @@ class Pokemon:
     def __str__(self):
         return self.name
     
+    def __repr__(self):
+        return self.name        
+    
     def carac(self):
         print('Mes pv actuels sont : ' + str(self.pv))
         print('Mon type est : ' + str(self.tp))
     
 
 
-
-Pokelist = []
-
-with open('../data/pokemon_first_gen.csv') as csvfile:
-    fichier = csv.reader(csvfile,delimiter = ',')
-    for row in fichier:
-        Pokelist.append([row[1],row[2],row[5],row[6],row[7],row[8],row[9],row[10]])
-
-
-Pokelist_legende = Pokelist.pop(0)
-
-
+def creation_pokedex():
+    Pokelist = []
+    with open('../data/pokemon_first_gen.csv') as csvfile:
+        fichier = csv.reader(csvfile,delimiter = ',')
+        ident = 0
+        for row in fichier:
+            Pokelist.append([ident,row[1],row[2],row[5],row[6],row[7],row[8],row[9],row[10]])
+            ident += 1
+    
+    Pokelist_legende = Pokelist.pop(0)
         
-Pokedex = {}
+    Pokedex = {}
 
-for elt in Pokelist:
-    Pokedex[elt[0]] = Pokemon(elt[0],elt[1],elt[2],elt[3],elt[4],elt[5],elt[6],elt[7])
+    for elt in Pokelist:
+        Pokedex[elt[0]] = Pokemon(elt[0],elt[1],elt[2],elt[3],elt[4],elt[5],elt[6],elt[7],elt[8])
 
-
+    return Pokedex, Pokelist
 
 
     
-    
-    
+if __name__ == "__main__":
+    Pokedex, Pokelist = creation_pokedex()
 # =============================================================================
-# print(Pokelist)
-# print(Pokelist_legende)
-# print(Pokedex[0].name)
+#     print(Pokedex)
+#     print(Pokelist)
 # =============================================================================
+    print(Pokedex[1].pv)
+    print(Pokedex[2].special_attack(Pokedex[1]))
+
+

@@ -23,7 +23,7 @@ def starter(Pokedex):
     
     ## Choix possibles : Bulbasaur, Charmander, Squirtle, Pikachu
     
-    Equipe, Collection = {str(choix):Pokedex[str(choix)]}, {str(choix):Pokedex[str(choix)]}
+    Equipe, Collection = {int(choix):Pokedex[int(choix)]}, {int(choix):Pokedex[int(choix)]}
     return Equipe, Collection
     
     
@@ -40,14 +40,14 @@ def gestion_collection(Equipe, Collection):
     Fonction secondaire de gestion, cas taille Collection > 6 et taille Equipe == 6.
 
     '''
-    nom_poke_1 = input('Quel est le pokémon que vous souhaitez enlever de votre équipe ? ')
-    if nom_poke_1 == None:
+    id_poke_1 = input('Quel est le pokémon que vous souhaitez enlever de votre équipe ? ')
+    if id_poke_1 == None:
         pass
-    nom_poke_2 = input('Par quel pokémon souhaitez vous le remplacer ? ')
-    while nom_poke_2 in Equipe:
-        nom_poke_2 = input('Ce pokémon est déjà dans votre équipe ! Il ne peut pas se dédoubler. Choisissez-en un autre : ')
-    del Equipe[str(nom_poke_1)]
-    Equipe[str(nom_poke_2)] = Collection[str(nom_poke_2)]
+    id_poke_2 = input('Par quel pokémon souhaitez vous le remplacer ? ')
+    while id_poke_2 in Equipe:
+        id_poke_2 = input('Ce pokémon est déjà dans votre équipe ! Il ne peut pas se dédoubler. Choisissez-en un autre : ')
+    del Equipe[int(id_poke_1)]
+    Equipe[int(id_poke_2)] = Collection[int(id_poke_2)]
     gestion_collection(Equipe, Collection)
 
     
@@ -66,25 +66,25 @@ def gestion(Equipe, Collection):
     
     else: 
         while len(Equipe)<6:
-            nom_poke = input('Quel est le pokémon que vous souhaitez ajouter à votre équipe ? ')
-            while nom_poke in Equipe:
-                nom_poke = input('Ce pokémon est déjà dans votre équipe ! Il ne peut pas se dédoubler. Choisissez-en un autre : ')
-            Equipe[str(nom_poke)] = Collection[str(nom_poke)]
+            id_poke = input('Quel est le pokémon que vous souhaitez ajouter à votre équipe ? ')
+            while id_poke in Equipe:
+                id_poke = input('Ce pokémon est déjà dans votre équipe ! Il ne peut pas se dédoubler. Choisissez-en un autre : ')
+            Equipe[int(id_poke)] = Collection[int(id_poke)]
         
         choix = input('Souhaitez vous modifier un pokémon de votre équipe ? ')
-        if choix == 'Oui':
+        if choix == True:
             gestion_collection(Equipe, Collection)
         
     
     
 
-def soin(Equipe):
+def soin(Collection):
     '''
     Soigne tous les pokémons de l équipe lors d un passage à un centre de soin.
     '''
-    for pokemon in Equipe:
-        Equipe[pokemon].pv = Equipe[pokemon].pv_totaux
-        Equipe[pokemon].etat = True
+    for pokemon in Collection:
+        Collection[pokemon].pv = Collection[pokemon].pv_totaux
+        Collection[pokemon].etat = True
         
         
         

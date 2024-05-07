@@ -9,6 +9,7 @@ import csv
 import numpy as np
 import math as m
 import pokemon
+import utilitaire
 
 List_type = ['Steel','Fighting', 'Dragon','Water','Electric','Fire','Fairy','Ice','Bug','Normal','Grass','Poison','Psychic','Rock','Ground','Ghost','Dark','Flying']
 
@@ -16,6 +17,7 @@ List_type = ['Steel','Fighting', 'Dragon','Water','Electric','Fire','Fairy','Ice
 
 
 table_type = np.genfromtxt('../data/Types.csv',delimiter = ',')
+
 
 
 # =============================================================================
@@ -69,7 +71,9 @@ table_type = np.genfromtxt('../data/Types.csv',delimiter = ',')
 
 
 
-
+'''
+Lorsque l interface renvoie un pokémon, elle doit renvoyer son id 
+'''
 
 
 
@@ -140,10 +144,10 @@ def choix_pokemon(Equipe):
     choix = input("Veuillez entrer le nom du pokémon choisi dans votre équipe: ")
     
     ## On vérifie que le pokémon est en état de se battre
-    while not Equipe[str(choix)].etat:
+    while not Equipe[int(choix)].etat:
         choix = input("Ce pokémon est hors de combat! Laissez le un peu tranquille. Veuillez choisir un pokémon capable de se battre: ")
     
-    return Equipe[str(choix)]
+    return Equipe[int(choix)]
 
 ## INTERFACE!! ##
 
@@ -214,13 +218,11 @@ def combat(Equipe,Collection,poke_sauvage):
     
     ## Soin après bataille, ajout du pokémon vaincu à l'Equipe
     if not poke_sauvage.pv > 0:
-        Equipe[str(poke_sauvage.name)] = poke_sauvage
+        Equipe[poke_sauvage.id] = poke_sauvage
     else:
         poke_sauvage.pv = poke_sauvage.pv_totaux
         
-    for pokemon in Equipe:
-        pokemon.pv = pokemon.pv_totaux
-        pokemon.etat = True
+    utilitaire.soin(Equipe)
 
     ## Doit supprimer le pokémon de la case si vaincu
     ## Doit bouger de la case si perdu
