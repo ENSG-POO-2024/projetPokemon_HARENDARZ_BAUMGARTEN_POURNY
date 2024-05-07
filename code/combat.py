@@ -198,7 +198,7 @@ def combat(Equipe,Collection,poke_sauvage):
     changement = False      ## Flag déterminant si le dresseur doit choisir un nouveau pokémon suite à une attaque du pokémon sauvage
     
     ## Choix pokémon
-    poke_actif = choix_pokemon(Equipe)
+    poke_actif = E
     
     ## Détermination de l'ordre du tour
     if poke_actif.sp >= poke_sauvage.sp:
