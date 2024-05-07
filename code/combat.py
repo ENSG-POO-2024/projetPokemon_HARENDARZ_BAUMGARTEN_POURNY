@@ -209,7 +209,6 @@ def combat(Equipe,Collection,poke_sauvage):
         initiative = not initiative
         
         
-    
         
     ## Pokemon actif doit avoir vie > 0
     ## Si le pokemon actif meurt, on doit en choisir un autre
@@ -219,10 +218,12 @@ def combat(Equipe,Collection,poke_sauvage):
     ## Soin après bataille, ajout du pokémon vaincu à l'Equipe
     if not poke_sauvage.pv > 0:
         Equipe[poke_sauvage.id] = poke_sauvage
+        Collection[poke_sauvage.id] = poke_sauvage
+        del Environnement[poke_sauvage.id]
     else:
         poke_sauvage.pv = poke_sauvage.pv_totaux
         
-    utilitaire.soin(Equipe)
+    utilitaire.soin(Collection)
 
     ## Doit supprimer le pokémon de la case si vaincu
     ## Doit bouger de la case si perdu
@@ -232,4 +233,5 @@ def combat(Equipe,Collection,poke_sauvage):
 
 
 
+    
 

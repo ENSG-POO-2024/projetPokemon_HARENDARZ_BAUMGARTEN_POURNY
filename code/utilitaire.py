@@ -14,6 +14,16 @@ Collection : Dictionnaire des pokémons possédés par le dresseur
 '''
 
 
+## Je ne fais pas forcément une fonction simple comme "return Pokedex" pour plusieurs raisons :
+# 1- Question de compréhension de lecture. Le fait de voir les variables créées et nommées facilitent la compréhension.
+# 2- Parfois, comme pour la 
+
+def creation_Environnement(Pokedex):
+    '''
+    Crée la liste des pokémons trouvés dans l environnement
+    '''
+    Environnement = Pokedex
+    return Environnement
 
 
 

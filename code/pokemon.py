@@ -5,6 +5,11 @@ Created on Fri May  3 10:51:08 2024
 @author: Formation
 """
 
+## Je ne fais pas forcément au plus simple comme "return Pokedex" dans la première fonction utilitaire
+## Il y a plusieurs raisons à cela :
+# 1- Question de compréhension de lecture. Le fait de voir les variables créées et nommées facilitent la compréhension.
+# 2- Parfois, comme pour la formule_attack(), le fait de faire une fonction dédiée rende une modification de la formule plus aisée. 
+
 
 import csv
 import numpy as np
