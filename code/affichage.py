@@ -9,7 +9,7 @@ import sys
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QMainWindow, QApplication, QLabel, QWidget
 from PyQt5.QtCore import Qt
-from PIL import Image
+from PIL import Image, ImageDraw, ImageFont
 import numpy as np
 from PyQt5 import QtCore, QtWidgets, QtMultimedia
 from PyQt5 import QtGui
@@ -142,13 +142,18 @@ class MainWindow(QMainWindow):
     def combatUI(self):
         global id_Poke
         super(MainWindow, self).__init__()
-        #print(id_Poke)
         self.setWindowIcon(QtGui.QIcon('gui\logos\py_symbol.png'))
         self.title = "Pykémon"
         img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
         img_fond = Image.open('intro_fight.png')
         img_fight = img_fond 
-        img_fight.paste(img_Poke_ennemie, (0,0))
+        fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 11)
+        img_fight.paste(img_Poke_ennemie, (100,10))
+        img_player = Image.open("player.png")
+        img_fight.paste(img_player, (10,40))
+        draw = ImageDraw.Draw(img_fight)
+        txt = Pokedex[id_Poke].name
+        draw.text((15, 105), txt, font = fnt, fill =(0, 0, 0))
         img_fight.save("fight.png")
         label = QLabel(self)
         pixmap = QPixmap("fight.png")
@@ -188,11 +193,14 @@ class MainWindow(QMainWindow):
             
         if mode == 1:
             mode, id_Poke = de.affiche_deplacement(self, j1, e, Pokedex)
-            print(id_Poke)
         
         if mode == 2:
             self.hide()
             self.combatUI()
+            mode = 3
+        
+        if mode == 3:
+            
             
             
                 
