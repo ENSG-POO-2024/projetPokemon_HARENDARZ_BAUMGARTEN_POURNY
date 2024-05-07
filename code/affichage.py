@@ -12,11 +12,13 @@ from PyQt5.QtCore import Qt
 from PIL import Image
 import numpy as np
 from PyQt5 import QtCore, QtWidgets, QtMultimedia
+from PyQt5 import QtGui
 
 import carte as c
 import deplacement as d
 import random as rd
 
+import affichage_deplacement as de
 
 
 
@@ -71,7 +73,7 @@ all_img = [img0,img1,img2,img3]
 
 new_image = img0
 new_image.paste(img4, (pix,piy), mask = img4) 
-new_image.save("game.png")
+new_image.save("gui\maps\game.png")
 
 img0 = Image.open("..\code\gui\Safari_Zone_entrance_RBY.png")
 
@@ -100,32 +102,55 @@ a = 1
 j1 = d.joueur(case_depart, test_map)
 
 
-def affiche_id(pid):
-    idd = str(pid)
-    nb_0 = 3 - len(idd)
-    nom = ""
-    for i in range(nb_0):
-        nom = nom + "0"
-    return nom + idd
 
 class MainWindow(QMainWindow):
 
     def __init__(self):
         super().__init__()
-        self.initUI()
+        self.setWindowIcon(QtGui.QIcon('gui\logos\py_symbol.png'))
+        global mode 
+        mode = 0
+        self.menuUI()
         self.son()
         
+        
+    
+    def menuUI(self):
+        self.setWindowIcon(QtGui.QIcon('gui\logos\py_symbol.png'))
+        label = QLabel(self)
+        self.setCentralWidget(label)
+        pixmap = QPixmap("gui\logos\menu_background.png")
+        label.setPixmap(pixmap)
+        label.setScaledContents(True)
+        self.show()
 
-    def initUI(self):
+    def carteUI(self):
         super(MainWindow, self).__init__()
+        self.setWindowIcon(QtGui.QIcon('gui\logos\py_symbol.png'))
         self.title = "Pykémon"
         self.setWindowTitle(self.title)
         label = QLabel(self)
-        pixmap = QPixmap("game.png")
+        pixmap = QPixmap("gui\maps\game.png")
         label.setPixmap(pixmap)
         label.setScaledContents(True)
         self.setCentralWidget(label)
         self.show()
+        
+    def combatUI(self):
+        global id_Poke
+        super(MainWindow, self).__init__()
+        print(id_Poke)
+        self.setWindowIcon(QtGui.QIcon('gui\logos\py_symbol.png'))
+        self.title = "Pykémon"
+        img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
+        img_fond = ("gui\battle\intro_fight.png")
+        img_fond.paste(img_Poke_ennemie, (0,0))
+        img_fond.save("gui\battle\fight.png")
+        self.show()
+        
+        
+        
+    
         
     def son(self):
         app = QtWidgets.QApplication(sys.argv)
@@ -140,108 +165,34 @@ class MainWindow(QMainWindow):
         
        
     
+    
     def keyPressEvent(self, e):
         global j1
         global all_img
         global img4
-        if e.key() == Qt.Key_Up:
-            j1.deplacement("up")
-            img0 = Image.open("..\code\gui\Safari_Zone_entrance_RBY.png")
-            img1 = Image.open("..\code\gui\Safari_Zone_area_1_RBY.png")
-            img2 = Image.open("..\code\gui\Safari_Zone_area_2_RBY.png")
-            img3 = Image.open("..\code\gui\Safari_Zone_area_3_RBY.png")
-            img4 = Image.open("..\code\gui\player_back.png")
-            all_img = [img0,img1,img2,img3]
-            new_image = all_img[j1.case.area_id]
-            new_image.paste(img4, (j1.case.y * 8, j1.case.x * 8), mask = img4)
-            if j1.case.type_case(j1.map) == "Herbe":
-                id_Poke = rd.randint(1, 1000)
-                if id_Poke <= 151:
-                    print(Pokedex[id_Poke].name) ### A modifier pour lancer le combat
-                    img5 = Image.open("..\code\gui\spr_rb-supgb_" + affiche_id(id_Poke) + ".png")
-                    new_image.paste(img5, (j1.case.y * 8, j1.case.x * 8))
-            new_image.save("game.png")
-            label = QLabel(self)
-            pixmap = QPixmap("game.png")
-            label.setPixmap(pixmap)
-            label.setScaledContents(True)
-            self.setCentralWidget(label)
-        if e.key() == Qt.Key_Down:
-            j1.deplacement("down")
-            img0 = Image.open("..\code\gui\Safari_Zone_entrance_RBY.png")
-            img1 = Image.open("..\code\gui\Safari_Zone_area_1_RBY.png")
-            img2 = Image.open("..\code\gui\Safari_Zone_area_2_RBY.png")
-            img3 = Image.open("..\code\gui\Safari_Zone_area_3_RBY.png")
-            img4 = Image.open("..\code\gui\player_front.png")
-            all_img = [img0,img1,img2,img3]
-            new_image = all_img[j1.case.area_id]
-            new_image.paste(img4, (j1.case.y * 8, j1.case.x * 8), mask = img4)
-            if j1.case.type_case(j1.map) == "Herbe":
-                id_Poke = rd.randint(1, 1000)
-                if id_Poke <= 151:
-                    print(Pokedex[id_Poke].name) ### A modifier pour lancer le combat
-                    img5 = Image.open("..\code\gui\spr_rb-supgb_" + affiche_id(id_Poke) + ".png")
-                    new_image.paste(img5, (j1.case.y * 8, j1.case.x * 8))
-            new_image.save("game.png")
-            label = QLabel(self)
-            pixmap = QPixmap("game.png")
-            label.setPixmap(pixmap)
-            label.setScaledContents(True)
-            self.setCentralWidget(label)
-        if e.key() == Qt.Key_Left:
-            j1.deplacement("left")
-            img0 = Image.open("..\code\gui\Safari_Zone_entrance_RBY.png")
-            img1 = Image.open("..\code\gui\Safari_Zone_area_1_RBY.png")
-            img2 = Image.open("..\code\gui\Safari_Zone_area_2_RBY.png")
-            img3 = Image.open("..\code\gui\Safari_Zone_area_3_RBY.png")
-            img4 = Image.open("..\code\gui\player_left.png")
-            all_img = [img0,img1,img2,img3]
-            new_image = all_img[j1.case.area_id]
-            new_image.paste(img4, (j1.case.y * 8, j1.case.x * 8), mask = img4)
-            if j1.case.type_case(j1.map) == "Herbe":
-                id_Poke = rd.randint(1, 1000)
-                if id_Poke <= 151:
-                    print(Pokedex[id_Poke].name) ### A modifier pour lancer le combat
-                    img5 = Image.open("..\code\gui\spr_rb-supgb_" + affiche_id(id_Poke) + ".png")
-                    new_image.paste(img5, (j1.case.y * 8, j1.case.x * 8))
-            new_image.save("game.png")
-            label = QLabel(self)
-            pixmap = QPixmap("game.png")
-            label.setPixmap(pixmap)
-            label.setScaledContents(True)
-            self.setCentralWidget(label)
-        if e.key() == Qt.Key_Right:
-            j1.deplacement("right")
-            img0 = Image.open("..\code\gui\Safari_Zone_entrance_RBY.png")
-            img1 = Image.open("..\code\gui\Safari_Zone_area_1_RBY.png")
-            img2 = Image.open("..\code\gui\Safari_Zone_area_2_RBY.png")
-            img3 = Image.open("..\code\gui\Safari_Zone_area_3_RBY.png")
-            img4 = Image.open("..\code\gui\player_right.png")
-            all_img = [img0,img1,img2,img3]
-            new_image = all_img[j1.case.area_id]
-            new_image.paste(img4, (j1.case.y * 8, j1.case.x * 8), mask = img4)
-            if j1.case.type_case(j1.map) == "Herbe":
-                id_Poke = rd.randint(1, 1000)
-                if id_Poke <= 151:
-                    print(Pokedex[id_Poke].name) ### A modifier pour lancer le combat
-                    img5 = Image.open("..\code\gui\spr_rb-supgb_" + affiche_id(id_Poke) + ".png")
-                    new_image.paste(img5, (j1.case.y * 8, j1.case.x * 8))
-            new_image.save("game.png")
-            label = QLabel(self)
-            pixmap = QPixmap("game.png")
-            label.setPixmap(pixmap)
-            label.setScaledContents(True)
-            self.setCentralWidget(label)
+        global mode
+        global id_Poke
+        if e.key() == Qt.Key_Space and mode == 0:
+            mode = 1
+            self.hide()
+            self.carteUI()
+            
+        if mode == 1:
+            mode, id_Poke = de.affiche_deplacement(self, j1, e, Pokedex)
+            print(id_Poke)
+        
+        if mode == 2:
+            print("ok")
             
             
                 
             
         
-
-app = QApplication(sys.argv)
-w = MainWindow()
-w.show()
-sys.exit(app.exec_())
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    w = MainWindow()
+    w.show()
+    sys.exit(app.exec_())
 
 
 
