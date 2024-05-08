@@ -158,7 +158,7 @@ def choix_pokemon(Equipe):
 
 
 
-def fin_combat(Equipe,Collection,poke_sauvage):
+def fin_combat(Equipe,Collection,poke_sauvage,Environnement):
     ## Soin après bataille, ajout du pokémon vaincu à l'Equipe
     if not poke_sauvage.pv > 0:
         Equipe[poke_sauvage.id] = poke_sauvage

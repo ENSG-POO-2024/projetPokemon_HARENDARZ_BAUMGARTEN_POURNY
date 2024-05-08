@@ -19,45 +19,30 @@ import deplacement as d
 import random as rd
 
 import affichage_deplacement as de
+import affichage_combat as ac
 
-
+import pokemon as p
 
 import csv
 import numpy as np
 
 
 
-
-class Pokemon:
-    def __init__(self,name,tp,pv,at,df,at_spc,df_spc,sp,coord = None):
-        self.name = name
-        self.tp = tp            #type
-        self.pv = pv            #points de vie
-        self.at = at            #attaque
-        self.df = df            #défense
-        self.at_spc = at_spc    #attaque spéciale
-        self.df_spc = df_spc    #défense spéciale
-        self.sp = sp            #vitesse(speed)
-        self.coord = coord
+global Pokedex
+global Equipe
+global collection
+global environnement
 
 
 
-Pokelist = []
+Pokedex, Pokelist = p.creation_pokedex() 
 
-with open('../data/pokemon_first_gen.csv') as csvfile:
-    fichier = csv.reader(csvfile,delimiter = ',')
-    for row in fichier:
-        Pokelist.append([row[1],row[2],row[5],row[6],row[7],row[8],row[9],row[10]])
-
-
-Pokelist_legende = Pokelist.pop(0)
+Equipe = {1: Pokedex[1]}
+collection  = Equipe
+environnement = Pokedex
 
 
-        
-Pokedex = []
 
-for elt in Pokelist:
-    Pokedex.append(Pokemon(elt[0],elt[1],elt[2],elt[3],elt[4],elt[5],elt[6],elt[7]))
 
 pix = 232
 piy = 400
@@ -111,6 +96,7 @@ class MainWindow(QMainWindow):
         self.setWindowIcon(QtGui.QIcon('gui\logos\py_symbol.png'))
         global mode 
         global id_Poke
+        global phase
         id_Poke = 0
         mode = 0
         self.menuUI()
@@ -141,6 +127,8 @@ class MainWindow(QMainWindow):
         
     def combatUI(self):
         global id_Poke
+        global phase
+        global poke_combattant
         super(MainWindow, self).__init__()
         self.setWindowIcon(QtGui.QIcon('gui\logos\py_symbol.png'))
         self.title = "Pykémon"
@@ -159,6 +147,8 @@ class MainWindow(QMainWindow):
         pixmap = QPixmap("fight.png")
         label.setPixmap(pixmap)
         label.setScaledContents(True)
+        phase = "intro"
+        poke_combattant = None
         self.setCentralWidget(label)
         self.show()
         
@@ -186,6 +176,11 @@ class MainWindow(QMainWindow):
         global img4
         global mode
         global id_Poke
+        global Equipe
+        global phase
+        global poke_combattant
+        
+        
         if mode == 0:
             mode = 1
             self.hide()
@@ -199,7 +194,12 @@ class MainWindow(QMainWindow):
             self.combatUI()
             mode = 3
         
-        # if mode == 3:
+        if mode == 3:
+                mode, phase, poke_combattant = ac.affiche_combat(self,mode, id_Poke, Equipe, Pokedex, e, phase, collection, environnement, poke_combattant)
+                
+                
+        
+            
             
             
             
