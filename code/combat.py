@@ -83,21 +83,20 @@ poke_def : pokémon recevant les dégâts
 
 ## INTERFACE!! ##
 
-def tour_joueur(poke_att, poke_def):
+def tour_joueur(poke_att, poke_def, choix_attaque):
     '''
     poke_att : pokémon actif du joueur
     poke_def : pokémon sauvage
     
     Attaque du joueur.
     '''
-    choix_attaque = None
     ##Interface
     ## à construire avec l'interface, le joueur doit choisir entre une attaque spéciale et une attaque normale
     
-    if str(choix_attaque) == 'normale':
+    if choix_attaque == 'normale':
         damage = poke_att.attack(poke_def)
         
-    elif str(choix_attaque) == 'speciale':
+    elif choix_attaque == 'speciale':
         damage = poke_att.special_attack(poke_def)
     
     poke_def.pv = poke_def.pv - damage
@@ -106,7 +105,7 @@ def tour_joueur(poke_att, poke_def):
 
 
 
-def tour_environnement(poke_att, poke_def,reserve):
+def tour_environnement(poke_att, poke_def):
     '''
     poke_att : pokémon sauvage
     poke_def : pokémon actif du joueur
@@ -124,11 +123,7 @@ def tour_environnement(poke_att, poke_def,reserve):
     
     ## s'il vainc son adversaire, l'équipe du joueur comprend un pokémon de moins et il devra immédiatemment choisir un nouveau pokémon
     if poke_def.pv <= 0:
-        reserve -=1
         poke_def.etat = False
-        return True
-    return False
-    
 
 
 

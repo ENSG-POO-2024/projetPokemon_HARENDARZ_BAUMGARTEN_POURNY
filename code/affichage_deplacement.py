@@ -49,7 +49,6 @@ def affiche_deplacement(self,j1,e,Pokedex):
             id_Poke = rd.randint(1, 1000)
             if id_Poke <= 151:
                 mode = 2
-                print(Pokedex[id_Poke].name) ### A modifier pour lancer le combat
                 img5 = Image.open("..\code\gui\spr_rb-supgb_" + affiche_id(id_Poke) + ".png")
                 new_image.paste(img5, (j1.case.y * 8, j1.case.x * 8))
                 new_image.save("gui\maps\game.png")
@@ -75,7 +74,6 @@ def affiche_deplacement(self,j1,e,Pokedex):
             id_Poke = rd.randint(1, 1000)
             if id_Poke <= 151:
                 mode = 2
-                print(Pokedex[id_Poke].name) ### A modifier pour lancer le combat
                 img5 = Image.open("..\code\gui\spr_rb-supgb_" + affiche_id(id_Poke) + ".png")
                 new_image.paste(img5, (j1.case.y * 8, j1.case.x * 8))
                 new_image.save("gui\maps\game.png")
@@ -101,7 +99,6 @@ def affiche_deplacement(self,j1,e,Pokedex):
             id_Poke = rd.randint(1, 1000)
             if id_Poke <= 151:
                 mode = 2
-                print(Pokedex[id_Poke].name) ### A modifier pour lancer le combat
                 img5 = Image.open("..\code\gui\spr_rb-supgb_" + affiche_id(id_Poke) + ".png")
                 new_image.paste(img5, (j1.case.y * 8, j1.case.x * 8))
                 new_image.save("gui\maps\game.png")
@@ -127,7 +124,6 @@ def affiche_deplacement(self,j1,e,Pokedex):
             id_Poke = rd.randint(1, 1000)
             if id_Poke <= 151:
                 mode = 2
-                print(Pokedex[id_Poke].name) ### A modifier pour lancer le combat
                 img5 = Image.open("..\code\gui\spr_rb-supgb_" + affiche_id(id_Poke) + ".png")
                 new_image.paste(img5, (j1.case.y * 8, j1.case.x * 8))
                 new_image.save("gui\maps\game.png")

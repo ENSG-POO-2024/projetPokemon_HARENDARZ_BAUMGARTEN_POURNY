@@ -33,13 +33,15 @@ global Equipe
 global collection
 global environnement
 
+global player
+
 
 
 Pokedex, Pokelist = p.creation_pokedex() 
 
 Equipe = {1: Pokedex[1]}
 collection  = Equipe
-environnement = Pokedex
+environnement, autre = p.creation_pokedex() 
 
 
 
@@ -94,6 +96,7 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowIcon(QtGui.QIcon('gui\logos\py_symbol.png'))
+        self.resize(640,300)
         global mode 
         global id_Poke
         global phase
@@ -105,7 +108,10 @@ class MainWindow(QMainWindow):
         
     
     def menuUI(self):
+        self.resize(840,500)
         self.setWindowIcon(QtGui.QIcon('gui\logos\py_symbol.png'))
+        self.title = "Pykémon"
+        self.setWindowTitle(self.title)
         label = QLabel(self)
         self.setCentralWidget(label)
         pixmap = QPixmap("gui\logos\menu_background.png")
@@ -115,6 +121,7 @@ class MainWindow(QMainWindow):
 
     def carteUI(self):
         super(MainWindow, self).__init__()
+        self.resize(840,500)
         self.setWindowIcon(QtGui.QIcon('gui\logos\py_symbol.png'))
         self.title = "Pykémon"
         self.setWindowTitle(self.title)
@@ -130,8 +137,10 @@ class MainWindow(QMainWindow):
         global phase
         global poke_combattant
         super(MainWindow, self).__init__()
+        self.resize(840,500)
         self.setWindowIcon(QtGui.QIcon('gui\logos\py_symbol.png'))
         self.title = "Pykémon"
+        self.setWindowTitle(self.title)
         img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
         img_fond = Image.open('intro_fight.png')
         img_fight = img_fond 
@@ -157,15 +166,25 @@ class MainWindow(QMainWindow):
     
         
     def son(self):
+        global player
+        global player2
         app = QtWidgets.QApplication(sys.argv)
         filename = "..\code\gui\The Great Marsh & Pal Park [Pokémon Diamond & Pearl].mp3"
-        fullpath = QtCore.QDir.current().absoluteFilePath(filename) 
+        filename2 = "..\code\gui\Pokémon Black & White - Battle! Elite Four (CPS-2 Remix).mp3"
+        fullpath = QtCore.QDir.current().absoluteFilePath(filename)
+        fullpath2 = QtCore.QDir.current().absoluteFilePath(filename2)
         url = QtCore.QUrl.fromLocalFile(fullpath)
+        url2 = QtCore.QUrl.fromLocalFile(fullpath2)
         content = QtMultimedia.QMediaContent(url)
+        content2 = QtMultimedia.QMediaContent(url2)
         player = QtMultimedia.QMediaPlayer()
+        player2 = QtMultimedia.QMediaPlayer()
         player.setMedia(content)
+        player2.setMedia(content2)
         player.play()
         sys.exit(app.exec_())
+        
+        
         
        
     
@@ -182,14 +201,20 @@ class MainWindow(QMainWindow):
         
         
         if mode == 0:
+            
+            
             mode = 1
             self.hide()
             self.carteUI()
             
         if mode == 1:
+            player2.stop()
+            player.play()
             mode, id_Poke = de.affiche_deplacement(self, j1, e, Pokedex)
         
         if mode == 2:
+            player.stop()
+            player2.play()
             self.hide()
             self.combatUI()
             mode = 3
@@ -211,6 +236,7 @@ if __name__ == "__main__":
     w = MainWindow()
     w.show()
     sys.exit(app.exec_())
+
 
 
 

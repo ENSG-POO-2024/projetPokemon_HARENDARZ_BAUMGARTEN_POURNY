@@ -1,7 +1,0 @@
-<RCC>
-  <qresource>
-    <file>maps/game.png</file>
-    <file>logos/py_symbol.png</file>
-    <file>logos/main_logo.png</file>
-  </qresource>
-</RCC>
