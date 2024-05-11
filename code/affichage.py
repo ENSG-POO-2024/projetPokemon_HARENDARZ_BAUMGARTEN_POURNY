@@ -20,6 +20,7 @@ import random as rd
 
 import affichage_deplacement as de
 import affichage_combat as ac
+import affichage_inventaire as ai
 
 import pokemon as p
 
@@ -32,18 +33,23 @@ global Pokedex
 global Equipe
 global collection
 global environnement
-
+global nb_inventory
+global nb_team
 global player
 
+# =============================================================================
+# IMPORTANT : VOIR BUG CHANGEMRNT DE POKEMON
+# =============================================================================
 
 
 Pokedex, Pokelist = p.creation_pokedex() 
 
-Equipe = {1: Pokedex[1]}
-collection  = Equipe
+Equipe = {1: Pokedex[1], 3: Pokedex[3]}
+collection  = {2: Pokedex[2], 4: Pokedex[4]}
 environnement, autre = p.creation_pokedex() 
 
-
+nb_inventory = 0
+nb_team = 0
 
 
 pix = 232
@@ -131,6 +137,26 @@ class MainWindow(QMainWindow):
         label.setScaledContents(True)
         self.setCentralWidget(label)
         self.show()
+    
+    def inventaireUI(self):
+        global nb_inventory
+        super(MainWindow, self).__init__()
+        self.resize(840,500)
+        self.setWindowIcon(QtGui.QIcon('gui\logos\py_symbol.png'))
+        self.title = "Pykémon"
+        self.setWindowTitle(self.title)
+        ai.affiche_poke(self,Equipe,collection,Pokedex,nb_inventory)
+        nb_inventory = 0
+        
+    def teamUI(self):
+        global nb_team
+        super(MainWindow, self).__init__()
+        self.resize(840,500)
+        self.setWindowIcon(QtGui.QIcon('gui\logos\py_symbol.png'))
+        self.title = "Pykémon"
+        self.setWindowTitle(self.title)
+        ai.affiche_team_poke(self,Equipe,collection,Pokedex,nb_team)
+        nb_team = 0
         
     def combatUI(self):
         global id_Poke
@@ -198,32 +224,39 @@ class MainWindow(QMainWindow):
         global Equipe
         global phase
         global poke_combattant
+        global nb_inventory
+        global nb_team
+        global collection
+        global environnement
+    
         
-        
-        if mode == 0:
-            
-            
+        if mode == 0:        
             mode = 1
             self.hide()
             self.carteUI()
             
-        if mode == 1:
+        elif mode == 1:
             player2.stop()
             player.play()
-            mode, id_Poke = de.affiche_deplacement(self, j1, e, Pokedex)
+            mode, id_Poke = de.affiche_deplacement(self, j1, e, Pokedex,environnement)
+            mode, nb_inventory = ai.affiche_inventaire(self,mode,Equipe,collection,Pokedex,nb_inventory,e)
+            
         
-        if mode == 2:
+        elif mode == 2:
             player.stop()
             player2.play()
             self.hide()
             self.combatUI()
             mode = 3
         
-        if mode == 3:
+        elif mode == 3:
                 mode, phase, poke_combattant = ac.affiche_combat(self,mode, id_Poke, Equipe, Pokedex, e, phase, collection, environnement, poke_combattant)
                 
-                
+        elif mode == 4:
+            mode, nb_inventory = ai.affiche_inventaire(self,mode,Equipe,collection,Pokedex,nb_inventory,e)
         
+        elif mode == 5:
+            mode, nb_team, collection, Equipe = ai.affiche_team(self,mode,Equipe,collection,Pokedex,nb_team,nb_inventory,e)
             
             
             

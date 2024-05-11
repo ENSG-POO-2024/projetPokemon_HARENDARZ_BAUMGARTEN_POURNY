@@ -32,7 +32,7 @@ def affiche_id(pid):
         nom = nom + "0"
     return nom + idd
 
-def affiche_deplacement(self,j1,e,Pokedex):
+def affiche_deplacement(self,j1,e,Pokedex,environnement):
     global id_Poke
     mode = 1
     if e.key() == Qt.Key_Up:
@@ -48,11 +48,12 @@ def affiche_deplacement(self,j1,e,Pokedex):
         if j1.case.type_case(j1.map) == "Herbe":
             id_Poke = rd.randint(1, 1000)
             if id_Poke <= 151:
-                mode = 2
-                img5 = Image.open("..\code\gui\spr_rb-supgb_" + affiche_id(id_Poke) + ".png")
-                new_image.paste(img5, (j1.case.y * 8, j1.case.x * 8))
-                new_image.save("gui\maps\game.png")
-                return mode,id_Poke
+                if id_Poke in environnement:
+                    mode = 2
+                    img5 = Image.open("..\code\gui\spr_rb-supgb_" + affiche_id(id_Poke) + ".png")
+                    new_image.paste(img5, (j1.case.y * 8, j1.case.x * 8))
+                    new_image.save("gui\maps\game.png")
+                    return mode,id_Poke
         new_image.save("gui\maps\game.png")
         label = QLabel(self)
         pixmap = QPixmap("gui\maps\game.png")
@@ -73,11 +74,12 @@ def affiche_deplacement(self,j1,e,Pokedex):
         if j1.case.type_case(j1.map) == "Herbe":
             id_Poke = rd.randint(1, 1000)
             if id_Poke <= 151:
-                mode = 2
-                img5 = Image.open("..\code\gui\spr_rb-supgb_" + affiche_id(id_Poke) + ".png")
-                new_image.paste(img5, (j1.case.y * 8, j1.case.x * 8))
-                new_image.save("gui\maps\game.png")
-                return mode,id_Poke
+                if id_Poke in environnement:
+                    mode = 2
+                    img5 = Image.open("..\code\gui\spr_rb-supgb_" + affiche_id(id_Poke) + ".png")
+                    new_image.paste(img5, (j1.case.y * 8, j1.case.x * 8))
+                    new_image.save("gui\maps\game.png")
+                    return mode,id_Poke
         new_image.save("gui\maps\game.png")
         label = QLabel(self)
         pixmap = QPixmap("gui\maps\game.png")
@@ -98,11 +100,12 @@ def affiche_deplacement(self,j1,e,Pokedex):
         if j1.case.type_case(j1.map) == "Herbe":
             id_Poke = rd.randint(1, 1000)
             if id_Poke <= 151:
-                mode = 2
-                img5 = Image.open("..\code\gui\spr_rb-supgb_" + affiche_id(id_Poke) + ".png")
-                new_image.paste(img5, (j1.case.y * 8, j1.case.x * 8))
-                new_image.save("gui\maps\game.png")
-                return mode,id_Poke
+                if id_Poke in environnement:
+                    mode = 2
+                    img5 = Image.open("..\code\gui\spr_rb-supgb_" + affiche_id(id_Poke) + ".png")
+                    new_image.paste(img5, (j1.case.y * 8, j1.case.x * 8))
+                    new_image.save("gui\maps\game.png")
+                    return mode,id_Poke
         new_image.save("gui\maps\game.png")
         label = QLabel(self)
         pixmap = QPixmap("gui\maps\game.png")
@@ -123,11 +126,12 @@ def affiche_deplacement(self,j1,e,Pokedex):
         if j1.case.type_case(j1.map) == "Herbe":
             id_Poke = rd.randint(1, 1000)
             if id_Poke <= 151:
-                mode = 2
-                img5 = Image.open("..\code\gui\spr_rb-supgb_" + affiche_id(id_Poke) + ".png")
-                new_image.paste(img5, (j1.case.y * 8, j1.case.x * 8))
-                new_image.save("gui\maps\game.png")
-                return mode,id_Poke
+                if id_Poke in environnement:
+                    mode = 2
+                    img5 = Image.open("..\code\gui\spr_rb-supgb_" + affiche_id(id_Poke) + ".png")
+                    new_image.paste(img5, (j1.case.y * 8, j1.case.x * 8))
+                    new_image.save("gui\maps\game.png")
+                    return mode,id_Poke
         new_image.save("gui\maps\game.png")
         label = QLabel(self)
         pixmap = QPixmap("gui\maps\game.png")

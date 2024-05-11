@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+        # -*- coding: utf-8 -*-
 """
 Created on Fri May  3 14:16:37 2024
 
@@ -156,8 +156,10 @@ def choix_pokemon(Equipe):
 def fin_combat(Equipe,Collection,poke_sauvage,Environnement):
     ## Soin après bataille, ajout du pokémon vaincu à l'Equipe
     if not poke_sauvage.pv > 0:
-        Equipe[poke_sauvage.id] = poke_sauvage
-        Collection[poke_sauvage.id] = poke_sauvage
+        if len(Equipe) < 6:
+            Equipe[poke_sauvage.id] = poke_sauvage
+        else:
+            Collection[poke_sauvage.id] = poke_sauvage
         del Environnement[poke_sauvage.id]
     else:
         poke_sauvage.pv = poke_sauvage.pv_totaux

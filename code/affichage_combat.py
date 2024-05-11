@@ -20,6 +20,7 @@ import deplacement as d
 import random as rd
 import affichage_deplacement as de
 import pokemon as p
+import utilitaire
 
 def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environnement,poke_combattant = None):
     if e.key() == Qt.Key_Space and phase == "intro":
@@ -216,7 +217,7 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
                 if n > 2:
                     draw.text((85, 105 + 10 * (n-3)), txt_poke, font = fnt, fill =(0, 0, 0))
                 else:
-                    draw.text((20, 105 + 10 * n), txt_poke, font = fnt)
+                    draw.text((20, 105 + 10 * n), txt_poke, font = fnt,fill =(0, 0, 0))
                 n += 1 
             txt_icon = ">"
             draw.text((15, 105), txt_icon, font = fnt, fill =(0, 0, 0))
@@ -461,7 +462,7 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
             for cle in Equipe:
                 txt_poke = Equipe[cle].name
                 if n > 2:
-                    draw.text(85, 105 + 10 * (n-3), txt_poke, font = fnt, fill =(0, 0, 0))
+                    draw.text((85, 105 + 10 * (n-3)), txt_poke, font = fnt, fill =(0, 0, 0))
                 else:
                     draw.text((20, 105 + 10 * n), txt_poke, font = fnt, fill =(0, 0, 0))
                 n += 1 
@@ -1428,7 +1429,7 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
         
     if phase == "return_carte":
         if e.key() == Qt.Key_Space:
-            co.fin_combat(Equipe, collection, Pokedex[id_Poke], environnement)
+            utilitaire.soin(Equipe)
             mode = 1
             phase = "intro"
             self.hide()
