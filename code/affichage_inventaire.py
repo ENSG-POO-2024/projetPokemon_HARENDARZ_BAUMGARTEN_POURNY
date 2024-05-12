@@ -22,21 +22,23 @@ import affichage_deplacement as de
 import pokemon as p
 
 def affiche_poke(self,Equipe,collection,Pokedex,nb_inventory):
-    cle = list(collection.keys())
-    img_poke = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(cle[nb_inventory]) + ".png")
-    img_fond = Image.open('inventory.png')
-    img_fond.paste(img_poke, (60, 40))
-    fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 11)
-    txt_poke = Pokedex[cle[nb_inventory]].name
-    draw = ImageDraw.Draw(img_fond)
-    draw.text((45, 100), txt_poke, font = fnt, fill =(0, 0, 0))
-    img_fond.save("inventory_poke.png")
-    label = QLabel(self)
-    pixmap = QPixmap("inventory_poke.png")
-    label.setPixmap(pixmap) 
-    label.setScaledContents(True)
-    self.setCentralWidget(label)
-    self.show()
+    if len(collection) != 0:
+        cle = list(collection.keys())
+        img_poke = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(cle[nb_inventory]) + ".png")
+        img_fond = Image.open('inventory.png')
+        img_fond.paste(img_poke, (60, 40))
+        fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 11)
+        txt_poke = Pokedex[cle[nb_inventory]].name
+        draw = ImageDraw.Draw(img_fond)
+        draw.text((45, 100), txt_poke, font = fnt, fill =(0, 0, 0))
+        img_fond.save("inventory_poke.png")
+        label = QLabel(self)
+        pixmap = QPixmap("inventory_poke.png")
+        label.setPixmap(pixmap) 
+        label.setScaledContents(True)
+        self.setCentralWidget(label)
+        self.show()
+    
     
 def affiche_team_poke(self,Equipe,collection,Pokedex,nb_team):
     cle = list(Equipe.keys())
@@ -54,9 +56,26 @@ def affiche_team_poke(self,Equipe,collection,Pokedex,nb_team):
     label.setScaledContents(True)
     self.setCentralWidget(label)
     self.show()
+    
+def affiche_choix_starter(self,Equipe,starter,Pokedex,nb_starter):
+    cle = list(starter.keys())
+    img_poke = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(cle[nb_starter]) + ".png")
+    img_fond = Image.open('starter.png')
+    img_fond.paste(img_poke, (60, 40))
+    fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 11)
+    txt_poke = Pokedex[cle[nb_starter]].name
+    draw = ImageDraw.Draw(img_fond)
+    draw.text((45, 100), txt_poke, font = fnt, fill =(0, 0, 0))
+    img_fond.save("inventory_poke.png")
+    label = QLabel(self)
+    pixmap = QPixmap("inventory_poke.png")
+    label.setPixmap(pixmap) 
+    label.setScaledContents(True)
+    self.setCentralWidget(label)
+    self.show()
 
 def affiche_inventaire(self,mode,Equipe,collection,Pokedex,nb_inventory,e):
-    if e.key() == 16777217 and mode == 1:
+    if e.key() == 16777217 and mode == 1 and len(collection) != 0:
         self.hide()
         self.inventaireUI()
         mode = 4
@@ -110,3 +129,26 @@ def affiche_team(self,mode,Equipe,collection,Pokedex,nb_team,nb_inventory,e):
     else: 
         return mode, nb_team, collection, Equipe
         
+def affiche_starter(self,mode,Equipe,starter,Pokedex,environnement,nb_starter,e):
+    if e.key() == Qt.Key_Right:
+        nb_starter= (nb_starter + 1) % (len(starter))
+        affiche_choix_starter(self, Equipe, starter, Pokedex, nb_starter)
+        return mode, nb_starter, environnement, Equipe
+    
+    if e.key() == Qt.Key_Left:
+        nb_starter= (nb_starter - 1) % (len(starter))
+        affiche_choix_starter(self, Equipe, starter, Pokedex, nb_starter)
+        return mode, nb_starter, environnement, Equipe
+    
+    if e.key() == Qt.Key_Space:
+        cle_starter = list(starter.keys())
+        self.hide()
+        self.carteUI()
+        mode = 1
+        id_starter = cle_starter[nb_starter]
+        del environnement[id_starter]
+        Equipe[id_starter] = Pokedex[id_starter]
+        return mode, nb_starter, environnement, Equipe
+    
+    else: 
+        return mode, nb_starter, environnement, Equipe

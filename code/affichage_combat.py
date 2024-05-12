@@ -23,9 +23,12 @@ import pokemon as p
 import utilitaire
 
 def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environnement,poke_combattant = None):
-    if e.key() == Qt.Key_Space and phase == "intro":
+    if (e.key() == Qt.Key_Space and phase == "intro") or (e.key() == Qt.Key_Space and phase =="tour_suivant"):
+        if phase == "intro":
+            Poke_player = nc.choix_pokemon(Equipe)
+        else:
+            Poke_player = poke_combattant
         phase = "choix_action_fight"
-        Poke_player = nc.choix_pokemon(Equipe)
         img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
         img_fond = Image.open('action_choice.png')
         img_fight = img_fond 
@@ -1306,7 +1309,7 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
                 phase = "game_over"
                 return mode, phase, Poke_player
             else:
-                phase = "intro"
+                phase = "tour_suivant"
             return mode, phase, Poke_player
         
         else:

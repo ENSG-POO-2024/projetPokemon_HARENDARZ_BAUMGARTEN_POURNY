@@ -21,6 +21,7 @@ import random as rd
 import affichage_deplacement as de
 import affichage_combat as ac
 import affichage_inventaire as ai
+import intro
 
 import pokemon as p
 
@@ -36,20 +37,21 @@ global environnement
 global nb_inventory
 global nb_team
 global player
-
-# =============================================================================
-# IMPORTANT : VOIR BUG CHANGEMRNT DE POKEMON
-# =============================================================================
-
+global starter
+global slide
 
 Pokedex, Pokelist = p.creation_pokedex() 
 
-Equipe = {1: Pokedex[1], 3: Pokedex[3]}
-collection  = {2: Pokedex[2], 4: Pokedex[4]}
+Equipe = {}
+collection  = {}
+starter = {1: Pokedex[2], 4: Pokedex[4], 7:Pokedex[7], 25: Pokedex[25]}
 environnement, autre = p.creation_pokedex() 
 
 nb_inventory = 0
 nb_team = 0
+nb_starter = 0
+
+slide = 1
 
 
 pix = 232
@@ -186,6 +188,26 @@ class MainWindow(QMainWindow):
         poke_combattant = None
         self.setCentralWidget(label)
         self.show()
+    
+    def choix_pokeUI(self):
+        global starter
+        global nb_starter
+        super(MainWindow, self).__init__()
+        self.resize(840,500)
+        self.setWindowIcon(QtGui.QIcon('gui\logos\py_symbol.png'))
+        self.title = "Pykémon"
+        self.setWindowTitle(self.title)
+        ai.affiche_choix_starter(self,Equipe,starter,Pokedex,nb_starter)
+        
+    
+    def introUI(self):
+        super(MainWindow, self).__init__()
+        self.resize(840,500)
+        self.setWindowIcon(QtGui.QIcon('gui\logos\py_symbol.png'))
+        self.title = "Pykémon"
+        self.setWindowTitle(self.title)
+        intro.affiche_intro(self,Pokedex,"Hello there !\nAnd welcome to the world of Pokemon !")
+        
         
         
         
@@ -226,14 +248,16 @@ class MainWindow(QMainWindow):
         global poke_combattant
         global nb_inventory
         global nb_team
+        global nb_starter
         global collection
         global environnement
+        global slide
     
         
         if mode == 0:        
-            mode = 1
+            mode = 7
             self.hide()
-            self.carteUI()
+            self.introUI()
             
         elif mode == 1:
             player2.stop()
@@ -258,8 +282,11 @@ class MainWindow(QMainWindow):
         elif mode == 5:
             mode, nb_team, collection, Equipe = ai.affiche_team(self,mode,Equipe,collection,Pokedex,nb_team,nb_inventory,e)
             
+        elif mode == 6:
+            mode, nb_starter, environnement, Equipe = ai.affiche_starter(self, mode, Equipe, starter, Pokedex, environnement, nb_starter, e)
             
-            
+        elif mode == 7:
+            mode, slide = intro.suite(self,mode, Pokedex, slide, e)
             
                 
             
