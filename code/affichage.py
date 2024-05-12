@@ -9,7 +9,7 @@ import sys
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QMainWindow, QApplication, QLabel, QWidget
 from PyQt5.QtCore import Qt
-from PIL import Image
+from PIL import Image, ImageDraw, ImageFont
 import numpy as np
 from PyQt5 import QtCore, QtWidgets, QtMultimedia
 from PyQt5 import QtGui
@@ -19,45 +19,38 @@ import deplacement as d
 import random as rd
 
 import affichage_deplacement as de
+import affichage_combat as ac
+import affichage_inventaire as ai
 
-
+import pokemon as p
 
 import csv
 import numpy as np
 
 
 
+global Pokedex
+global Equipe
+global collection
+global environnement
+global nb_inventory
+global nb_team
+global player
 
-class Pokemon:
-    def __init__(self,name,tp,pv,at,df,at_spc,df_spc,sp,coord = None):
-        self.name = name
-        self.tp = tp            #type
-        self.pv = pv            #points de vie
-        self.at = at            #attaque
-        self.df = df            #défense
-        self.at_spc = at_spc    #attaque spéciale
-        self.df_spc = df_spc    #défense spéciale
-        self.sp = sp            #vitesse(speed)
-        self.coord = coord
-
+# =============================================================================
+# IMPORTANT : VOIR BUG CHANGEMRNT DE POKEMON
+# =============================================================================
 
 
-Pokelist = []
+Pokedex, Pokelist = p.creation_pokedex() 
 
-with open('../data/pokemon_first_gen.csv') as csvfile:
-    fichier = csv.reader(csvfile,delimiter = ',')
-    for row in fichier:
-        Pokelist.append([row[1],row[2],row[5],row[6],row[7],row[8],row[9],row[10]])
+Equipe = {1: Pokedex[1], 3: Pokedex[3]}
+collection  = {2: Pokedex[2], 4: Pokedex[4]}
+environnement, autre = p.creation_pokedex() 
 
+nb_inventory = 0
+nb_team = 0
 
-Pokelist_legende = Pokelist.pop(0)
-
-
-        
-Pokedex = []
-
-for elt in Pokelist:
-    Pokedex.append(Pokemon(elt[0],elt[1],elt[2],elt[3],elt[4],elt[5],elt[6],elt[7]))
 
 pix = 232
 piy = 400
@@ -100,6 +93,7 @@ a = 1
 
 
 j1 = d.joueur(case_depart, test_map)
+id_Poke = 0
 
 
 
@@ -108,7 +102,11 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowIcon(QtGui.QIcon('gui\logos\py_symbol.png'))
+        self.resize(640,300)
         global mode 
+        global id_Poke
+        global phase
+        id_Poke = 0
         mode = 0
         self.menuUI()
         self.son()
@@ -116,7 +114,10 @@ class MainWindow(QMainWindow):
         
     
     def menuUI(self):
+        self.resize(840,500)
         self.setWindowIcon(QtGui.QIcon('gui\logos\py_symbol.png'))
+        self.title = "Pykémon"
+        self.setWindowTitle(self.title)
         label = QLabel(self)
         self.setCentralWidget(label)
         pixmap = QPixmap("gui\logos\menu_background.png")
@@ -126,6 +127,7 @@ class MainWindow(QMainWindow):
 
     def carteUI(self):
         super(MainWindow, self).__init__()
+        self.resize(840,500)
         self.setWindowIcon(QtGui.QIcon('gui\logos\py_symbol.png'))
         self.title = "Pykémon"
         self.setWindowTitle(self.title)
@@ -135,17 +137,54 @@ class MainWindow(QMainWindow):
         label.setScaledContents(True)
         self.setCentralWidget(label)
         self.show()
+    
+    def inventaireUI(self):
+        global nb_inventory
+        super(MainWindow, self).__init__()
+        self.resize(840,500)
+        self.setWindowIcon(QtGui.QIcon('gui\logos\py_symbol.png'))
+        self.title = "Pykémon"
+        self.setWindowTitle(self.title)
+        ai.affiche_poke(self,Equipe,collection,Pokedex,nb_inventory)
+        nb_inventory = 0
+        
+    def teamUI(self):
+        global nb_team
+        super(MainWindow, self).__init__()
+        self.resize(840,500)
+        self.setWindowIcon(QtGui.QIcon('gui\logos\py_symbol.png'))
+        self.title = "Pykémon"
+        self.setWindowTitle(self.title)
+        ai.affiche_team_poke(self,Equipe,collection,Pokedex,nb_team)
+        nb_team = 0
         
     def combatUI(self):
         global id_Poke
+        global phase
+        global poke_combattant
         super(MainWindow, self).__init__()
-        print(id_Poke)
+        self.resize(840,500)
         self.setWindowIcon(QtGui.QIcon('gui\logos\py_symbol.png'))
         self.title = "Pykémon"
+        self.setWindowTitle(self.title)
         img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
-        img_fond = ("gui\battle\intro_fight.png")
-        img_fond.paste(img_Poke_ennemie, (0,0))
-        img_fond.save("gui\battle\fight.png")
+        img_fond = Image.open('intro_fight.png')
+        img_fight = img_fond 
+        fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 11)
+        img_fight.paste(img_Poke_ennemie, (100,10))
+        img_player = Image.open("player.png")
+        img_fight.paste(img_player, (10,40))
+        draw = ImageDraw.Draw(img_fight)
+        txt = Pokedex[id_Poke].name
+        draw.text((15, 105), txt, font = fnt, fill =(0, 0, 0))
+        img_fight.save("fight.png")
+        label = QLabel(self)
+        pixmap = QPixmap("fight.png")
+        label.setPixmap(pixmap)
+        label.setScaledContents(True)
+        phase = "intro"
+        poke_combattant = None
+        self.setCentralWidget(label)
         self.show()
         
         
@@ -153,15 +192,25 @@ class MainWindow(QMainWindow):
     
         
     def son(self):
+        global player
+        global player2
         app = QtWidgets.QApplication(sys.argv)
         filename = "..\code\gui\The Great Marsh & Pal Park [Pokémon Diamond & Pearl].mp3"
-        fullpath = QtCore.QDir.current().absoluteFilePath(filename) 
+        filename2 = "..\code\gui\Pokémon Black & White - Battle! Elite Four (CPS-2 Remix).mp3"
+        fullpath = QtCore.QDir.current().absoluteFilePath(filename)
+        fullpath2 = QtCore.QDir.current().absoluteFilePath(filename2)
         url = QtCore.QUrl.fromLocalFile(fullpath)
+        url2 = QtCore.QUrl.fromLocalFile(fullpath2)
         content = QtMultimedia.QMediaContent(url)
+        content2 = QtMultimedia.QMediaContent(url2)
         player = QtMultimedia.QMediaPlayer()
+        player2 = QtMultimedia.QMediaPlayer()
         player.setMedia(content)
+        player2.setMedia(content2)
         player.play()
         sys.exit(app.exec_())
+        
+        
         
        
     
@@ -172,17 +221,44 @@ class MainWindow(QMainWindow):
         global img4
         global mode
         global id_Poke
-        if e.key() == Qt.Key_Space and mode == 0:
+        global Equipe
+        global phase
+        global poke_combattant
+        global nb_inventory
+        global nb_team
+        global collection
+        global environnement
+    
+        
+        if mode == 0:        
             mode = 1
             self.hide()
             self.carteUI()
             
-        if mode == 1:
-            mode, id_Poke = de.affiche_deplacement(self, j1, e, Pokedex)
-            print(id_Poke)
+        elif mode == 1:
+            player2.stop()
+            player.play()
+            mode, id_Poke = de.affiche_deplacement(self, j1, e, Pokedex,environnement)
+            mode, nb_inventory = ai.affiche_inventaire(self,mode,Equipe,collection,Pokedex,nb_inventory,e)
+            
         
-        if mode == 2:
-            print("ok")
+        elif mode == 2:
+            player.stop()
+            player2.play()
+            self.hide()
+            self.combatUI()
+            mode = 3
+        
+        elif mode == 3:
+                mode, phase, poke_combattant = ac.affiche_combat(self,mode, id_Poke, Equipe, Pokedex, e, phase, collection, environnement, poke_combattant)
+                
+        elif mode == 4:
+            mode, nb_inventory = ai.affiche_inventaire(self,mode,Equipe,collection,Pokedex,nb_inventory,e)
+        
+        elif mode == 5:
+            mode, nb_team, collection, Equipe = ai.affiche_team(self,mode,Equipe,collection,Pokedex,nb_team,nb_inventory,e)
+            
+            
             
             
                 
@@ -193,6 +269,7 @@ if __name__ == "__main__":
     w = MainWindow()
     w.show()
     sys.exit(app.exec_())
+
 
 
 

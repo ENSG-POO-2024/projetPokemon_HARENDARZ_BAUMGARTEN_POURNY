@@ -1,4 +1,4 @@
-t# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 """
 Created on Tue May  7 13:58:35 2024
 
@@ -28,7 +28,7 @@ poke_def : pokémon recevant les dégâts
 '''
 
 
-def choix_pokemon(Equipe,choix):
+def choix_pokemon(Equipe):
     '''
     Parameters
     ----------
@@ -37,8 +37,12 @@ def choix_pokemon(Equipe,choix):
 
     Fonction permettant au dresseur de choisir son pokémon actif
     '''
-    L = list(d.keys())
-    poke_actif = Equipe[L[rd.randint(0,len(L))]]
+    L = list(Equipe.keys())
+    list_poke_vie = []
+    for cle in L:
+        if Equipe[cle].etat:
+            list_poke_vie.append(Equipe[cle])
+    poke_actif = list_poke_vie[rd.randint(0, len(list_poke_vie) - 1)]
     return poke_actif
 
 
