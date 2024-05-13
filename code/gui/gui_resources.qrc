@@ -3,4 +3,7 @@
     <file>logos/py_symbol.png</file>
     <file>logos/main_logo.png</file>
   </qresource>
+  <qresource>
+    <file>icons/Hamburger_icon.svg</file>
+  </qresource>
 </RCC>

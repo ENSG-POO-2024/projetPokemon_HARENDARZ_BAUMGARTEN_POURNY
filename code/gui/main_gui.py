@@ -5,10 +5,11 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QWidget, QGridLayout, QGraphicsOpacityEffect
 from PyQt5.QtCore import QEasingCurve, QEventLoop, QPropertyAnimation, QRect, QSize, Qt
 from PyQt5.QtGui import QColor, QPainter
-from PyQt5.QtWidgets import QAction, QApplication, QGraphicsOpacityEffect, QWidget
+from PyQt5.QtWidgets import QAction, QApplication, QGraphicsOpacityEffect, QWidget, QPushButton
 import gui_resources
 import sys
 from time import *
+from menu_gui import *
 
 ##################
 ##  MainWindow  ##
@@ -84,6 +85,10 @@ class MainWindow(QMainWindow):
         return [size.width(), size.height()]
 
 
+########################
+##  Widget surcharge  ##
+########################
+
 class Widget(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -141,35 +146,30 @@ class Widget(QWidget):
         self.fade_out()
         super().hideEvent(event)
 
+###
+
+class MainWidget(Widget):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        gridLayout = QGridLayout(self)
+        self.setLayout(gridLayout)
+        boutonAfficher = QPushButton("Test !")
+
+        gridLayout.addWidget(boutonAfficher, 0, 0)
+        boutonAfficher.clicked.connect(self.fade_out)
+        LateralMenuButton = Ui_LateralMenuButton(self)
+        print(type(LateralMenuButton))
+        LateralMenuButton.clicked.connect(self.fade_out)
+        gridLayout.addWidget(LateralMenuButton, 0, 1)
+
 if __name__ == "__main__":
     import sys
 
     app = QApplication(sys.argv)
-    w = Widget()
+    w = MainWidget()
     w.show()
-    sleep(3)
-    w.fade_out()
+
     sys.exit(app.exec_())
-
-
-###############################
-##  Black background widget  ##
-###############################
-
-# class QWidget():
-#     def black_to_visible(self):
-#         self.animation = QtCore.QPropertyAnimation(self, b'windowOpacity')
-#         self.animation.setDuration(1000)
-#         try:
-#             self.animation.finished.disconnect(self.close)
-#         except:
-#             pass
-#         self.animation.stop()
-#         self.animation.setStartValue(0)
-#         self.animation.setEndValue(1)
-#         self.animation.start()
-
-# A regarder : https://stackoverflow.com/questions/57828052/qpropertyanimation-not-working-with-window-opacity
     
 
 
