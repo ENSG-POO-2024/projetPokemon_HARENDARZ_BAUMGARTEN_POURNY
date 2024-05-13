@@ -122,8 +122,7 @@ if __name__ == "__main__":
     # Lancement
     ui.setupUi(Pykemon_MainWindow)
     Pykemon_MainWindow.show()
-    Pykemon_MainWindow.setWindowFlags(QtCore.Qt.FramelessWindowHint)
-    Pykemon_MainWindow.showMaximized()
+    
 
     sys.exit(app.exec_())
 
