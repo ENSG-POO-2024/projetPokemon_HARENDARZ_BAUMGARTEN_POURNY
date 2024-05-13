@@ -48,7 +48,9 @@ class Pokemon:
         Sans les coefficients d efficacité de type!
         
         '''
-        return at*(df1/df2)
+        if df1<df2:
+            return (at  - (df2-df1))/100
+        return at/100
     
     
     
@@ -64,7 +66,7 @@ class Pokemon:
         -------
         Dégâts.
         '''
-        return round(self.formule_attack(self.at,self.df,poke_def.df))
+        return self.pv_totaux*self.formule_attack(self.at,self.df,poke_def.df)
 
 
     def special_attack(self,poke_def):
@@ -80,7 +82,7 @@ class Pokemon:
         """
         i1,i2 = List_type.index(self.tp), List_type.index(poke_def.tp)
         coef = table_type[i1][i2]
-        return round(self.formule_attack(self.at_spc,self.df_spc,poke_def.df_spc)*coef)
+        return self.pv_totaux*self.formule_attack(self.at_spc,self.df_spc,poke_def.df_spc)*coef
     
     
     def __str__(self):
