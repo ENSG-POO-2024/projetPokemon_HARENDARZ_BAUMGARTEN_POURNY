@@ -18,7 +18,7 @@ from music_gui import *
 
 class MainWindow(QMainWindow):  
     def __init__(self, app):
-        QMainWindow.__init__(self)
+        super().__init__()
         QtGui.QFontDatabase.addApplicationFont("fonts/Retro_Gaming.ttf")
         a = self.startup_ratio(app)
         self.max_width = a[0]
@@ -164,7 +164,6 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     w = MainWindow(app)
     w.show()
-    w.player.play_song()
 
     sys.exit(app.exec_())
     
