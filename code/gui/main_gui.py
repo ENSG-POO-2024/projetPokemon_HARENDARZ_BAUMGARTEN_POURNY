@@ -10,6 +10,7 @@ import gui_resources
 import sys
 from time import *
 from menu_gui import *
+from music_gui import *
 
 ##################
 ##  MainWindow  ##
@@ -58,14 +59,8 @@ class MainWindow(QMainWindow):
         self.blackBackground = QWidget(self.centralwidget)
         self.blackBackground.setStyleSheet("background-color: rgb(0, 0, 255);")
         self.blackBackground.setGraphicsEffect(self.opacity)
-        # self.blackBackground.setAutoFillBackground(True)
 
-        # self.animation = QtCore.QPropertyAnimation(self.blackBackground, b'opacity')
-        # self.animation.setDuration(4000)
-        # self.animation.stop()
-        # self.animation.setStartValue(0)
-        # self.animation.setEndValue(1)
-        # self.animation.start()
+        self.player = MusicJukebox()
 
         self.gridLayout.addWidget(self.blackBackground, 0, 0, 1, 1)
 
@@ -158,16 +153,18 @@ class MainWidget(Widget):
         gridLayout.addWidget(boutonAfficher, 0, 0)
         boutonAfficher.clicked.connect(self.fade_out)
         LateralMenuButton = Ui_LateralMenuButton(self)
-        print(type(LateralMenuButton))
         LateralMenuButton.clicked.connect(self.fade_out)
         gridLayout.addWidget(LateralMenuButton, 0, 1)
+
+        self.player = MusicJukebox()
 
 if __name__ == "__main__":
     import sys
 
     app = QApplication(sys.argv)
-    w = MainWidget()
+    w = MainWindow(app)
     w.show()
+    w.player.play_song()
 
     sys.exit(app.exec_())
     
