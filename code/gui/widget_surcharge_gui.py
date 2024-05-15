@@ -6,36 +6,24 @@ from PyQt5.QtGui import QColor, QPainter
 from PyQt5.QtWidgets import QAction,  QGraphicsOpacityEffect, QWidget
 
 class Widget(QWidget):
-    def __init__(self):
-        super().__init__()
-        # self.resize(QSize(300, 300))
-        # # self.setWindowOpacity(1)
-        # self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)
-        # self.setAttribute(Qt.WA_TranslucentBackground)
-        # self.setContextMenuPolicy(Qt.ActionsContextMenu)
+    def __init__(self, parent=None):
+        super().__init__(parent)
 
-        quit_action = QAction(self.tr("E&xit"), self)
-        quit_action.setShortcut(self.tr("Ctrl+Q"))
-        quit_action.triggered.connect(self.close)
-        self.addAction(quit_action)
+        # quit_action = QAction(self.tr("E&xit"), self)
+        # quit_action.setShortcut(self.tr("Ctrl+Q"))
+        # quit_action.triggered.connect(self.close)
+        # self.addAction(quit_action)
 
-        effect = QGraphicsOpacityEffect(self, opacity=1.0)
-        self.setGraphicsEffect(effect)
+        self.effect = QGraphicsOpacityEffect(self, opacity=1.0)
+        self.setGraphicsEffect(self.effect)
         self._animation = QPropertyAnimation(
             self,
             propertyName=b"opacity",
-            targetObject=effect,
+            targetObject=self.effect,
             duration=500,
             startValue=0.0,
             endValue=1.0,
         )
-
-    # def paintEvent(self, event):
-    #     qp = QPainter(self)
-    #     qp.setRenderHint(QPainter.Antialiasing, True)
-    #     qp.setBrush(QColor().fromRgb(2, 106, 194))
-    #     qp.setPen(QColor().fromRgb(2, 106, 194))
-    #     qp.drawRoundedRect(QRect(0, 0, 300, 300), 16, 8)
 
     def fade_in(self):
         self._animation.setDirection(QPropertyAnimation.Forward)
@@ -61,3 +49,5 @@ class Widget(QWidget):
         # fade out
         self.fade_out()
         super().hideEvent(event)
+
+    
