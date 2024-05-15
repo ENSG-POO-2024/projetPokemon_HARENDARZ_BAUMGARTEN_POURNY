@@ -1,50 +1,153 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Form</class>
- <widget class="QWidget" name="Form">
+ <class>optionsMenu</class>
+ <widget class="QWidget" name="optionsMenu">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>300</height>
+    <height>340</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QPushButton" name="pushButton">
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(203, 159, 1, 255), stop:1 rgba(255, 204, 3, 255));</string>
+  </property>
+  <widget class="QSlider" name="volumeHorizontalSlider">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>221</width>
-     <height>141</height>
+     <x>150</x>
+     <y>50</y>
+     <width>191</width>
+     <height>22</height>
     </rect>
    </property>
-   <property name="autoFillBackground">
-    <bool>false</bool>
+   <property name="sliderPosition">
+    <number>50</number>
+   </property>
+   <property name="tracking">
+    <bool>true</bool>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelVolume">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>50</y>
+     <width>81</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+    <string notr="true">background-color: rgb(56, 106, 187);
+color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
-    <string/>
+    <string>Volume</string>
    </property>
-   <property name="icon">
-    <iconset resource="gui_resources.qrc">
-     <normaloff>:/icons/Hamburger_icon.svg</normaloff>:/icons/Hamburger_icon.svg</iconset>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
-   <property name="iconSize">
-    <size>
-     <width>70</width>
-     <height>70</height>
-    </size>
+  </widget>
+  <widget class="QPushButton" name="saveButton">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>110</y>
+     <width>291</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(56, 106, 187);</string>
+   </property>
+   <property name="text">
+    <string>SAVE GAME</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="loadButton">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>160</y>
+     <width>291</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(56, 106, 187);</string>
+   </property>
+   <property name="text">
+    <string>LOAD GAME</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="commandsButton">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>210</y>
+     <width>291</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(56, 106, 187);</string>
+   </property>
+   <property name="text">
+    <string>COMMANDS</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="closeButton">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>260</y>
+     <width>291</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(56, 106, 187);</string>
+   </property>
+   <property name="text">
+    <string>EXIT TO DESKTOP</string>
    </property>
   </widget>
  </widget>
- <resources>
-  <include location="gui_resources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

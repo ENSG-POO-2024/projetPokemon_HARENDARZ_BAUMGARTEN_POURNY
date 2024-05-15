@@ -11,12 +11,13 @@ import sys
 from time import *
 from menu_gui import *
 from music_gui import *
+from widget_surcharge_gui import Widget
 
 ##################
 ##  MainWindow  ##
 ##################
 
-class MainWindow(QMainWindow):  
+class MainWindow(QMainWindow, Widget):  
     def __init__(self, app):
         super().__init__()
         QtGui.QFontDatabase.addApplicationFont("fonts/Retro_Gaming.ttf")
@@ -29,7 +30,7 @@ class MainWindow(QMainWindow):
         self.setWindowIcon(icon)
         self.setAnimated(True)
         self.setEnabled(True)
-        self.setStyleSheet("background-color: rgb(0, 0, 0);")
+        self.setStyleSheet("background-color: rgb(120, 0, 0);")
         self.setMinimumSize(QtCore.QSize(1280, 720))
         self.setMaximumSize(QtCore.QSize(self.max_width, self.max_height))
 
@@ -40,29 +41,31 @@ class MainWindow(QMainWindow):
 
         self.gridLayout = QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName("gridLayout")
-        
-        menubar = QtWidgets.QMenuBar(self)
-        menubar.setGeometry(QtCore.QRect(0, 0, 1217, 21))
-        menubar.setObjectName("menubar")
-        self.setMenuBar(menubar)
-        
-        statusbar = QtWidgets.QStatusBar(self)
-        statusbar.setObjectName("statusbar")
-        self.setStatusBar(statusbar)
 
         QtCore.QMetaObject.connectSlotsByName(self)
         self.retranslateUi()
         self.screen_resize(self.max_width, self.max_height)
         
-        self.opacity = QGraphicsOpacityEffect(self)
-        self.opacity.setOpacity(1)
-        self.blackBackground = QWidget(self.centralwidget)
-        self.blackBackground.setStyleSheet("background-color: rgb(0, 0, 255);")
-        self.blackBackground.setGraphicsEffect(self.opacity)
+        # self.opacity = QGraphicsOpacityEffect(self)
+        # self.opacity.setOpacity(1)
+        self.LateralMenuButton = Ui_LateralMenuButton(self.centralwidget)
+        self.transparent = Widget()
+        self.transparent.resize(QSize(2490, 1370))
+        self.transparent.setStyleSheet("background-color: rgba(0, 0, 0, 0);")
+        self.gridLayout.addWidget(self.LateralMenuButton, 0, 0, 1, 1)
+        self.gridLayout.addWidget(self.transparent, 1, 1, 1, 1)
+        # self.gridLayout.setColumnStretch(1, 100)
+        # self.gridLayout.setRowStretch(1, 10)
+        # self.blackBackground = QWidget(self.centralwidget)
+        # self.blackBackground.setStyleSheet("background-color: rgb(0, 0, 255);")
+        # self.blackBackground.setGraphicsEffect(self.opacity)
 
         self.player = MusicJukebox()
 
-        self.gridLayout.addWidget(self.blackBackground, 0, 0, 1, 1)
+        # self.gridLayout.addWidget(self.blackBackground, 0, 0, 1, 1)
+
+        
+        #self.LateralMenuButton.clicked.connect(print("C'est bon !"))
 
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
@@ -70,7 +73,7 @@ class MainWindow(QMainWindow):
 
     def screen_resize(self, width, height):
         self.resize(width, height)
-        self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
+        self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)
         self.showMaximized()
     
     def startup_ratio(self, app):
@@ -78,85 +81,42 @@ class MainWindow(QMainWindow):
         size = screen.size()
         self.ratio = size.width()/1920
         return [size.width(), size.height()]
+    
+    def closeEvent(self, event):
+        # fade out
+        self.fade_out()
+        self.player.stop_song()
+        super().closeEvent(event)
 
 
 ########################
 ##  Widget surcharge  ##
 ########################
 
-class Widget(QWidget):
-    def __init__(self, parent=None):
-        super().__init__(parent)
-        self.resize(QSize(300, 300))
-        # self.setWindowOpacity(1)
-        self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)
-        self.setAttribute(Qt.WA_TranslucentBackground)
-        self.setContextMenuPolicy(Qt.ActionsContextMenu)
 
-        quit_action = QAction(self.tr("E&xit"), self)
-        quit_action.setShortcut(self.tr("Ctrl+Q"))
-        quit_action.triggered.connect(self.close)
-        self.addAction(quit_action)
 
-        effect = QGraphicsOpacityEffect(self, opacity=1.0)
-        self.setGraphicsEffect(effect)
-        self._animation = QPropertyAnimation(
-            self,
-            propertyName=b"opacity",
-            targetObject=effect,
-            duration=500,
-            startValue=0.0,
-            endValue=1.0,
-        )
+###
 
-    def paintEvent(self, event):
-        qp = QPainter(self)
-        qp.setRenderHint(QPainter.Antialiasing, True)
-        qp.setBrush(QColor().fromRgb(2, 106, 194))
-        qp.setPen(QColor().fromRgb(2, 106, 194))
-        qp.drawRoundedRect(QRect(0, 0, 300, 300), 16, 8)
+# class MainWidget(Widget):
+#     def __init__(self, parent=None):
+#         super().__init__(parent)
+#         gridLayout = QGridLayout(self)
+#         self.setLayout(gridLayout)
+#         boutonAfficher = QPushButton("Test !")
 
-    def fade_in(self):
-        self._animation.setDirection(QPropertyAnimation.Forward)
-        self._animation.start()
+#         gridLayout.addWidget(boutonAfficher, 0, 0)
+#         boutonAfficher.clicked.connect(self.fade_out)
+#         LateralMenuButton = Ui_LateralMenuButton(self)
+#         LateralMenuButton.clicked.connect(self.fade_out)
+#         gridLayout.addWidget(LateralMenuButton, 0, 1)
 
-    def fade_out(self):
-        loop = QEventLoop()
-        self._animation.finished.connect(loop.quit)
-        self._animation.setDirection(QPropertyAnimation.Backward)
-        self._animation.start()
-        loop.exec_()
-
-    def showEvent(self, event):
-        super().showEvent(event)
-        self.fade_in()
+#         self.player = MusicJukebox()
 
     def closeEvent(self, event):
         # fade out
         self.fade_out()
+        self.player.stop_song()
         super().closeEvent(event)
-
-    def hideEvent(self, event):
-        # fade out
-        self.fade_out()
-        super().hideEvent(event)
-
-###
-
-class MainWidget(Widget):
-    def __init__(self, parent=None):
-        super().__init__(parent)
-        gridLayout = QGridLayout(self)
-        self.setLayout(gridLayout)
-        boutonAfficher = QPushButton("Test !")
-
-        gridLayout.addWidget(boutonAfficher, 0, 0)
-        boutonAfficher.clicked.connect(self.fade_out)
-        LateralMenuButton = Ui_LateralMenuButton(self)
-        LateralMenuButton.clicked.connect(self.fade_out)
-        gridLayout.addWidget(LateralMenuButton, 0, 1)
-
-        self.player = MusicJukebox()
 
 if __name__ == "__main__":
     import sys

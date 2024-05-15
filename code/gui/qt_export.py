@@ -11,35 +11,74 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_Form(object):
-    def setupUi(self, Form):
-        Form.setObjectName("Form")
-        Form.resize(400, 300)
-        self.pushButton = QtWidgets.QPushButton(Form)
-        self.pushButton.setGeometry(QtCore.QRect(0, 0, 221, 141))
-        self.pushButton.setAutoFillBackground(False)
-        self.pushButton.setStyleSheet("background-color: rgba(255, 255, 255, 0);")
-        self.pushButton.setText("")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/icons/Hamburger_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton.setIcon(icon)
-        self.pushButton.setIconSize(QtCore.QSize(70, 70))
-        self.pushButton.setObjectName("pushButton")
+class Ui_optionsMenu(object):
+    def setupUi(self, optionsMenu):
+        optionsMenu.setObjectName("optionsMenu")
+        optionsMenu.resize(400, 340)
+        optionsMenu.setAutoFillBackground(False)
+        optionsMenu.setStyleSheet("background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(203, 159, 1, 255), stop:1 rgba(255, 204, 3, 255));")
+        self.volumeHorizontalSlider = QtWidgets.QSlider(optionsMenu)
+        self.volumeHorizontalSlider.setGeometry(QtCore.QRect(150, 50, 191, 22))
+        self.volumeHorizontalSlider.setSliderPosition(50)
+        self.volumeHorizontalSlider.setTracking(True)
+        self.volumeHorizontalSlider.setOrientation(QtCore.Qt.Horizontal)
+        self.volumeHorizontalSlider.setObjectName("volumeHorizontalSlider")
+        self.labelVolume = QtWidgets.QLabel(optionsMenu)
+        self.labelVolume.setGeometry(QtCore.QRect(50, 50, 81, 21))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.labelVolume.setFont(font)
+        self.labelVolume.setStyleSheet("background-color: rgb(56, 106, 187);\n"
+"color: rgb(255, 255, 255);")
+        self.labelVolume.setAlignment(QtCore.Qt.AlignCenter)
+        self.labelVolume.setObjectName("labelVolume")
+        self.saveButton = QtWidgets.QPushButton(optionsMenu)
+        self.saveButton.setGeometry(QtCore.QRect(50, 110, 291, 41))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.saveButton.setFont(font)
+        self.saveButton.setStyleSheet("background-color: rgb(56, 106, 187);")
+        self.saveButton.setObjectName("saveButton")
+        self.loadButton = QtWidgets.QPushButton(optionsMenu)
+        self.loadButton.setGeometry(QtCore.QRect(50, 160, 291, 41))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.loadButton.setFont(font)
+        self.loadButton.setStyleSheet("background-color: rgb(56, 106, 187);")
+        self.loadButton.setObjectName("loadButton")
+        self.commandsButton = QtWidgets.QPushButton(optionsMenu)
+        self.commandsButton.setGeometry(QtCore.QRect(50, 210, 291, 41))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.commandsButton.setFont(font)
+        self.commandsButton.setStyleSheet("background-color: rgb(56, 106, 187);")
+        self.commandsButton.setObjectName("commandsButton")
+        self.closeButton = QtWidgets.QPushButton(optionsMenu)
+        self.closeButton.setGeometry(QtCore.QRect(50, 260, 291, 41))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.closeButton.setFont(font)
+        self.closeButton.setStyleSheet("background-color: rgb(56, 106, 187);")
+        self.closeButton.setObjectName("closeButton")
 
-        self.retranslateUi(Form)
-        QtCore.QMetaObject.connectSlotsByName(Form)
+        self.retranslateUi(optionsMenu)
+        QtCore.QMetaObject.connectSlotsByName(optionsMenu)
 
-    def retranslateUi(self, Form):
+    def retranslateUi(self, optionsMenu):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
-import gui_resources_rc
+        optionsMenu.setWindowTitle(_translate("optionsMenu", "Form"))
+        self.labelVolume.setText(_translate("optionsMenu", "Volume"))
+        self.saveButton.setText(_translate("optionsMenu", "SAVE GAME"))
+        self.loadButton.setText(_translate("optionsMenu", "LOAD GAME"))
+        self.commandsButton.setText(_translate("optionsMenu", "COMMANDS"))
+        self.closeButton.setText(_translate("optionsMenu", "EXIT TO DESKTOP"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    Form = QtWidgets.QWidget()
-    ui = Ui_Form()
-    ui.setupUi(Form)
-    Form.show()
+    optionsMenu = QtWidgets.QWidget()
+    ui = Ui_optionsMenu()
+    ui.setupUi(optionsMenu)
+    optionsMenu.show()
     sys.exit(app.exec_())
