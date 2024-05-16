@@ -1333,7 +1333,7 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
             if poke_combattant.pv <= 0:
                 for cle in Equipe:
                     if Equipe[cle].etat:
-                        phase = "poke_mort"
+                        phase = "intro"
                         return mode, phase, Poke_player
                 phase = "game_over"
                 return mode, phase, Poke_player
