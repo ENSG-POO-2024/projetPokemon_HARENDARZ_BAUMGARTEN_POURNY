@@ -94,6 +94,9 @@ class joueur:
         
 
 if __name__ == "__main__":
+# =============================================================================
+#     TEST
+# =============================================================================
     im = np.array(Image.open("..\code\gui\Safari_Zone_entrance_RBY.png").convert('L'))
     im1 = np.array(Image.open("..\code\gui\Safari_Zone_area_1_RBY.png").convert('L'))
     im2 = np.array(Image.open("..\code\gui\Safari_Zone_area_2_RBY.png").convert('L'))
