@@ -5,24 +5,53 @@ Created on Tue May  7 14:25:58 2024
 @author: romai
 """
 
-import sys
+
 from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QMainWindow, QApplication, QLabel, QWidget
+from PyQt5.QtWidgets import QLabel
 from PyQt5.QtCore import Qt
 from PIL import Image, ImageDraw, ImageFont
-import numpy as np
-from PyQt5 import QtCore, QtWidgets, QtMultimedia
 import nouveau_combat as nc
 import combat as co
 
-import carte as c
-import deplacement as d
-import random as rd
+
 import affichage_deplacement as de
-import pokemon as p
 import utilitaire
 
 def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environnement,poke_combattant = None):
+    """
+    
+
+    Parameters
+    ----------
+    mode : int
+        chaque action ne peut que s'effectuer dans le bon mode
+    id_Poke : int
+        id du Pokemon ennemie
+    Equipe : dict
+        dictionnaire contenat les Pokemon de notre équipe
+    Pokedex : dict
+        dictionnaire de tout les Pokemon
+    e : PyQt5.QtGui.QKeyEvent
+        correspond à l'input de l'utilisateur
+    phase : str
+        nom de la phase de combat dans laquelle ous sommes permet de limiter les inputs et d'afficher correctement le combat
+    collection : dict
+        dictionnaire des Pokemon de notre inventaire
+    environnement : dict
+        dictionnaire des Pokemon sauvages
+    poke_combattant : Pokemon, optional
+        Pokemon du joueur en combat. The default is None.
+
+    Returns
+    -------
+    mode : int
+        chaque action ne peut que s'effectuer dans le bon mode
+    phase : str
+        nom de la phase de combat dans laquelle ous sommes permet de limiter les inputs et d'afficher correctement le combat
+    Poke_player : Pokemon
+        Pokemon du joueur en combat.
+
+    """
     if (e.key() == Qt.Key_Space and phase == "intro") or (e.key() == Qt.Key_Space and phase =="tour_suivant"):
         if phase == "intro":
             Poke_player = nc.choix_pokemon(Equipe)

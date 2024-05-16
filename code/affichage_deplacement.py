@@ -5,26 +5,27 @@ Created on Tue May  7 12:00:24 2024
 @author: romai
 """
 
-import sys
 from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QMainWindow, QApplication, QLabel, QWidget
+from PyQt5.QtWidgets import QLabel
 from PyQt5.QtCore import Qt
 from PIL import Image
-import numpy as np
-from PyQt5 import QtCore, QtWidgets, QtMultimedia
-
-import carte as c
-import deplacement as d
 import random as rd
-import affichage as a
 
-
-
-
-import csv
-import numpy as np
 
 def affiche_id(pid):
+    """
+    
+    Parameters
+    ----------
+    pid : int
+        id du Pokemon
+
+    Returns
+    -------
+    string
+        renvoie un string de l'id du Pokemon avec le bon nombre de 0
+
+    """
     idd = str(pid)
     nb_0 = 3 - len(idd)
     nom = ""
@@ -33,7 +34,29 @@ def affiche_id(pid):
     return nom + idd
 
 def affiche_deplacement(self,j1,e,Pokedex,environnement):
-    global id_Poke
+    """
+    
+
+    Parameters
+    ----------
+    j1 : Joueur
+        Joueur, contient la case actuelle du joueur et la carte 
+    e : PyQt5.QtGui.QKeyEvent
+        correspond à l'input de l'utilisateur
+    Pokedex : list
+        list contenant tout les Pokemon
+    environnement : list
+        list contenant tout les Pokemon qui n'ont pas été attrappés
+
+    Returns
+    -------
+    mode : int
+        renvoie le mode correspondant à l'étape dans le jeu
+    id_Poke : int
+        Renvoie l'id du Pokemon rencontré ou 0 sinon
+
+    """
+
     mode = 1
     if e.key() == Qt.Key_Up:
         j1.deplacement("up")
