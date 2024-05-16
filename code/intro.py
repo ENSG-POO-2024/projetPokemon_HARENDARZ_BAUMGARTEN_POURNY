@@ -5,25 +5,29 @@ Created on Sun May 12 18:24:27 2024
 @author: romai
 """
 
-import sys
+
 from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QMainWindow, QApplication, QLabel, QWidget
+from PyQt5.QtWidgets import QLabel
 from PyQt5.QtCore import Qt
 from PIL import Image, ImageDraw, ImageFont
-import numpy as np
-from PyQt5 import QtCore, QtWidgets, QtMultimedia
-import nouveau_combat as nc
-import combat as co
-
-import carte as c
-import deplacement as d
-import random as rd
-import affichage_deplacement as de
-import pokemon as p
 
 
+def affiche_intro(self,txt,slide = None):
+    """
+    
 
-def affiche_intro(self,Pokedex,txt,slide = None):
+    Parameters
+    ----------
+    txt : str
+        texte qui sera écrit
+    slide : int, optional
+        numéro de la slide. The default is None.
+
+    Returns
+    -------
+    None.
+
+    """
     if slide != None and slide > 1 :
         img_fond = Image.open('oak_intro_poke.png')
     else:
@@ -39,47 +43,67 @@ def affiche_intro(self,Pokedex,txt,slide = None):
     self.setCentralWidget(label)
     self.show()
     
-def suite(self,mode,Pokedex,slide,e):
+def suite(self,mode,slide,e):
+    """
+    
+
+    Parameters
+    ----------
+    mode : int
+        chaque action ne peut que s'effectuer dans le bon mode
+    slide : int 
+        Numero de la slide a afficher
+    e : PyQt5.QtGui.QKeyEvent
+        correspond à l'input de l'utilisateur
+
+    Returns
+    -------
+    mode : int
+        chaque action ne peut que s'effectuer dans le bon mode
+    slide : int 
+        Numero de la slide a afficher
+
+    """
     if e.key() == Qt.Key_Space:
         if slide == 0:
             txt = "Hello there !\nAnd welcome to the world of Pokemon !"
-            affiche_intro(self,Pokedex,txt,slide)
+            affiche_intro(self,txt,slide)
             slide += 1
             return mode, slide
         
         if slide == 1:
             txt = "My name is OAK ! People call me \nThe Pokemon PROF!"
-            affiche_intro(self,Pokedex,txt,slide)
+            affiche_intro(self,txt,slide)
             slide += 1 
             return mode, slide
         
         if slide == 2:
             txt = "This world is inhabited by \nCreatures called Pokemon!"
-            affiche_intro(self,Pokedex,txt,slide)
+            affiche_intro(self,txt,slide)
             slide += 1 
             return mode, slide
         
         if slide == 3:
             txt = "For some people Pokemon are pets.\nOthers, use them for fights."
-            affiche_intro(self,Pokedex,txt,slide)
+            affiche_intro(self,txt,slide)
             slide += 1 
             return mode, slide
         
         if slide == 4:
             txt = "Myself..."
-            affiche_intro(self,Pokedex,txt,slide)
+            affiche_intro(self,txt,slide)
             slide += 1 
             return mode, slide
         
         if slide == 5:
             txt = "I study Pokemon as a profession."
-            affiche_intro(self,Pokedex,txt,slide)
+            affiche_intro(self,txt,slide)
             slide += 1 
             return mode, slide
         
         if slide == 6:
             txt = "It's now your time to choose a Pokemon\nAnd start your adventure!"
-            affiche_intro(self,Pokedex,txt,slide)
+            affiche_intro(self,txt,slide)
             slide += 1 
             return mode, slide
         

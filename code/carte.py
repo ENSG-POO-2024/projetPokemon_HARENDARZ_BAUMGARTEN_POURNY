@@ -12,6 +12,20 @@ from PIL import Image
 
 
 def convertion_case(carte):
+    """
+    
+
+    Parameters
+    ----------
+    carte : np.array
+        matrice de l'image de la carte 
+
+    Returns
+    -------
+    new_map : np.array
+        matrice de la carte 
+
+    """
     n,m = np.shape(carte)
     i = int(n/8)
     j = int(m/8)
@@ -28,6 +42,7 @@ def convertion_case(carte):
 
 
 class Area:
+    
     def __init__(self,id,tab):
         self.id = id
         self.tab = tab
@@ -44,6 +59,20 @@ class Case:
         self.area_id = area_id
         
     def type_case(self,map):
+        """
+        
+
+        Parameters
+        ----------
+        map : Map
+            
+
+        Returns
+        -------
+        str
+            renvoie le type de la case en question: Herbe, sol ou obstacle
+
+        """
         num_pix = map.area_tab[self.area_id].tab[self.x,self.y]
         if num_pix == 183 or num_pix == 193:
             return "Herbe"
@@ -55,20 +84,13 @@ class Case:
             return "obstacle"
     
 
-def repertoire_herbe(map):
-    tab_herbe = []
-    for i in range(len(map.area_tab)):
-        n,m = np.shape(map.area_tab[i].tab)
-        for x in range(n):
-            for y in range(m):
-                case_t = Case(x,y,map.area_tab[i])
-                if case_t.type_case(map) == "Herbe":
-                    tab_herbe.append(case_t)
-    return tab_herbe
-        
-    
+
 
 if __name__ == "__main__":
+    
+# =============================================================================
+#     Test
+# =============================================================================
     im = np.array(Image.open("..\code\gui\Safari_Zone_entrance_RBY.png").convert('L'))
     im1 = np.array(Image.open("..\code\gui\Safari_Zone_area_1_RBY.png").convert('L'))
     im2 = np.array(Image.open("..\code\gui\Safari_Zone_area_2_RBY.png").convert('L'))
