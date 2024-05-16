@@ -48,7 +48,7 @@ class Pokemon:
         Sans les coefficients d efficacité de type!
         
         '''
-        return (at *10) / df2
+        return 10+20*at/df2
     
     
     
@@ -64,11 +64,7 @@ class Pokemon:
         -------
         Dégâts.
         '''
-
         return round(self.formule_attack(self.at,self.df,poke_def.df))
-
-
-
 
 
     def special_attack(self,poke_def):
