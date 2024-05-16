@@ -199,7 +199,7 @@ class MainWindow(QMainWindow):
         global player
         global player2
         app = QtWidgets.QApplication(sys.argv)
-        filename = "..\code\gui\The Great Marsh & Pal Park [Pokémon Diamond & Pearl].mp3"
+        filename = "..\code\gui\Toad Sinatra - My Way (No AI, No practice, SINGLE take).mp3"
         filename2 = "..\code\gui\Pokémon Black & White - Battle! Elite Four (CPS-2 Remix).mp3"
         fullpath = QtCore.QDir.current().absoluteFilePath(filename)
         fullpath2 = QtCore.QDir.current().absoluteFilePath(filename2)
