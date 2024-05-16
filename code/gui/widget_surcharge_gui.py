@@ -60,7 +60,6 @@ class Widget2(QWidget):
         width, height = self.width(), self.height()
         new_x = int((s_width-width)/2)
         new_y = int((s_height-height)/2)
-        print(new_x, new_y, width, height)
         self.setGeometry(QRect(new_x, new_y, width, height))
         
         
