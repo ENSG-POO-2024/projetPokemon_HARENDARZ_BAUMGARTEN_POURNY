@@ -4,7 +4,6 @@ from PyQt5.QtCore import QUrl, QDir
 from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
 from PyQt5.QtWidgets import *
 import os
-from main_gui import Widget
 
 path = os.getcwd()
 

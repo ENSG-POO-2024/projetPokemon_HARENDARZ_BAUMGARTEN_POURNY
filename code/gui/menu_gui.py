@@ -2,7 +2,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QWidget
-from widget_surcharge_gui import Widget
+from widget_surcharge_gui import Widget, Widget2
 
 ###################
 ##  Menu button  ##
@@ -25,12 +25,13 @@ class Ui_LateralMenuButton(QtWidgets.QPushButton):
 ##  Menu  ##
 ############
 
-class optionsMenu(Widget):
+class optionsMenu(Widget2):
     def __init__(self, parent):
         super().__init__(parent)
         # self.setStyleSheet("background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(203, 159, 1, 255), stop:1 rgba(255, 204, 3, 255));")
-        self.setStyleSheet("background-color: rgba(255, 255, 255, 255);")
+        self.setStyleSheet("background-color: rgb(0, 255, 255);")
         self.setGeometry(QtCore.QRect(100, 100, 400, 340))
+        self.setAutoFillBackground(True)
 
         self.volumeHorizontalSlider = QtWidgets.QSlider(self)
         self.volumeHorizontalSlider.setGeometry(QtCore.QRect(150, 50, 191, 22))
@@ -43,8 +44,7 @@ class optionsMenu(Widget):
         font.setPointSize(12)
         font.setFamily('Retro Gaming')
 
-        #self.hide()
-        self.effect.setOpacity(0.0)
+        self.hide()
 
         self.labelVolume = QtWidgets.QLabel(self)
         self.labelVolume.setGeometry(QtCore.QRect(50, 50, 81, 21))
@@ -89,16 +89,13 @@ class optionsMenu(Widget):
         self.closeButton.setText(_translate("self", "EXIT TO DESKTOP"))
 
     def show(self):
-        # self.setVisible(True)
-        self.fade_in()
+        self.setVisible(True)
 
     def hide(self):
-        self.fade_out()
-        # self.setVisible(False)
+        self.setVisible(False)
 
     def test_for_hiding(self):
-        print(self.effect.opacity())
-        if self.effect.opacity() == 1.0:
+        if self.isVisible() == True:
             self.hide()
         else:
             self.show()

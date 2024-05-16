@@ -50,4 +50,17 @@ class Widget(QWidget):
         self.fade_out()
         super().hideEvent(event)
 
-    
+class Widget2(QWidget):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.setAttribute(Qt.WA_StyledBackground, True)
+        self.setAutoFillBackground(True)
+
+    def centerWidget(self, s_width, s_height):
+        width, height = self.width(), self.height()
+        new_x = int((s_width-width)/2)
+        new_y = int((s_height-height)/2)
+        print(new_x, new_y, width, height)
+        self.setGeometry(QRect(new_x, new_y, width, height))
+        
+        

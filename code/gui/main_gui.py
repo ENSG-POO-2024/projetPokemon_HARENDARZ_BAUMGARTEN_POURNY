@@ -33,41 +33,24 @@ class MainWindow(QMainWindow, Widget):
         # self.setStyleSheet("background-color: rgb(127, 255, 255);")
         self.setMinimumSize(QtCore.QSize(1280, 720))
         self.setMaximumSize(QtCore.QSize(self.max_width, self.max_height))
-        
-
-        self.centralwidget = QWidget(self)
-        # self.centralwidget.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.centralwidget.setObjectName("centralwidget")
-        
-
-        # self.gridLayout = QGridLayout(self.centralwidget)
-        # self.gridLayout.setObjectName("gridLayout")
-
-        # QtCore.QMetaObject.connectSlotsByName(self)
         self.retranslateUi()
         self.screen_resize(self.max_width, self.max_height)
         
-        # self.opacity = QGraphicsOpacityEffect(self)
-        # self.opacity.setOpacity(1)
-        self.LateralMenuButton = Ui_LateralMenuButton(self.centralwidget)
-        # self.transparent = QWidget()
-        # self.transparent.resize(QSize(2490, 1370))
-        # self.transparent.setStyleSheet("background-color: rgba(255, 255, 255, 255);")
-        # self.gridLayout.addWidget(self.LateralMenuButton, 0, 0, 1, 1)
-        # self.gridLayout.addWidget(self.transparent, 1, 1, 1, 1)
 
-        # self.transparent.gridLayout = QGridLayout(self.transparent)
-        # self.gridLayout.setObjectName("transparentGridLayout")
-        
-
-        self.player = MusicJukebox()
-        self.lateralMenu = optionsMenu(self.centralwidget)
-
-        # self.gridLayout.addWidget(self.lateralMenu, 1, 1, 1, 1)
-        # self.transparent.gridLayout.addWidget(self.lateralMenu, 0, 0)
-        
-        self.LateralMenuButton.clicked.connect(self.lateralMenu.test_for_hiding)
+        self.centralwidget = QWidget(self)
+        self.centralwidget.setObjectName("centralwidget")
         self.setCentralWidget(self.centralwidget)
+       
+        self.player = MusicJukebox()
+        
+        self.lateralMenu = optionsMenu(self.centralwidget)
+        self.lateralMenu.centerWidget(self.max_width, self.max_height)
+        self.lateralMenuButton = Ui_LateralMenuButton(self.centralwidget)
+        self.lateralMenuButton.clicked.connect(self.lateralMenu.test_for_hiding)
+        
+        self.lateralMenu.volumeHorizontalSlider.valueChanged.connect(self.changeVolume)
+        self.lateralMenu.closeButton.clicked.connect(sys.exit)
+        
 
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
@@ -75,8 +58,7 @@ class MainWindow(QMainWindow, Widget):
 
     def screen_resize(self, width, height):
         self.setGeometry(QtCore.QRect(0, 0, width, height))
-        self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)
-        # self.showMaximized()
+        self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)     
     
     def startup_ratio(self, app):
         screen = app.primaryScreen()
@@ -90,35 +72,10 @@ class MainWindow(QMainWindow, Widget):
         self.player.stop_song()
         super().closeEvent(event)
 
-
-########################
-##  Widget surcharge  ##
-########################
+    def changeVolume(self):
+        self.player.setVolume(self.lateralMenu.volumeHorizontalSlider.value())
 
 
-
-###
-
-# class MainWidget(Widget):
-#     def __init__(self, parent=None):
-#         super().__init__(parent)
-#         gridLayout = QGridLayout(self)
-#         self.setLayout(gridLayout)
-#         boutonAfficher = QPushButton("Test !")
-
-#         gridLayout.addWidget(boutonAfficher, 0, 0)
-#         boutonAfficher.clicked.connect(self.fade_out)
-#         LateralMenuButton = Ui_LateralMenuButton(self)
-#         LateralMenuButton.clicked.connect(self.fade_out)
-#         gridLayout.addWidget(LateralMenuButton, 0, 1)
-
-#         self.player = MusicJukebox()
-
-    def closeEvent(self, event):
-        # fade out
-        self.fade_out()
-        self.player.stop_song()
-        super().closeEvent(event)
 
 if __name__ == "__main__":
     import sys
@@ -127,7 +84,7 @@ if __name__ == "__main__":
     w = MainWindow(app)
     w.show()
 
-    sys.exit(app.exec_())
+    app.exec_()
     
 
 
