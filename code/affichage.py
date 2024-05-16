@@ -103,7 +103,7 @@ class MainWindow(QMainWindow):
         self.setWindowTitle(self.title)
         label = QLabel(self)
         self.setCentralWidget(label)
-        pixmap = QPixmap("gui\logos\menu_background.png")
+        pixmap = QPixmap("gui\logos\Retropix.png")
         label.setPixmap(pixmap)
         label.setScaledContents(True)
         self.show()
