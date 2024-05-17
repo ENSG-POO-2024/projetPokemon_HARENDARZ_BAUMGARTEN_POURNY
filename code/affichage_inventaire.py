@@ -10,8 +10,11 @@ from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QLabel
 from PyQt5.QtCore import Qt
 from PIL import Image, ImageDraw, ImageFont
+import os
 
 import affichage_deplacement as de
+
+path = os.getcwd()
 
 
 def affiche_poke(self,Equipe,collection,Pokedex,nb_inventory):
@@ -74,7 +77,7 @@ def affiche_team_poke(self,Equipe,collection,Pokedex,nb_team):
     """
     cle = list(Equipe.keys())
     img_poke = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(cle[nb_team]) + ".png")
-    img_fond = Image.open("team.png")
+    img_fond = Image.open(path+"\\gui\\inventory\\team.png")
     img_fond.paste(img_poke, (60, 40))
     fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 11)
     txt_poke = Pokedex[cle[nb_team]].name

@@ -12,6 +12,7 @@ from PIL import Image, ImageDraw, ImageFont
 import numpy as np
 from PyQt5 import QtCore, QtWidgets, QtMultimedia
 from PyQt5 import QtGui
+import os
 
 import carte as c
 import deplacement as d
@@ -24,6 +25,7 @@ import pokemon as p
 # =============================================================================
 # INITIALISATION DES VARIABLES
 # =============================================================================
+path = os.getcwd()
 
 Pokedex, Pokelist = p.creation_pokedex() 
 Equipe = {}
@@ -155,11 +157,11 @@ class MainWindow(QMainWindow):
         self.title = "Pykémon"
         self.setWindowTitle(self.title)
         img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
-        img_fond = Image.open('intro_fight.png')
+        img_fond = Image.open(path+"\\gui\\battle\\intro_fight.png")
         img_fight = img_fond 
         fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 11)
         img_fight.paste(img_Poke_ennemie, (100,10))
-        img_player = Image.open("player.png")
+        img_player = Image.open(path+"\\gui\\battle\\player.png")
         img_fight.paste(img_player, (10,40))
         draw = ImageDraw.Draw(img_fight)
         txt = Pokedex[id_Poke].name
