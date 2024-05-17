@@ -5,7 +5,7 @@ Le seul moyen de les capturer est de les battre lors d'un combat. Heureusement p
 Baladez vous à travers le parc Savane mais prenez garde, de nombreux Pokémons sauvages se cachent dans les hautes herbes.
 
 ### Lancer le jeu
-Pour lancer le jeu, lancez le fichier affichage.py .
+Pour lancer le jeu, lancez le fichier affichage.py. Après avoir observer quelques bug lors du dernier commit, nous vous conseillons d'allez sur la version du dernier commit appelé "Update Readme.md"
 
 ### Commandes
 1.	Dans l’écran d’accueil, cliquez sur n’importe quelle touche pour commencer le dialogue d’introduction du professeur Oak.
