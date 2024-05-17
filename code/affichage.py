@@ -7,12 +7,13 @@ Created on Sun May  5 16:48:22 2024
 
 import sys
 from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QMainWindow, QApplication, QLabel
+from PyQt5.QtWidgets import QMainWindow, QApplication, QLabel, QWidget
+from PyQt5.QtCore import Qt
+from PyQt5 import QtCore, QtWidgets, QtMultimedia, QtGui
 from PIL import Image, ImageDraw, ImageFont
 import numpy as np
-from PyQt5 import QtCore, QtWidgets, QtMultimedia
-from PyQt5 import QtGui
 import os
+import random as rd
 
 import carte as c
 import deplacement as d
@@ -21,7 +22,11 @@ import affichage_combat as ac
 import affichage_inventaire as ai
 import intro
 import pokemon as p
-from gui.saving_mechanics import *
+from saving_mechanics import *
+from gui import gui_resources
+from menu_gui import *
+from music_gui import *
+from widget_surcharge_gui import Widget, Widget2
 
 # =============================================================================
 # INITIALISATION DES VARIABLES
@@ -38,45 +43,12 @@ nb_inventory = 0
 nb_team = 0
 nb_starter = 0
 slide = 1
-
-
 pix = 232
 piy = 400
 area = 0
 
 #Création de la carte
-img0 = Image.open("..\code\gui\Safari_Zone_entrance_RBY.png")
-img1 = Image.open("..\code\gui\Safari_Zone_area_1_RBY.png")
-img2 = Image.open("..\code\gui\Safari_Zone_area_2_RBY.png")
-img3 = Image.open("..\code\gui\Safari_Zone_area_3_RBY.png")
-img4 = Image.open("..\code\gui\player_front.png")
-
-all_img = [img0,img1,img2,img3]
-
-new_image = img0
-new_image.paste(img4, (pix,piy), mask = img4) 
-new_image.save("gui\maps\game.png")
-
-img0 = Image.open("..\code\gui\Safari_Zone_entrance_RBY.png")
-
-im = np.array(img0.convert('L'))
-im1 = np.array(img1.convert('L'))
-im2 = np.array(img2.convert('L'))
-im3 = np.array(img3.convert('L'))
-
-test = c.convertion_case(im)
-test1 = c.convertion_case(im1)
-test2 = c.convertion_case(im2)
-test3 = c.convertion_case(im3)
-
-test_area0 = c.Area(0,test)
-test_area1 = c.Area(1,test1)
-test_area2 = c.Area(2,test2)
-test_area3 = c.Area(3,test3)
-
-test_map = c.Map([test_area0,test_area1, test_area2, test_area3])
-
-case_depart = c.Case(50,29,0)
+test_map, case_depart = c.creation_carte(pix,piy)
 
 j1 = d.joueur(case_depart, test_map)
 id_Poke = 0
@@ -85,18 +57,63 @@ id_Poke = 0
 # =============================================================================
 # CREATION DES FENETRES
 # =============================================================================
-class MainWindow(QMainWindow):
-
-    def __init__(self):
+class MainWindow(QMainWindow, Widget):
+    def __init__(self, app):
         global mode 
         global id_Poke
         super().__init__()
+        QtGui.QFontDatabase.addApplicationFont("fonts/Retro_Gaming.ttf")    # Special font imported
+        self.max_width, self.max_height = self.startup_ratio(app)
         self.setWindowIcon(QtGui.QIcon('gui\logos\py_symbol.png'))
-        self.resize(640,300)
+        self.setAnimated(True)
+        self.setEnabled(True)
+
+        self.setMinimumSize(QtCore.QSize(1280, 720))
+        self.setMaximumSize(QtCore.QSize(self.max_width, self.max_height))
+        self.retranslateUi()
+        self.screen_resize(self.max_width, self.max_height)
+        
         id_Poke = 0
         mode = 0
-        self.menuUI()
-        self.son()
+        #self.menuUI()
+
+        self.centralwidget = QWidget(self)
+        self.centralwidget.setObjectName("centralwidget")
+        self.setCentralWidget(self.centralwidget) 
+       
+        self.player = MusicJukebox()
+        
+        self.lateralMenu = optionsMenu(self.centralwidget)
+        self.lateralMenu.centerWidget(self.max_width, self.max_height)
+        self.lateralMenuButton = Ui_LateralMenuButton(self.centralwidget)
+        self.lateralMenuButton.clicked.connect(self.lateralMenu.test_for_hiding)
+        
+        self.lateralMenu.volumeHorizontalSlider.valueChanged.connect(self.changeVolume)
+        self.lateralMenu.closeButton.clicked.connect(sys.exit)
+        
+
+    def retranslateUi(self):
+        _translate = QtCore.QCoreApplication.translate
+        self.setWindowTitle(_translate("Pykemon_MainWindow", "Pykémon : Attrapy-les tous !"))
+
+    def screen_resize(self, width, height):
+        self.setGeometry(QtCore.QRect(0, 0, width, height))
+        self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)     
+    
+    def startup_ratio(self, app):
+        screen = app.primaryScreen()
+        size = screen.size()
+        self.ratio = size.width()/1920
+        return [size.width(), size.height()]
+    
+    def closeEvent(self, event):
+        # fade out
+        self.fade_out()
+        self.player.stop_song()
+        super().closeEvent(event)
+
+    def changeVolume(self):
+        self.player.setVolume(self.lateralMenu.volumeHorizontalSlider.value())
     
 #Fenêtre de l'ecran d'acceuille
     def menuUI(self):
@@ -123,8 +140,6 @@ class MainWindow(QMainWindow):
         label.setPixmap(pixmap)
         label.setScaledContents(True)
         self.setCentralWidget(label)
-        global_variables = {'Equipe': None, 'collection': None, 'environnement':None, 'nb_inventory':None, 'nb_team':None, 'slide':None, 'case_depart':None} 
-        fill_global_variables(global_variables)
         self.show()
     
 #Fenêtre de l'inventaire
@@ -172,7 +187,7 @@ class MainWindow(QMainWindow):
         img_fight.save("fight.png")
         label = QLabel(self)
         pixmap = QPixmap("fight.png")
-        label.setPixmap(pixmap)
+        label.setPixmap(pixmap) 
         label.setScaledContents(True)
         phase = "intro"
         poke_combattant = None
@@ -199,26 +214,6 @@ class MainWindow(QMainWindow):
         self.setWindowTitle(self.title)
         intro.affiche_intro(self,"Hello there !\nAnd welcome to the world of Pokemon !")
         
-#Gère le son
-    def son(self):
-        global player
-        global player2
-        app = QtWidgets.QApplication(sys.argv)
-        filename = "..\code\gui\The Great Marsh & Pal Park [Pokémon Diamond & Pearl].mp3"
-        filename2 = "..\code\gui\Pokémon Black & White - Battle! Elite Four (CPS-2 Remix).mp3"
-        fullpath = QtCore.QDir.current().absoluteFilePath(filename)
-        fullpath2 = QtCore.QDir.current().absoluteFilePath(filename2)
-        url = QtCore.QUrl.fromLocalFile(fullpath)
-        url2 = QtCore.QUrl.fromLocalFile(fullpath2)
-        content = QtMultimedia.QMediaContent(url)
-        content2 = QtMultimedia.QMediaContent(url2)
-        player = QtMultimedia.QMediaPlayer()
-        player2 = QtMultimedia.QMediaPlayer()
-        player.setMedia(content)
-        player2.setMedia(content2)
-        player.play()
-        sys.exit(app.exec_())
-        
   
 ### Gère les commandes    
     def keyPressEvent(self, e):
@@ -236,37 +231,41 @@ class MainWindow(QMainWindow):
         global collection
         global environnement
         global slide
-    
+        global music_state
+                                  
 #Chaque mode permet de gérer une partie du jeu
     
 #Mode de l'écran d'acceuille
         if mode == 0:        
             mode = 7
-            self.hide()
+            self.hide() 
             self.introUI()
 
 #Mode de la carte
         elif mode == 1:
-            player2.stop()
-            player.play()
+            self.player.play_song('Exploration')
             mode, id_Poke = de.affiche_deplacement(self, j1, e, Pokedex,environnement)
             mode, nb_inventory = ai.affiche_inventaire(self,mode,Equipe,collection,Pokedex,nb_inventory,e)
             
+             
 #Mode de l'introduction du combat
         elif mode == 2:
-            player.stop()
-            player2.play()
+            self.player.stop_song()
+            self.player.play_song(rd.choice(['Combat1','Combat2']))
             self.hide()
             self.combatUI()
             mode = 3
  
 #Mode du combat
         elif mode == 3:
-                mode, phase, poke_combattant = ac.affiche_combat(self,mode, id_Poke, Equipe, Pokedex, e, phase, collection, environnement, poke_combattant)
+            mode, phase, poke_combattant = ac.affiche_combat(self,mode, id_Poke, Equipe, Pokedex, e, phase, collection, environnement, poke_combattant)
+            if mode == 1:
+                self.player.stop_song()
  
 #Mode de l'inventaire
         elif mode == 4:
             mode, nb_inventory = ai.affiche_inventaire(self,mode,Equipe,collection,Pokedex,nb_inventory,e)
+            
 
 #Mode de l'équipe        
         elif mode == 5:
@@ -278,7 +277,10 @@ class MainWindow(QMainWindow):
  
 #Mode de l'intoduction
         elif mode == 7:
-            mode, slide = intro.suite(self,mode,slide, e)
+            mode, slide, music_state = intro.suite(self,mode,slide, e)
+            if music_state:
+                self.player.stop_song()
+                music_state == False  
             
                 
             
@@ -286,7 +288,7 @@ class MainWindow(QMainWindow):
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     
-    w = MainWindow()
+    w = MainWindow(app)
     w.show()
     sys.exit(app.exec_())
 

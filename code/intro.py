@@ -72,51 +72,51 @@ def suite(self,mode,slide,e):
             txt = "Hello there !\nAnd welcome to the world of Pokemon !"
             affiche_intro(self,txt,slide)
             slide += 1
-            return mode, slide
+            return mode, slide, False
         
         if slide == 1:
             txt = "My name is OAK ! People call me \nThe Pokemon PROF!"
             affiche_intro(self,txt,slide)
             slide += 1 
-            return mode, slide
+            return mode, slide, False
         
         if slide == 2:
             txt = "This world is inhabited by \nCreatures called Pokemon!"
             affiche_intro(self,txt,slide)
             slide += 1 
-            return mode, slide
+            return mode, slide, False
         
         if slide == 3:
             txt = "For some people Pokemon are pets.\nOthers, use them for fights."
             affiche_intro(self,txt,slide)
             slide += 1 
-            return mode, slide
+            return mode, slide, False
         
         if slide == 4:
             txt = "Myself..."
             affiche_intro(self,txt,slide)
             slide += 1 
-            return mode, slide
+            return mode, slide, False
         
         if slide == 5:
             txt = "I study Pokemon as a profession."
             affiche_intro(self,txt,slide)
             slide += 1 
-            return mode, slide
+            return mode, slide, False
         
         if slide == 6:
             txt = "It's now your time to choose a Pokemon\nAnd start your adventure!"
             affiche_intro(self,txt,slide)
             slide += 1 
-            return mode, slide
+            return mode, slide, False
         
         if slide == 7:
             self.hide()
             self.choix_pokeUI()
             mode = 6
-            return mode, slide
+            return mode, slide, True
         
-    return mode, slide
+    return mode, slide, False
     
     
     
