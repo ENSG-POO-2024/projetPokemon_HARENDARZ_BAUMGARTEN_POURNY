@@ -1,0 +1,676 @@
+{
+	"_type": "Project",
+	"_id": "AAAAAAFF+h6SjaM2Hec=",
+	"name": "Untitled",
+	"ownedElements": [
+		{
+			"_type": "UMLModel",
+			"_id": "AAAAAAFF+qBWK6M3Z8Y=",
+			"_parent": {
+				"$ref": "AAAAAAFF+h6SjaM2Hec="
+			},
+			"name": "Model",
+			"ownedElements": [
+				{
+					"_type": "UMLClassDiagram",
+					"_id": "AAAAAAFF+qBtyKM79qY=",
+					"_parent": {
+						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
+					},
+					"name": "Main",
+					"defaultDiagram": true
+				},
+				{
+					"_type": "UMLActivity",
+					"_id": "AAAAAAGPhqoW2UkuPSI=",
+					"_parent": {
+						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
+					},
+					"name": "Activity1",
+					"ownedElements": [
+						{
+							"_type": "UMLActivityDiagram",
+							"_id": "AAAAAAGPhqoW2UkvUME=",
+							"_parent": {
+								"$ref": "AAAAAAGPhqoW2UkuPSI="
+							},
+							"name": "Diagramme_activité_choix_poké",
+							"ownedViews": [
+								{
+									"_type": "UMLControlNodeView",
+									"_id": "AAAAAAGPhqpV2ElOH6g=",
+									"_parent": {
+										"$ref": "AAAAAAGPhqoW2UkvUME="
+									},
+									"model": {
+										"$ref": "AAAAAAGPhqpV2ElMNMA="
+									},
+									"font": "Arial;13;0",
+									"containerChangeable": true,
+									"left": 560,
+									"top": 32,
+									"width": 20,
+									"height": 20
+								},
+								{
+									"_type": "UMLActionView",
+									"_id": "AAAAAAGPhq0NwEmenXU=",
+									"_parent": {
+										"$ref": "AAAAAAGPhqoW2UkvUME="
+									},
+									"model": {
+										"$ref": "AAAAAAGPhq0Nv0mcKwo="
+									},
+									"subViews": [
+										{
+											"_type": "UMLNameCompartmentView",
+											"_id": "AAAAAAGPhq0NwEmfqow=",
+											"_parent": {
+												"$ref": "AAAAAAGPhq0NwEmenXU="
+											},
+											"model": {
+												"$ref": "AAAAAAGPhq0Nv0mcKwo="
+											},
+											"subViews": [
+												{
+													"_type": "LabelView",
+													"_id": "AAAAAAGPhq0NwEmg220=",
+													"_parent": {
+														"$ref": "AAAAAAGPhq0NwEmfqow="
+													},
+													"visible": false,
+													"font": "Arial;13;0",
+													"left": 880,
+													"top": 208,
+													"height": 13
+												},
+												{
+													"_type": "LabelView",
+													"_id": "AAAAAAGPhq0NwEmhhyg=",
+													"_parent": {
+														"$ref": "AAAAAAGPhq0NwEmfqow="
+													},
+													"font": "Arial;13;1",
+													"left": 437,
+													"top": 111,
+													"width": 262.6884765625,
+													"height": 13,
+													"text": "Choisir un pokémon de l'équipe à changer"
+												},
+												{
+													"_type": "LabelView",
+													"_id": "AAAAAAGPhq0NwEmiobY=",
+													"_parent": {
+														"$ref": "AAAAAAGPhq0NwEmfqow="
+													},
+													"visible": false,
+													"font": "Arial;13;0",
+													"left": 880,
+													"top": 208,
+													"width": 86.6708984375,
+													"height": 13,
+													"text": "(from Activity1)"
+												},
+												{
+													"_type": "LabelView",
+													"_id": "AAAAAAGPhq0NwEmj5jw=",
+													"_parent": {
+														"$ref": "AAAAAAGPhq0NwEmfqow="
+													},
+													"visible": false,
+													"font": "Arial;13;0",
+													"left": 880,
+													"top": 208,
+													"height": 13,
+													"horizontalAlignment": 1
+												}
+											],
+											"font": "Arial;13;0",
+											"left": 432,
+											"top": 104,
+											"width": 272.6884765625,
+											"height": 25,
+											"stereotypeLabel": {
+												"$ref": "AAAAAAGPhq0NwEmg220="
+											},
+											"nameLabel": {
+												"$ref": "AAAAAAGPhq0NwEmhhyg="
+											},
+											"namespaceLabel": {
+												"$ref": "AAAAAAGPhq0NwEmiobY="
+											},
+											"propertyLabel": {
+												"$ref": "AAAAAAGPhq0NwEmj5jw="
+											}
+										}
+									],
+									"font": "Arial;13;0",
+									"containerChangeable": true,
+									"left": 432,
+									"top": 104,
+									"width": 271.6884765625,
+									"height": 41,
+									"nameCompartment": {
+										"$ref": "AAAAAAGPhq0NwEmfqow="
+									}
+								},
+								{
+									"_type": "UMLActionView",
+									"_id": "AAAAAAGPhq4RoEnZaO4=",
+									"_parent": {
+										"$ref": "AAAAAAGPhqoW2UkvUME="
+									},
+									"model": {
+										"$ref": "AAAAAAGPhq4Rn0nXwOU="
+									},
+									"subViews": [
+										{
+											"_type": "UMLNameCompartmentView",
+											"_id": "AAAAAAGPhq4RoEnaqcM=",
+											"_parent": {
+												"$ref": "AAAAAAGPhq4RoEnZaO4="
+											},
+											"model": {
+												"$ref": "AAAAAAGPhq4Rn0nXwOU="
+											},
+											"subViews": [
+												{
+													"_type": "LabelView",
+													"_id": "AAAAAAGPhq4RoEnbJbI=",
+													"_parent": {
+														"$ref": "AAAAAAGPhq4RoEnaqcM="
+													},
+													"visible": false,
+													"font": "Arial;13;0",
+													"left": 752,
+													"top": 400,
+													"height": 13
+												},
+												{
+													"_type": "LabelView",
+													"_id": "AAAAAAGPhq4RoEncaN0=",
+													"_parent": {
+														"$ref": "AAAAAAGPhq4RoEnaqcM="
+													},
+													"font": "Arial;13;1",
+													"left": 381,
+													"top": 207,
+													"width": 366.02197265625,
+													"height": 13,
+													"text": "Choisir un pokémon de la collection avec lequel l'échanger"
+												},
+												{
+													"_type": "LabelView",
+													"_id": "AAAAAAGPhq4RoEnd98I=",
+													"_parent": {
+														"$ref": "AAAAAAGPhq4RoEnaqcM="
+													},
+													"visible": false,
+													"font": "Arial;13;0",
+													"left": 752,
+													"top": 400,
+													"width": 86.6708984375,
+													"height": 13,
+													"text": "(from Activity1)"
+												},
+												{
+													"_type": "LabelView",
+													"_id": "AAAAAAGPhq4RoEneVfk=",
+													"_parent": {
+														"$ref": "AAAAAAGPhq4RoEnaqcM="
+													},
+													"visible": false,
+													"font": "Arial;13;0",
+													"left": 752,
+													"top": 400,
+													"height": 13,
+													"horizontalAlignment": 1
+												}
+											],
+											"font": "Arial;13;0",
+											"left": 376,
+											"top": 200,
+											"width": 376.02197265625,
+											"height": 25,
+											"stereotypeLabel": {
+												"$ref": "AAAAAAGPhq4RoEnbJbI="
+											},
+											"nameLabel": {
+												"$ref": "AAAAAAGPhq4RoEncaN0="
+											},
+											"namespaceLabel": {
+												"$ref": "AAAAAAGPhq4RoEnd98I="
+											},
+											"propertyLabel": {
+												"$ref": "AAAAAAGPhq4RoEneVfk="
+											}
+										}
+									],
+									"font": "Arial;13;0",
+									"containerChangeable": true,
+									"left": 376,
+									"top": 200,
+									"width": 375.02197265625,
+									"height": 41,
+									"nameCompartment": {
+										"$ref": "AAAAAAGPhq4RoEnaqcM="
+									}
+								},
+								{
+									"_type": "UMLControlFlowView",
+									"_id": "AAAAAAGPhq6C2En1oGg=",
+									"_parent": {
+										"$ref": "AAAAAAGPhqoW2UkvUME="
+									},
+									"model": {
+										"$ref": "AAAAAAGPhq6C2En0rPM="
+									},
+									"subViews": [
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAGPhq6C2En22eY=",
+											"_parent": {
+												"$ref": "AAAAAAGPhq6C2En1oGg="
+											},
+											"model": {
+												"$ref": "AAAAAAGPhq6C2En0rPM="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": 582,
+											"top": 165,
+											"height": 13,
+											"alpha": 1.5707963267948966,
+											"distance": 15,
+											"hostEdge": {
+												"$ref": "AAAAAAGPhq6C2En1oGg="
+											},
+											"edgePosition": 1
+										},
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAGPhq6C2En32kQ=",
+											"_parent": {
+												"$ref": "AAAAAAGPhq6C2En1oGg="
+											},
+											"model": {
+												"$ref": "AAAAAAGPhq6C2En0rPM="
+											},
+											"visible": null,
+											"font": "Arial;13;0",
+											"left": 597,
+											"top": 165,
+											"height": 13,
+											"alpha": 1.5707963267948966,
+											"distance": 30,
+											"hostEdge": {
+												"$ref": "AAAAAAGPhq6C2En1oGg="
+											},
+											"edgePosition": 1
+										},
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAGPhq6C2En4pqc=",
+											"_parent": {
+												"$ref": "AAAAAAGPhq6C2En1oGg="
+											},
+											"model": {
+												"$ref": "AAAAAAGPhq6C2En0rPM="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": 553,
+											"top": 166,
+											"height": 13,
+											"alpha": -1.5707963267948966,
+											"distance": 15,
+											"hostEdge": {
+												"$ref": "AAAAAAGPhq6C2En1oGg="
+											},
+											"edgePosition": 1
+										}
+									],
+									"font": "Arial;13;0",
+									"head": {
+										"$ref": "AAAAAAGPhq4RoEnZaO4="
+									},
+									"tail": {
+										"$ref": "AAAAAAGPhq0NwEmenXU="
+									},
+									"points": "568:145;568:200",
+									"showVisibility": true,
+									"nameLabel": {
+										"$ref": "AAAAAAGPhq6C2En22eY="
+									},
+									"stereotypeLabel": {
+										"$ref": "AAAAAAGPhq6C2En32kQ="
+									},
+									"propertyLabel": {
+										"$ref": "AAAAAAGPhq6C2En4pqc="
+									}
+								},
+								{
+									"_type": "UMLControlNodeView",
+									"_id": "AAAAAAGPhrGaYUo/jS0=",
+									"_parent": {
+										"$ref": "AAAAAAGPhqoW2UkvUME="
+									},
+									"model": {
+										"$ref": "AAAAAAGPhrGaYUo9bTQ="
+									},
+									"font": "Arial;13;0",
+									"containerChangeable": true,
+									"left": 552,
+									"top": 312,
+									"width": 26,
+									"height": 26
+								},
+								{
+									"_type": "UMLControlFlowView",
+									"_id": "AAAAAAGPhrGpWEpDejU=",
+									"_parent": {
+										"$ref": "AAAAAAGPhqoW2UkvUME="
+									},
+									"model": {
+										"$ref": "AAAAAAGPhrGpWEpCz9o="
+									},
+									"subViews": [
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAGPhrGpWEpE6yQ=",
+											"_parent": {
+												"$ref": "AAAAAAGPhrGpWEpDejU="
+											},
+											"model": {
+												"$ref": "AAAAAAGPhrGpWEpCz9o="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": 578,
+											"top": 269,
+											"height": 13,
+											"alpha": 1.5707963267948966,
+											"distance": 15,
+											"hostEdge": {
+												"$ref": "AAAAAAGPhrGpWEpDejU="
+											},
+											"edgePosition": 1
+										},
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAGPhrGpWEpF6pQ=",
+											"_parent": {
+												"$ref": "AAAAAAGPhrGpWEpDejU="
+											},
+											"model": {
+												"$ref": "AAAAAAGPhrGpWEpCz9o="
+											},
+											"visible": null,
+											"font": "Arial;13;0",
+											"left": 593,
+											"top": 269,
+											"height": 13,
+											"alpha": 1.5707963267948966,
+											"distance": 30,
+											"hostEdge": {
+												"$ref": "AAAAAAGPhrGpWEpDejU="
+											},
+											"edgePosition": 1
+										},
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAGPhrGpWEpGdEE=",
+											"_parent": {
+												"$ref": "AAAAAAGPhrGpWEpDejU="
+											},
+											"model": {
+												"$ref": "AAAAAAGPhrGpWEpCz9o="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": 549,
+											"top": 270,
+											"height": 13,
+											"alpha": -1.5707963267948966,
+											"distance": 15,
+											"hostEdge": {
+												"$ref": "AAAAAAGPhrGpWEpDejU="
+											},
+											"edgePosition": 1
+										}
+									],
+									"font": "Arial;13;0",
+									"head": {
+										"$ref": "AAAAAAGPhrGaYUo/jS0="
+									},
+									"tail": {
+										"$ref": "AAAAAAGPhq4RoEnZaO4="
+									},
+									"lineStyle": 1,
+									"points": "563:242;565:311",
+									"showVisibility": true,
+									"nameLabel": {
+										"$ref": "AAAAAAGPhrGpWEpE6yQ="
+									},
+									"stereotypeLabel": {
+										"$ref": "AAAAAAGPhrGpWEpF6pQ="
+									},
+									"propertyLabel": {
+										"$ref": "AAAAAAGPhrGpWEpGdEE="
+									}
+								},
+								{
+									"_type": "UMLControlFlowView",
+									"_id": "AAAAAAGPhrPIwErU2+Q=",
+									"_parent": {
+										"$ref": "AAAAAAGPhqoW2UkvUME="
+									},
+									"model": {
+										"$ref": "AAAAAAGPhrPIwErT42E="
+									},
+									"subViews": [
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAGPhrPIwErV0is=",
+											"_parent": {
+												"$ref": "AAAAAAGPhrPIwErU2+Q="
+											},
+											"model": {
+												"$ref": "AAAAAAGPhrPIwErT42E="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": 584,
+											"top": 71,
+											"height": 13,
+											"alpha": 1.5707963267948966,
+											"distance": 15,
+											"hostEdge": {
+												"$ref": "AAAAAAGPhrPIwErU2+Q="
+											},
+											"edgePosition": 1
+										},
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAGPhrPIwErW8TI=",
+											"_parent": {
+												"$ref": "AAAAAAGPhrPIwErU2+Q="
+											},
+											"model": {
+												"$ref": "AAAAAAGPhrPIwErT42E="
+											},
+											"visible": null,
+											"font": "Arial;13;0",
+											"left": 599,
+											"top": 71,
+											"height": 13,
+											"alpha": 1.5707963267948966,
+											"distance": 30,
+											"hostEdge": {
+												"$ref": "AAAAAAGPhrPIwErU2+Q="
+											},
+											"edgePosition": 1
+										},
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAGPhrPIwErXS/c=",
+											"_parent": {
+												"$ref": "AAAAAAGPhrPIwErU2+Q="
+											},
+											"model": {
+												"$ref": "AAAAAAGPhrPIwErT42E="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": 555,
+											"top": 72,
+											"height": 13,
+											"alpha": -1.5707963267948966,
+											"distance": 15,
+											"hostEdge": {
+												"$ref": "AAAAAAGPhrPIwErU2+Q="
+											},
+											"edgePosition": 1
+										}
+									],
+									"font": "Arial;13;0",
+									"head": {
+										"$ref": "AAAAAAGPhq0NwEmenXU="
+									},
+									"tail": {
+										"$ref": "AAAAAAGPhqpV2ElOH6g="
+									},
+									"points": "570:52;570:104",
+									"showVisibility": true,
+									"nameLabel": {
+										"$ref": "AAAAAAGPhrPIwErV0is="
+									},
+									"stereotypeLabel": {
+										"$ref": "AAAAAAGPhrPIwErW8TI="
+									},
+									"propertyLabel": {
+										"$ref": "AAAAAAGPhrPIwErXS/c="
+									}
+								},
+								{
+									"_type": "UMLTextView",
+									"_id": "AAAAAAGPhrQG0ErnkkU=",
+									"_parent": {
+										"$ref": "AAAAAAGPhqoW2UkvUME="
+									},
+									"font": "Arial;13;0",
+									"left": 592,
+									"top": 24,
+									"width": 143,
+									"height": 51,
+									"text": "Entrée dans l'écran du choix de pokémon"
+								},
+								{
+									"_type": "UMLTextView",
+									"_id": "AAAAAAGPhttEekrv1m8=",
+									"_parent": {
+										"$ref": "AAAAAAGPhqoW2UkvUME="
+									},
+									"font": "Arial;13;0",
+									"left": 592,
+									"top": 304,
+									"width": 124,
+									"height": 38,
+									"text": "Sortie de l'écran"
+								}
+							]
+						}
+					],
+					"nodes": [
+						{
+							"_type": "UMLInitialNode",
+							"_id": "AAAAAAGPhqpV2ElMNMA=",
+							"_parent": {
+								"$ref": "AAAAAAGPhqoW2UkuPSI="
+							},
+							"name": "InitialNode1"
+						},
+						{
+							"_type": "UMLAction",
+							"_id": "AAAAAAGPhq0Nv0mcKwo=",
+							"_parent": {
+								"$ref": "AAAAAAGPhqoW2UkuPSI="
+							},
+							"name": "Choisir un pokémon de l'équipe à changer"
+						},
+						{
+							"_type": "UMLAction",
+							"_id": "AAAAAAGPhq4Rn0nXwOU=",
+							"_parent": {
+								"$ref": "AAAAAAGPhqoW2UkuPSI="
+							},
+							"name": "Choisir un pokémon de la collection avec lequel l'échanger"
+						},
+						{
+							"_type": "UMLActivityFinalNode",
+							"_id": "AAAAAAGPhrGaYUo9bTQ=",
+							"_parent": {
+								"$ref": "AAAAAAGPhqoW2UkuPSI="
+							},
+							"name": "ActivityFinalNode2"
+						}
+					],
+					"edges": [
+						{
+							"_type": "UMLControlFlow",
+							"_id": "AAAAAAGPhq0m+Em23N0=",
+							"_parent": {
+								"$ref": "AAAAAAGPhqoW2UkuPSI="
+							},
+							"source": {
+								"$ref": "AAAAAAGPhqpV2ElMNMA="
+							},
+							"target": {
+								"$ref": "AAAAAAGPhq0Nv0mcKwo="
+							}
+						},
+						{
+							"_type": "UMLControlFlow",
+							"_id": "AAAAAAGPhq6C2En0rPM=",
+							"_parent": {
+								"$ref": "AAAAAAGPhqoW2UkuPSI="
+							},
+							"source": {
+								"$ref": "AAAAAAGPhq0Nv0mcKwo="
+							},
+							"target": {
+								"$ref": "AAAAAAGPhq4Rn0nXwOU="
+							}
+						},
+						{
+							"_type": "UMLControlFlow",
+							"_id": "AAAAAAGPhrGpWEpCz9o=",
+							"_parent": {
+								"$ref": "AAAAAAGPhqoW2UkuPSI="
+							},
+							"source": {
+								"$ref": "AAAAAAGPhq4Rn0nXwOU="
+							},
+							"target": {
+								"$ref": "AAAAAAGPhrGaYUo9bTQ="
+							}
+						},
+						{
+							"_type": "UMLControlFlow",
+							"_id": "AAAAAAGPhrPIwErT42E=",
+							"_parent": {
+								"$ref": "AAAAAAGPhqoW2UkuPSI="
+							},
+							"source": {
+								"$ref": "AAAAAAGPhqpV2ElMNMA="
+							},
+							"target": {
+								"$ref": "AAAAAAGPhq0Nv0mcKwo="
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}
