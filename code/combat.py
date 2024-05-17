@@ -112,7 +112,7 @@ def fin_combat(Equipe,Collection,poke_sauvage,Environnement):
         del Environnement[poke_sauvage.id]
     else:
         poke_sauvage.pv = poke_sauvage.pv_totaux
-        
+    utilitaire.soin(Equipe)
     utilitaire.soin(Collection)
 
     ## Doit supprimer le pokémon de la case si vaincu
