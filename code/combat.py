@@ -9,6 +9,7 @@ import csv
 import numpy as np
 import pokemon
 import utilitaire
+import random as rd
 
 List_type = ['Steel','Fighting', 'Dragon','Water','Electric','Fire','Fairy','Ice','Bug','Normal','Grass','Poison','Psychic','Rock','Ground','Ghost','Dark','Flying']
 

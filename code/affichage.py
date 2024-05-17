@@ -27,7 +27,7 @@ import pokemon as p
 
 Pokedex, Pokelist = p.creation_pokedex() 
 Equipe = {}
-collection  = {10: Pokedex[10 ]}
+collection  = {10: Pokedex[10]}
 starter = {1: Pokedex[2], 4: Pokedex[4], 7:Pokedex[7], 25: Pokedex[25]}
 environnement, autre = p.creation_pokedex() 
 
