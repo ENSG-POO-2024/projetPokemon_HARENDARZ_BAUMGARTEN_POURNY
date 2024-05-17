@@ -5909,7 +5909,7 @@
 											"top": 502.5,
 											"width": 108,
 											"height": 13,
-											"text": "voir les dégats"
+											"text": "voir les dégâts"
 										},
 										{
 											"_type": "LabelView",
@@ -7025,7 +7025,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGPPb4RHYvxmZY="
 					},
-					"name": "voir les dégats"
+					"name": "voir les dégâts"
 				},
 				{
 					"_type": "UMLUseCase",
@@ -8009,7 +8009,7 @@
 							"font": "Arial;13;0",
 							"containerChangeable": true,
 							"left": 504,
-							"top": 1456,
+							"top": 1472,
 							"width": 38,
 							"height": 39
 						},
@@ -8245,7 +8245,7 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": -32,
+											"left": -272,
 											"top": 2160,
 											"height": 13
 										},
@@ -8256,11 +8256,11 @@
 												"$ref": "AAAAAAGPU3k/CFPRFuw="
 											},
 											"font": "Arial;13;1",
-											"left": 301,
-											"top": 1551,
-											"width": 126.6708984375,
+											"left": 181,
+											"top": 1559,
+											"width": 301.49169921875,
 											"height": 13,
-											"text": "Choisir un pokémon"
+											"text": "Choisir un autre pokémon valide pour combattre"
 										},
 										{
 											"_type": "LabelView",
@@ -8270,7 +8270,7 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": -32,
+											"left": -272,
 											"top": 2160,
 											"width": 86.6708984375,
 											"height": 13,
@@ -8284,16 +8284,16 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": -32,
+											"left": -272,
 											"top": 2160,
 											"height": 13,
 											"horizontalAlignment": 1
 										}
 									],
 									"font": "Arial;13;0",
-									"left": 296,
-									"top": 1544,
-									"width": 136.6708984375,
+									"left": 176,
+									"top": 1552,
+									"width": 311.49169921875,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGPU3k/CFPSdBQ="
@@ -8311,10 +8311,10 @@
 							],
 							"font": "Arial;13;0",
 							"containerChangeable": true,
-							"left": 296,
-							"top": 1544,
-							"width": 135.6708984375,
-							"height": 48,
+							"left": 176,
+							"top": 1552,
+							"width": 310.49169921875,
+							"height": 41,
 							"nameCompartment": {
 								"$ref": "AAAAAAGPU3k/CFPRFuw="
 							}
@@ -8842,7 +8842,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 614,
-									"top": 1465,
+									"top": 1481,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -8863,7 +8863,7 @@
 									"visible": null,
 									"font": "Arial;13;0",
 									"left": 629,
-									"top": 1465,
+									"top": 1481,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -8884,7 +8884,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 585,
-									"top": 1466,
+									"top": 1482,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -8901,7 +8901,7 @@
 							"tail": {
 								"$ref": "AAAAAAGPU3kIglOZwhQ="
 							},
-							"points": "542:1472;600:1472;600:1552",
+							"points": "542:1488;600:1488;600:1552",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGPU3+p6VVVNoE="
@@ -8934,8 +8934,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 374,
-									"top": 1465,
+									"left": 326,
+									"top": 1481,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -8955,8 +8955,8 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 389,
-									"top": 1465,
+									"left": 341,
+									"top": 1481,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -8976,8 +8976,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 345,
-									"top": 1466,
+									"left": 297,
+									"top": 1482,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -8994,7 +8994,7 @@
 							"tail": {
 								"$ref": "AAAAAAGPU3kIglOZwhQ="
 							},
-							"points": "504:1472;360:1472;360:1544",
+							"points": "504:1488;312:1488;312:1552",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGPU3+9QFVmvlc="
@@ -9028,7 +9028,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 884,
-									"top": 1465,
+									"top": 1481,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -9049,7 +9049,7 @@
 									"visible": null,
 									"font": "Arial;13;0",
 									"left": 899,
-									"top": 1465,
+									"top": 1481,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -9070,7 +9070,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 855,
-									"top": 1466,
+									"top": 1482,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -9087,7 +9087,7 @@
 							"tail": {
 								"$ref": "AAAAAAGPU3kIglOZwhQ="
 							},
-							"points": "542:1472;870:1472;870:1544",
+							"points": "542:1488;870:1488;870:1544",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGPU3/ImFV36EY="
@@ -9143,7 +9143,7 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 96,
+											"left": 64,
 											"top": 1936,
 											"height": 13
 										},
@@ -9154,11 +9154,11 @@
 												"$ref": "AAAAAAGPU4OT2FWtXbk="
 											},
 											"font": "Arial;13;1",
-											"left": 77,
+											"left": 61,
 											"top": 1287,
-											"width": 238.6689453125,
+											"width": 269.0107421875,
 											"height": 13,
-											"text": "Changer de pokémon suite à un décès"
+											"text": "Changer de pokémon actif suite à un décès"
 										},
 										{
 											"_type": "LabelView",
@@ -9168,7 +9168,7 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 96,
+											"left": 64,
 											"top": 1936,
 											"width": 86.6708984375,
 											"height": 13,
@@ -9182,16 +9182,16 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 96,
+											"left": 64,
 											"top": 1936,
 											"height": 13,
 											"horizontalAlignment": 1
 										}
 									],
 									"font": "Arial;13;0",
-									"left": 72,
+									"left": 56,
 									"top": 1280,
-									"width": 248.6689453125,
+									"width": 279.0107421875,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGPU4OT2FWuYHQ="
@@ -9209,9 +9209,9 @@
 							],
 							"font": "Arial;13;0",
 							"containerChangeable": true,
-							"left": 72,
+							"left": 56,
 							"top": 1280,
-							"width": 247.6689453125,
+							"width": 278.0107421875,
 							"height": 41,
 							"nameCompartment": {
 								"$ref": "AAAAAAGPU4OT2FWtXbk="
@@ -9442,7 +9442,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 375,
+									"left": 327,
 									"top": 1853,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -9463,7 +9463,7 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 390,
+									"left": 342,
 									"top": 1853,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -9484,7 +9484,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 345,
+									"left": 297,
 									"top": 1854,
 									"height": 13,
 									"alpha": -1.5707963267948966,
@@ -9502,7 +9502,7 @@
 							"tail": {
 								"$ref": "AAAAAAGPU3k/CFPQszg="
 							},
-							"points": "360:1592;360:2128",
+							"points": "312:1593;312:2128",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGPU4UtMVYNZBQ="
@@ -9645,7 +9645,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 535,
-									"top": 1433,
+									"top": 1441,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -9666,7 +9666,7 @@
 									"visible": null,
 									"font": "Arial;13;0",
 									"left": 550,
-									"top": 1433,
+									"top": 1441,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -9687,7 +9687,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 506,
-									"top": 1434,
+									"top": 1442,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -9704,7 +9704,7 @@
 							"tail": {
 								"$ref": "AAAAAAGPU3ZJ8FLoEnA="
 							},
-							"points": "521:1425;521:1456",
+							"points": "521:1425;521:1472",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGPU4alwVZ4OZ8="
@@ -9838,9 +9838,9 @@
 							"font": "Arial;13;0",
 							"containerChangeable": true,
 							"left": 680,
-							"top": 1936,
-							"width": 48,
-							"height": 51
+							"top": 1944,
+							"width": 40,
+							"height": 43
 						},
 						{
 							"_type": "UMLControlFlowView",
@@ -9935,22 +9935,6 @@
 							"propertyLabel": {
 								"$ref": "AAAAAAGPhfaF9W8c+J0="
 							}
-						},
-						{
-							"_type": "UMLControlNodeView",
-							"_id": "AAAAAAGPhfikW2+TAmQ=",
-							"_parent": {
-								"$ref": "AAAAAAGPU3NvqlJ7QIY="
-							},
-							"model": {
-								"$ref": "AAAAAAGPhfikW2+Rt2U="
-							},
-							"font": "Arial;13;0",
-							"containerChangeable": true,
-							"left": 48,
-							"top": 1392,
-							"width": 40,
-							"height": 40
 						},
 						{
 							"_type": "UMLControlNodeView",
@@ -10060,99 +10044,6 @@
 							},
 							"propertyLabel": {
 								"$ref": "AAAAAAGPhfn10m+w7+w="
-							}
-						},
-						{
-							"_type": "UMLControlFlowView",
-							"_id": "AAAAAAGPhfoCmm++RjI=",
-							"_parent": {
-								"$ref": "AAAAAAGPU3NvqlJ7QIY="
-							},
-							"model": {
-								"$ref": "AAAAAAGPhfoCmm+9pCQ="
-							},
-							"subViews": [
-								{
-									"_type": "EdgeLabelView",
-									"_id": "AAAAAAGPhfoCmm+//b8=",
-									"_parent": {
-										"$ref": "AAAAAAGPhfoCmm++RjI="
-									},
-									"model": {
-										"$ref": "AAAAAAGPhfoCmm+9pCQ="
-									},
-									"visible": false,
-									"font": "Arial;13;0",
-									"left": 127,
-									"top": 1420,
-									"height": 13,
-									"alpha": 1.5707963267948966,
-									"distance": 15,
-									"hostEdge": {
-										"$ref": "AAAAAAGPhfoCmm++RjI="
-									},
-									"edgePosition": 1
-								},
-								{
-									"_type": "EdgeLabelView",
-									"_id": "AAAAAAGPhfoCm2/Aovc=",
-									"_parent": {
-										"$ref": "AAAAAAGPhfoCmm++RjI="
-									},
-									"model": {
-										"$ref": "AAAAAAGPhfoCmm+9pCQ="
-									},
-									"visible": null,
-									"font": "Arial;13;0",
-									"left": 127,
-									"top": 1435,
-									"height": 13,
-									"alpha": 1.5707963267948966,
-									"distance": 30,
-									"hostEdge": {
-										"$ref": "AAAAAAGPhfoCmm++RjI="
-									},
-									"edgePosition": 1
-								},
-								{
-									"_type": "EdgeLabelView",
-									"_id": "AAAAAAGPhfoCm2/BAH4=",
-									"_parent": {
-										"$ref": "AAAAAAGPhfoCmm++RjI="
-									},
-									"model": {
-										"$ref": "AAAAAAGPhfoCmm+9pCQ="
-									},
-									"visible": false,
-									"font": "Arial;13;0",
-									"left": 128,
-									"top": 1390,
-									"height": 13,
-									"alpha": -1.5707963267948966,
-									"distance": 15,
-									"hostEdge": {
-										"$ref": "AAAAAAGPhfoCmm++RjI="
-									},
-									"edgePosition": 1
-								}
-							],
-							"font": "Arial;13;0",
-							"head": {
-								"$ref": "AAAAAAGPhfikW2+TAmQ="
-							},
-							"tail": {
-								"$ref": "AAAAAAGPhfnDCm+kYTY="
-							},
-							"points": "168:1411;88:1411",
-							"showVisibility": true,
-							"nameLabel": {
-								"$ref": "AAAAAAGPhfoCmm+//b8="
-							},
-							"stereotypeLabel": {
-								"$ref": "AAAAAAGPhfoCm2/Aovc="
-							},
-							"propertyLabel": {
-								"$ref": "AAAAAAGPhfoCm2/BAH4="
 							}
 						},
 						{
@@ -10821,12 +10712,12 @@
 							],
 							"font": "Arial;13;0",
 							"head": {
-								"$ref": "AAAAAAGPU3ZJ8FLoEnA="
+								"$ref": "AAAAAAGPU4ce4VaSoaY="
 							},
 							"tail": {
 								"$ref": "AAAAAAGPU4UUoVYIG6Y="
 							},
-							"points": "424:2134;424:2232;1000:2232;1000:1408;592:1408",
+							"points": "400:2134;400:2232;1000:2232;1000:1137;397:1137",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGPhgBGcHErQZQ="
@@ -10836,6 +10727,206 @@
 							},
 							"propertyLabel": {
 								"$ref": "AAAAAAGPhgBGcHEtqeg="
+							}
+						},
+						{
+							"_type": "UMLTextView",
+							"_id": "AAAAAAGPhp3VqnGSbwk=",
+							"_parent": {
+								"$ref": "AAAAAAGPU3NvqlJ7QIY="
+							},
+							"font": "Arial;18;0",
+							"left": 624,
+							"top": 2240,
+							"width": 200,
+							"height": 48,
+							"text": "Tour ennemi"
+						},
+						{
+							"_type": "UMLTextView",
+							"_id": "AAAAAAGPhp564nGbY2A=",
+							"_parent": {
+								"$ref": "AAAAAAGPU3NvqlJ7QIY="
+							},
+							"font": "Arial;13;0",
+							"left": 328,
+							"top": 936,
+							"width": 100,
+							"height": 25,
+							"text": "Début Combat"
+						},
+						{
+							"_type": "UMLTextView",
+							"_id": "AAAAAAGPhp+TenGpfyA=",
+							"_parent": {
+								"$ref": "AAAAAAGPU3NvqlJ7QIY="
+							},
+							"font": "Arial;13;0",
+							"left": 160,
+							"top": 1216,
+							"width": 116,
+							"height": 38,
+							"text": "Pokémon actif hors de combat"
+						},
+						{
+							"_type": "UMLTextView",
+							"_id": "AAAAAAGPhp/afXGuis4=",
+							"_parent": {
+								"$ref": "AAAAAAGPU3NvqlJ7QIY="
+							},
+							"font": "Arial;13;0",
+							"left": 424,
+							"top": 1224,
+							"width": 136,
+							"height": 51,
+							"text": "Pokémon actif en état de se battre"
+						},
+						{
+							"_type": "UMLTextView",
+							"_id": "AAAAAAGPhqBSKnG2/5M=",
+							"_parent": {
+								"$ref": "AAAAAAGPU3NvqlJ7QIY="
+							},
+							"font": "Arial;13;0",
+							"left": 48,
+							"top": 1440,
+							"width": 143,
+							"height": 51,
+							"text": "Plus de pokémon disponible : Défaite"
+						},
+						{
+							"_type": "UMLTextView",
+							"_id": "AAAAAAGPhqEmDXHCTzE=",
+							"_parent": {
+								"$ref": "AAAAAAGPU3NvqlJ7QIY="
+							},
+							"font": "Arial;13;0",
+							"left": 592,
+							"top": 1992,
+							"width": 160,
+							"height": 51,
+							"text": "Pokémon ennemi vaincu :  Victoire"
+						},
+						{
+							"_type": "UMLTextView",
+							"_id": "AAAAAAGPhqHgZXHPhcg=",
+							"_parent": {
+								"$ref": "AAAAAAGPU3NvqlJ7QIY="
+							},
+							"font": "Arial;13;0",
+							"left": 408,
+							"top": 1984,
+							"width": 100,
+							"height": 38,
+							"text": "Pokémon ennemi survit"
+						},
+						{
+							"_type": "UMLControlNodeView",
+							"_id": "AAAAAAGPhqq+mXHuUEc=",
+							"_parent": {
+								"$ref": "AAAAAAGPU3NvqlJ7QIY="
+							},
+							"model": {
+								"$ref": "AAAAAAGPhqq+mXHsDHM="
+							},
+							"font": "Arial;13;0",
+							"containerChangeable": true,
+							"left": 72,
+							"top": 1400,
+							"width": 26,
+							"height": 26
+						},
+						{
+							"_type": "UMLControlFlowView",
+							"_id": "AAAAAAGPhqrVeXHygpw=",
+							"_parent": {
+								"$ref": "AAAAAAGPU3NvqlJ7QIY="
+							},
+							"model": {
+								"$ref": "AAAAAAGPhqrVeXHxJJ0="
+							},
+							"subViews": [
+								{
+									"_type": "EdgeLabelView",
+									"_id": "AAAAAAGPhqrVeXHzJI8=",
+									"_parent": {
+										"$ref": "AAAAAAGPhqrVeXHygpw="
+									},
+									"model": {
+										"$ref": "AAAAAAGPhqrVeXHxJJ0="
+									},
+									"visible": false,
+									"font": "Arial;13;0",
+									"left": 132,
+									"top": 1421,
+									"height": 13,
+									"alpha": 1.5707963267948966,
+									"distance": 15,
+									"hostEdge": {
+										"$ref": "AAAAAAGPhqrVeXHygpw="
+									},
+									"edgePosition": 1
+								},
+								{
+									"_type": "EdgeLabelView",
+									"_id": "AAAAAAGPhqrVeXH0Na4=",
+									"_parent": {
+										"$ref": "AAAAAAGPhqrVeXHygpw="
+									},
+									"model": {
+										"$ref": "AAAAAAGPhqrVeXHxJJ0="
+									},
+									"visible": null,
+									"font": "Arial;13;0",
+									"left": 132,
+									"top": 1436,
+									"height": 13,
+									"alpha": 1.5707963267948966,
+									"distance": 30,
+									"hostEdge": {
+										"$ref": "AAAAAAGPhqrVeXHygpw="
+									},
+									"edgePosition": 1
+								},
+								{
+									"_type": "EdgeLabelView",
+									"_id": "AAAAAAGPhqrVeXH1jfQ=",
+									"_parent": {
+										"$ref": "AAAAAAGPhqrVeXHygpw="
+									},
+									"model": {
+										"$ref": "AAAAAAGPhqrVeXHxJJ0="
+									},
+									"visible": false,
+									"font": "Arial;13;0",
+									"left": 133,
+									"top": 1391,
+									"height": 13,
+									"alpha": -1.5707963267948966,
+									"distance": 15,
+									"hostEdge": {
+										"$ref": "AAAAAAGPhqrVeXHygpw="
+									},
+									"edgePosition": 1
+								}
+							],
+							"font": "Arial;13;0",
+							"head": {
+								"$ref": "AAAAAAGPhqq+mXHuUEc="
+							},
+							"tail": {
+								"$ref": "AAAAAAGPhfnDCm+kYTY="
+							},
+							"points": "168:1412;98:1412",
+							"showVisibility": true,
+							"nameLabel": {
+								"$ref": "AAAAAAGPhqrVeXHzJI8="
+							},
+							"stereotypeLabel": {
+								"$ref": "AAAAAAGPhqrVeXH0Na4="
+							},
+							"propertyLabel": {
+								"$ref": "AAAAAAGPhqrVeXH1jfQ="
 							}
 						}
 					]
@@ -10904,7 +10995,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGPU3NvqlJ68r4="
 					},
-					"name": "Choisir un pokémon"
+					"name": "Choisir un autre pokémon valide pour combattre"
 				},
 				{
 					"_type": "UMLDecisionNode",
@@ -10931,14 +11022,6 @@
 					"name": "Attaque spéciale"
 				},
 				{
-					"_type": "UMLAction",
-					"_id": "AAAAAAGPU3zaiFT0KAw=",
-					"_parent": {
-						"$ref": "AAAAAAGPU3NvqlJ68r4="
-					},
-					"name": "Action1"
-				},
-				{
 					"_type": "UMLForkNode",
 					"_id": "AAAAAAGPU4N8qFWl+QQ=",
 					"_parent": {
@@ -10952,7 +11035,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGPU3NvqlJ68r4="
 					},
-					"name": "Changer de pokémon suite à un décès"
+					"name": "Changer de pokémon actif suite à un décès"
 				},
 				{
 					"_type": "UMLJoinNode",
@@ -11058,6 +11141,14 @@
 						"$ref": "AAAAAAGPU3NvqlJ68r4="
 					},
 					"name": "JoinNode2"
+				},
+				{
+					"_type": "UMLActivityFinalNode",
+					"_id": "AAAAAAGPhqq+mXHsDHM=",
+					"_parent": {
+						"$ref": "AAAAAAGPU3NvqlJ68r4="
+					},
+					"name": "ActivityFinalNode6"
 				}
 			],
 			"edges": [
@@ -11630,7 +11721,20 @@
 						"$ref": "AAAAAAGPU4UUoFYGNSs="
 					},
 					"target": {
-						"$ref": "AAAAAAGPU3ZJ8FLmdhQ="
+						"$ref": "AAAAAAGPU4ce4VaQ9iY="
+					}
+				},
+				{
+					"_type": "UMLControlFlow",
+					"_id": "AAAAAAGPhqrVeXHxJJ0=",
+					"_parent": {
+						"$ref": "AAAAAAGPU3NvqlJ68r4="
+					},
+					"source": {
+						"$ref": "AAAAAAGPhfnDCm+ifwM="
+					},
+					"target": {
+						"$ref": "AAAAAAGPhqq+mXHsDHM="
 					}
 				}
 			]

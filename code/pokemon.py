@@ -41,7 +41,7 @@ class Pokemon:
         Formule du calcul de dégâts
         Sans les coefficients d efficacité de type!
         
-        '''
+        '''                                    
         return (at *10) / df2
     
     
