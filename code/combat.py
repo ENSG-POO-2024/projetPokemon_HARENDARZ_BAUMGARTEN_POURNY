@@ -7,7 +7,6 @@ Created on Fri May  3 14:16:37 2024
 
 import csv
 import numpy as np
-import math as m
 import pokemon
 import utilitaire
 
@@ -17,57 +16,6 @@ List_type = ['Steel','Fighting', 'Dragon','Water','Electric','Fire','Fairy','Ice
 
 
 table_type = np.genfromtxt('../data/Types.csv',delimiter = ',')
-
-
-
-# =============================================================================
-# def formule_attack(at,df1,df2):
-#     '''
-#     at : attaque de l attaquant
-#     df : défenses des pokémons 
-# 
-#     Returns
-#     -------
-#     Formule du calcul de dégâts
-#     Sans les coefficients d efficacité de type!
-#     
-#     '''
-#     return at*(df1/df2)
-# 
-# 
-# def attack(at1,df1,df2):
-#     '''
-#     Parameters
-#     ----------
-#     at1 : attaque de l attaquant
-#     df1 : défense de l attaquant
-#     df2 : défense du défenseur
-#         
-#     Returns
-#     -------
-#     Dégâts.
-#     '''
-#     return round(formule_attack(at1, df1, df2))
-# 
-# 
-# def special_attack(tp1,at_spc1,df_spc1,tp2,df_spc2):
-#     """
-#     tp1 : type de l attaquant
-#     at_spc1 : attaque spéciale de l attaquant
-#     df_spc1 : défense spéciale de l attaquant
-#     tp2 : type du défenseur
-#     df_spc2 : défense spécialedu défenseur
-# 
-#     Returns
-#     -------
-#     Cherche le coefficient d efficacité de type.
-#     Multiplie le résultat de la formule d attaque par le coef
-#     Renvoie l arrondi si le résultat est relatif
-#     """
-#     i1,i2 = List_type.index(tp1), List_type.index(tp2)
-#     coef = table_type[i1][i2]
-#     return round(formule_attack(at_spc1,df_spc1,df_spc2)*coef)
-# =============================================================================
 
 
 
@@ -88,7 +36,7 @@ def tour_joueur(poke_att, poke_def, choix_attaque):
     poke_att : pokémon actif du joueur
     poke_def : pokémon sauvage
     
-    Attaque du joueur.
+    Attaque du joueur. Explicite: selon le choix d attaque du joueur, calcule les dégâts correspondants.
     '''
     ##Interface
     ## à construire avec l'interface, le joueur doit choisir entre une attaque spéciale et une attaque normale
@@ -111,7 +59,8 @@ def tour_environnement(poke_att, poke_def):
     poke_def : pokémon actif du joueur
     reserve : nombre de pokémons combattants restants du dresseur
     
-    Au tour du pokémon sauvage, il attaque le pokémon adverse
+    Au tour du pokémon sauvage, il attaque le pokémon adverse.
+    Le pokémon sauvage choisit automatiquement l attaque la plus léthale.
     '''
     ## Le pokémon sauvage considère ses options : il utilisera l'attaque la plus efficace    
     degats = poke_att.attack(poke_def)
@@ -129,6 +78,7 @@ def tour_environnement(poke_att, poke_def):
 
 
 ## INTERFACE!! ##
+        
 def choix_pokemon(Equipe):
     '''
     Parameters
@@ -136,17 +86,15 @@ def choix_pokemon(Equipe):
     Equipe : Dictionnaire des pokémons dans l équipe du dresseur
         Le pokémon actif au combat sera choisi dans ce dictionnaire
 
-    Fonction permettant au dresseur de choisir son pokémon actif
+    Fonction permettant au dresseur de choisir son pokémon actif.
     '''
-    
-    ##Interface
-    choix = input("Veuillez entrer le nom du pokémon choisi dans votre équipe: ")
-    
-    ## On vérifie que le pokémon est en état de se battre
-    while not Equipe[int(choix)].etat:
-        choix = input("Ce pokémon est hors de combat! Laissez le un peu tranquille. Veuillez choisir un pokémon capable de se battre: ")
-    
-    return Equipe[int(choix)]
+    L = list(Equipe.keys())
+    list_poke_vie = []
+    for cle in L:
+        if Equipe[cle].etat:
+            list_poke_vie.append(Equipe[cle])
+    poke_actif = list_poke_vie[rd.randint(0, len(list_poke_vie) - 1)]
+    return poke_actif
 
 ## INTERFACE!! ##
 
@@ -173,6 +121,9 @@ def fin_combat(Equipe,Collection,poke_sauvage,Environnement):
 
 '''
 La fonction combat va être intégrée dans la structure de l interface.
+
+Cette fonction a structuré notre vision du combat. Elle n a pas pu être utilisée telle quelle.
+Elle reste cependant assez claire pour visualiser notre système de combat par rapport au code de l interface.
 '''
 
 ## INTERFACE!! ##
@@ -195,7 +146,7 @@ def combat(Equipe,Collection,poke_sauvage):
     changement = False      ## Flag déterminant si le dresseur doit choisir un nouveau pokémon suite à une attaque du pokémon sauvage
     
     ## Choix pokémon
-    poke_actif = E
+    poke_actif = choix_pokemon(Equipe)
     
     ## Détermination de l'ordre du tour
     if poke_actif.sp >= poke_sauvage.sp:
@@ -219,7 +170,11 @@ def combat(Equipe,Collection,poke_sauvage):
                            
         else:
             changement = tour_environnement(poke_sauvage,poke_actif,reserve)
-        
+            """
+            Voir la fonction tour environnement dans l archive. La fonction renvoie un booléen correspondant 
+            à l état de santé du pokémon défenseur.
+            """
+            
         ## Si le pokémon combattant est vaincu, le dresseur en choisit un autre
         if changement == True:
             poke_actif = choix_pokemon(Equipe)
@@ -235,7 +190,7 @@ def combat(Equipe,Collection,poke_sauvage):
     
     ## Appel de la fin du combat
         
-    fin_combat(Equipe,Collection,poke_sauvage)
+    fin_combat(Equipe,Collection,poke_sauvage,Environnement)
     
     
     

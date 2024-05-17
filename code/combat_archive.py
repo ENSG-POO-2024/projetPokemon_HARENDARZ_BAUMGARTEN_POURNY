@@ -7,7 +7,6 @@ Created on Tue May  7 13:58:35 2024
 
 import csv
 import numpy as np
-import math as m
 import random as rd
 import pokemon
 import utilitaire
@@ -20,12 +19,76 @@ List_type = ['Steel','Fighting', 'Dragon','Water','Electric','Fire','Fairy','Ice
 table_type = np.genfromtxt('../data/Types.csv',delimiter = ',')
 
 
+##Les formules d'attaque ont été intégrées à la classe pokémon en tant que méthode.
+
+
+# =============================================================================
+# def formule_attack(at,df1,df2):
+#     '''
+#     at : attaque de l attaquant
+#     df : défenses des pokémons 
+# 
+#     Returns
+#     -------
+#     Formule du calcul de dégâts
+#     Sans les coefficients d efficacité de type!
+#     
+#     '''
+#     return at*(df1/df2)
+# 
+# 
+# def attack(at1,df1,df2):
+#     '''
+#     Parameters
+#     ----------
+#     at1 : attaque de l attaquant
+#     df1 : défense de l attaquant
+#     df2 : défense du défenseur
+#         
+#     Returns
+#     -------
+#     Dégâts.
+#     '''
+#     return round(formule_attack(at1, df1, df2))
+# 
+# 
+# def special_attack(tp1,at_spc1,df_spc1,tp2,df_spc2):
+#     """
+#     tp1 : type de l attaquant
+#     at_spc1 : attaque spéciale de l attaquant
+#     df_spc1 : défense spéciale de l attaquant
+#     tp2 : type du défenseur
+#     df_spc2 : défense spécialedu défenseur
+# 
+#     Returns
+#     -------
+#     Cherche le coefficient d efficacité de type.
+#     Multiplie le résultat de la formule d attaque par le coef
+#     Renvoie l arrondi si le résultat est relatif
+#     """
+#     i1,i2 = List_type.index(tp1), List_type.index(tp2)
+#     coef = table_type[i1][i2]
+#     return round(formule_attack(at_spc1,df_spc1,df_spc2)*coef)
+# =============================================================================
+
+
+
+
 '''
 Equipe : Dictionnaire des pokémons dans l équipe du dresseur
 poke_actif : pokémon du joueur actif dans le combat
 poke_att : pokémon infligeant les dégâts
 poke_def : pokémon recevant les dégâts
 '''
+
+
+"""
+AKA Cimetière.
+Ce fichier regroupe des brouillons et fonctions à présent inutilisées.
+Elles sont conservées dans le cas où elles pourraient être réutilisées ou modifiées.
+"""
+
+
 
 
 def choix_pokemon(Equipe):
@@ -37,13 +100,15 @@ def choix_pokemon(Equipe):
 
     Fonction permettant au dresseur de choisir son pokémon actif
     '''
-    L = list(Equipe.keys())
-    list_poke_vie = []
-    for cle in L:
-        if Equipe[cle].etat:
-            list_poke_vie.append(Equipe[cle])
-    poke_actif = list_poke_vie[rd.randint(0, len(list_poke_vie) - 1)]
-    return poke_actif
+    
+    ##Interface
+    choix = input("Veuillez entrer le nom du pokémon choisi dans votre équipe: ")
+    
+    ## On vérifie que le pokémon est en état de se battre
+    while not Equipe[int(choix)].etat:
+        choix = input("Ce pokémon est hors de combat! Laissez le un peu tranquille. Veuillez choisir un pokémon capable de se battre: ")
+    
+    return Equipe[int(choix)]
 
 
 
@@ -100,8 +165,7 @@ def tour_environnement(poke_att, poke_def,reserve):
     if poke_def.pv <= 0:
         reserve -=1
         poke_def.etat = False
-        return True
-    return False
+    return not poke_def.etat
 
 
 
