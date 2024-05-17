@@ -5,12 +5,6 @@ Created on Fri May  3 10:51:08 2024
 @author: Formation
 """
 
-## Je ne fais pas forcément au plus simple comme "return Pokedex" dans la première fonction utilitaire
-## Il y a plusieurs raisons à cela :
-# 1- Question de compréhension de lecture. Le fait de voir les variables créées et nommées facilitent la compréhension.
-# 2- Parfois, comme pour la formule_attack(), le fait de faire une fonction dédiée rende une modification de la formule plus aisée. 
-
-
 import csv
 import numpy as np
 
@@ -25,7 +19,7 @@ table_type = np.genfromtxt('../data/Types.csv',delimiter = ',')
 
 class Pokemon:
     def __init__(self,ident,name,tp,pv,at,df,at_spc,df_spc,sp):
-        self.id = ident         #identifiant
+        self.id = ident         #identifiant du pokémon
         self.name = name        #nom
         self.tp = tp            #type
         self.pv = int(pv)            #points de vie actuels
@@ -91,8 +85,14 @@ class Pokemon:
         return self.name
     
     def __repr__(self):
+        """
+        Fonction permettant d afficher le nom du pokémon lorsqu il apparaît dans une liste par exemple.
+        Sert principalement au confort visuel de nous autres, codeurs.
+        """
         return self.name        
     
+    
+    ## Inutilisée en l'état, ne sert à rien car pas d'interface.
     def carac(self):
         print('Mes pv actuels sont : ' + str(self.pv))
         print('Mon type est : ' + str(self.tp))
@@ -100,6 +100,16 @@ class Pokemon:
 
 
 def creation_pokedex():
+    """
+    Returns
+    -------
+    Pokedex : Dictionnaire
+    Pokelist : Liste
+        
+    La fonction retourne l ensemble des pokémons de la première génération sous deux formes :
+        une liste et un dictionnaire, aux usages différents.
+    """
+    
     Pokelist = []
     with open('../data/pokemon_first_gen.csv') as csvfile:
         fichier = csv.reader(csvfile,delimiter = ',')
@@ -125,6 +135,8 @@ if __name__ == "__main__":
 #     print(Pokedex)
 #     print(Pokelist)
 # =============================================================================
+    print
+    print(Pokedex[1])
     print(Pokedex[1].pv)
     print(Pokedex[2].special_attack(Pokedex[1]))
 

@@ -16,7 +16,7 @@ Collection : Dictionnaire des pokémons possédés par le dresseur
 
 def creation_Environnement(Pokedex):
     '''
-    Crée la liste des pokémons trouvés dans l environnement
+    Crée le dictionnaire des pokémons trouvés dans l environnement
     '''
     Environnement = Pokedex
     return Environnement
