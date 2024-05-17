@@ -12,7 +12,7 @@ Pour lancer le jeu, lancez le fichier affichage.py .
 2.	Dans l’introduction, cliquez sur espace afin de passer à la fenêtre de dialogue suivante.
 3.	Dans la page de choix du starter, utiliser les flèches gauche et droite permet de défiler entre les différents Pokémons disponibles. Cliquer sur espace permet de valider le Pokémon choisi. Le Pokémon choisi sera le 1er Pokémon de l’équipe. 
 4.	 Une fois sur la carte, cliquer sur les flèches directionnelles permet de se déplacer. Sur les bords de la carte certaines zones sont marquées par des flèches. Toucher le bord à ces endroits permet de passer sur d’autres partie de la carte. Si le joueur se balade dans des herbes hautes, il y a un certain pourcentage de chance qu’un combat contre un Pokémon se déclenche.
-5.	Lors d’un combat, le 1er Pokémon du joueur sera choisi aléatoirement. Il a ensuite le choix entre 3 actions qui peuvent être choisies avec les touches directionnelles et espace pour valider.
+5.	Lors d’un combat, le premier Pokémon combattant du joueur sera choisi aléatoirement. Il a ensuite le choix entre 3 actions qui peuvent être choisies avec les touches directionnelles et espace pour valider.
     
       a.	Fight : Montre le choix entre l’attaque normale et l’attaque spéciale. 
   
