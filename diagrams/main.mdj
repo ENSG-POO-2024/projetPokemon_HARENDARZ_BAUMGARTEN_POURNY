@@ -9938,20 +9938,6 @@
 						},
 						{
 							"_type": "UMLControlNodeView",
-							"_id": "AAAAAAGPhff7TG9uTnU=",
-							"_parent": {
-								"$ref": "AAAAAAGPU3NvqlJ7QIY="
-							},
-							"model": {
-								"$ref": "AAAAAAGPhff7TG9sH20="
-							},
-							"font": "Arial;13;0",
-							"containerChangeable": true,
-							"width": 26,
-							"height": 26
-						},
-						{
-							"_type": "UMLControlNodeView",
 							"_id": "AAAAAAGPhfikW2+TAmQ=",
 							"_parent": {
 								"$ref": "AAAAAAGPU3NvqlJ7QIY="

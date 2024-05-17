@@ -47,7 +47,7 @@ def starter(Environnement,choix):
 ## Fonctions utilitaires pour le dresseur
     
 '''
-Les fonctions de gestion vont être intégrées dans la structure de l interface.
+Les fonctions de gestion vont être intégrées dans la structure de l interface de la même manière que le combat.
 
 '''
 
@@ -103,6 +103,7 @@ def soin(Collection):
     for pokemon in Collection:
         Collection[pokemon].pv = Collection[pokemon].pv_totaux
         Collection[pokemon].etat = True
+        
         
         
         

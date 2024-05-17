@@ -1319,7 +1319,7 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
             txt_pv_max = str(Poke_player.pv_totaux)
             draw.text((120, 78), txt_pv_max, font = fnt, fill =(0, 0, 0))
             fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 8)
-            txt_icon = "The ennemie Pokemon attack"
+            txt_icon = "The ennemy Pokemon attacks"
             draw.text((10, 110), txt_icon, font = fnt, fill =(0, 0, 0))
             draw.rectangle([(Poke_player.pv / Poke_player.pv_totaux * 47 + 95, 73), (142, 74)] )
             draw.rectangle([(Pokedex[id_Poke].pv / Pokedex[id_Poke].pv_totaux * 47 + 31, 17), (78, 18)] )
