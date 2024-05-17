@@ -10,12 +10,15 @@ from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QLabel
 from PyQt5.QtCore import Qt
 from PIL import Image, ImageDraw, ImageFont
-import nouveau_combat as nc
 import combat as co
 
 
 import affichage_deplacement as de
 import utilitaire
+
+
+
+
 
 def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environnement,poke_combattant = None):
     """
@@ -54,7 +57,7 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
     """
     if (e.key() == Qt.Key_Space and phase == "intro") or (e.key() == Qt.Key_Space and phase =="tour_suivant"):
         if phase == "intro":
-            Poke_player = nc.choix_pokemon(Equipe)
+            Poke_player = co.choix_pokemon(Equipe)
         else:
             Poke_player = poke_combattant
         phase = "choix_action_fight"

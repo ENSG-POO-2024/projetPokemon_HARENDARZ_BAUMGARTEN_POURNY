@@ -29,9 +29,9 @@ def affiche_intro(self,txt,slide = None):
 
     """
     if slide != None and slide > 1 :
-        img_fond = Image.open('oak_intro_poke.png')
+        img_fond = Image.open('gui\intro\oak_intro_poke.png')
     else:
-        img_fond = Image.open('oak_intro.png')
+        img_fond = Image.open('gui\intro\oak_intro.png')
     fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 23)
     draw = ImageDraw.Draw(img_fond)
     draw.text((45, 225), txt, font = fnt, fill =(0, 0, 0))
