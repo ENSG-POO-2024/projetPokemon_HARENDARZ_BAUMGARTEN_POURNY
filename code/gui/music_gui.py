@@ -16,11 +16,11 @@ class MusicJukebox(QMediaPlayer):
         super().__init__()
         self.currentVolume = 50
         self.setVolume(self.currentVolume)
-        self.songs_available = {'Main': './music/gta_3_theme.mp3'}
+        self.songs_available = {'MainMenu_egg': './music/gta_3_theme.mp3'}
         self.play_song()
 
 
-    def play_song(self, name='Main'):
+    def play_song(self, name='MainMenu_egg'):
         song_path = QDir.current().absoluteFilePath(self.songs_available[name])
         print(song_path)
         song = QMediaContent(QUrl.fromLocalFile(song_path))
