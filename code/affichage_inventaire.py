@@ -5,40 +5,73 @@ Created on Fri May 10 16:04:58 2024
 @author: romai
 """
 
-import sys
+
 from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QMainWindow, QApplication, QLabel, QWidget
+from PyQt5.QtWidgets import QLabel
 from PyQt5.QtCore import Qt
 from PIL import Image, ImageDraw, ImageFont
-import numpy as np
-from PyQt5 import QtCore, QtWidgets, QtMultimedia
-import nouveau_combat as nc
-import combat as co
 
-import carte as c
-import deplacement as d
-import random as rd
 import affichage_deplacement as de
-import pokemon as p
+
 
 def affiche_poke(self,Equipe,collection,Pokedex,nb_inventory):
-    cle = list(collection.keys())
-    img_poke = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(cle[nb_inventory]) + ".png")
-    img_fond = Image.open('inventory.png')
-    img_fond.paste(img_poke, (60, 40))
-    fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 11)
-    txt_poke = Pokedex[cle[nb_inventory]].name
-    draw = ImageDraw.Draw(img_fond)
-    draw.text((45, 100), txt_poke, font = fnt, fill =(0, 0, 0))
-    img_fond.save("inventory_poke.png")
-    label = QLabel(self)
-    pixmap = QPixmap("inventory_poke.png")
-    label.setPixmap(pixmap) 
-    label.setScaledContents(True)
-    self.setCentralWidget(label)
-    self.show()
+    """
+    
+
+    Parameters
+    ----------
+    Equipe : list
+        list des Pokemon dans l'équipe'
+    collection : list
+        list des Pokemon dans notre inventaire
+    Pokedex : list
+        list de tout les pokemon
+    nb_inventory : int
+        endroit où on se trouve dans l'inventaire
+
+    Returns
+    -------
+    None.
+
+    """
+    if len(collection) != 0:
+        cle = list(collection.keys())
+        img_poke = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(cle[nb_inventory]) + ".png")
+        img_fond = Image.open('inventory.png')
+        img_fond.paste(img_poke, (60, 40))
+        fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 11)
+        txt_poke = Pokedex[cle[nb_inventory]].name
+        draw = ImageDraw.Draw(img_fond)
+        draw.text((45, 100), txt_poke, font = fnt, fill =(0, 0, 0))
+        img_fond.save("inventory_poke.png")
+        label = QLabel(self)
+        pixmap = QPixmap("inventory_poke.png")
+        label.setPixmap(pixmap) 
+        label.setScaledContents(True)
+        self.setCentralWidget(label)
+        self.show()
+    
     
 def affiche_team_poke(self,Equipe,collection,Pokedex,nb_team):
+    """
+    
+
+    Parameters
+    ----------
+    Equipe : list
+        list des Pokemon dans l'équipe
+    collection : list
+        list des Pokemon dans notre inventaire
+    Pokedex : list
+        list de tout les pokemon
+    nb_team : int
+        endroit où on se trouve dans l'équipe
+
+    Returns
+    -------
+    None.
+
+    """
     cle = list(Equipe.keys())
     img_poke = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(cle[nb_team]) + ".png")
     img_fond = Image.open('team.png')
@@ -54,9 +87,71 @@ def affiche_team_poke(self,Equipe,collection,Pokedex,nb_team):
     label.setScaledContents(True)
     self.setCentralWidget(label)
     self.show()
+    
+def affiche_choix_starter(self,Equipe,starter,Pokedex,nb_starter):
+    """
+    
+
+    Parameters
+    ----------
+    Equipe : list
+        list des Pokemon dans l'équipe
+    starter : list
+        list des starters disponibles
+    Pokedex : list
+        list de tout les pokemon
+    nb_starter : int
+        endroit où on se trouve dans le choix du starter
+
+    Returns
+    -------
+    None.
+
+    """
+    cle = list(starter.keys())
+    img_poke = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(cle[nb_starter]) + ".png")
+    img_fond = Image.open('starter.png')
+    img_fond.paste(img_poke, (60, 40))
+    fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 11)
+    txt_poke = Pokedex[cle[nb_starter]].name
+    draw = ImageDraw.Draw(img_fond)
+    draw.text((45, 100), txt_poke, font = fnt, fill =(0, 0, 0))
+    img_fond.save("inventory_poke.png")
+    label = QLabel(self)
+    pixmap = QPixmap("inventory_poke.png")
+    label.setPixmap(pixmap) 
+    label.setScaledContents(True)
+    self.setCentralWidget(label)
+    self.show()
 
 def affiche_inventaire(self,mode,Equipe,collection,Pokedex,nb_inventory,e):
-    if e.key() == 16777217 and mode == 1:
+    """
+    
+
+    Parameters
+    ----------
+    mode : int
+        chaque action ne peut que s'effectuer dans le bon mode
+    Equipe : list
+        list des Pokemon dans l'équipe
+    collection : list
+        list des Pokemon dans notre inventaire
+    Pokedex : list
+        list de tout les pokemon
+    nb_inventory : int
+       endroit où on se trouve dans l'inventaire
+    e : PyQt5.QtGui.QKeyEvent
+        correspond à l'input de l'utilisateur
+
+    Returns
+    -------
+    mode : int
+        chaque action ne peut que s'effectuer dans le bon mode, change dans certains cas pour passer à d'autres mechanique de jeu
+    nb_inventory : int
+       endroit où on se trouve dans l'inventaire
+
+    """
+    if e.key() == 16777217 and mode == 1 and len(collection) != 0:
         self.hide()
         self.inventaireUI()
         mode = 4
@@ -82,7 +177,38 @@ def affiche_inventaire(self,mode,Equipe,collection,Pokedex,nb_inventory,e):
         return mode, nb_inventory
     
 def affiche_team(self,mode,Equipe,collection,Pokedex,nb_team,nb_inventory,e):
+    """
 
+    Parameters
+    ----------
+    mode : int
+        chaque action ne peut que s'effectuer dans le bon mode
+    Equipe : list
+        list des Pokemon dans l'équipe
+    collection : list
+        list des Pokemon dans notre inventaire
+    Pokedex : list
+        list de tout les pokemon
+    nb_team : int
+       endroit où on se trouve dans l'équipe
+    nb_inventory : int
+       endroit où on se trouve dans l'inventaire
+    e : PyQt5.QtGui.QKeyEvent
+        correspond à l'input de l'utilisateur
+
+    Returns
+    -------
+    mode : int
+        chaque action ne peut que s'effectuer dans le bon mode
+    nb_team : int
+        endroit où on se trouve dans l'équipe
+    collection : list
+        list des Pokemon dans notre inventaire
+    Equipe : list
+        list des Pokemon dans l'équipe
+
+    """
+    
     if e.key() == Qt.Key_Right:
         nb_team = (nb_team + 1) % (len(Equipe))
         affiche_team_poke(self, Equipe, collection, Pokedex, nb_team)
@@ -110,3 +236,60 @@ def affiche_team(self,mode,Equipe,collection,Pokedex,nb_team,nb_inventory,e):
     else: 
         return mode, nb_team, collection, Equipe
         
+def affiche_starter(self,mode,Equipe,starter,Pokedex,environnement,nb_starter,e):
+    """
+    
+
+    Parameters
+    ----------
+    mode : int
+       chaque action ne peut que s'effectuer dans le bon mode
+    Equipe : dic
+        dictionnaire des Pokemon dans l'équipe
+    starter : dic
+        dictionnaire des starters disponibles
+    Pokedex : dic
+        dictionnaire de tout les pokemon
+    environnement : dic
+        dictionnaire des pokemon que l'on peut attraper
+    nb_starter : int
+        endroit où on se trouve dans le choix du starter
+    e : PyQt5.QtGui.QKeyEvent
+        correspond à l'input de l'utilisateur
+
+    Returns
+    -------
+    mode : int
+       chaque action ne peut que s'effectuer dans le bon mode
+    nb_starter : int
+        endroit où on se trouve dans le choix du starter
+    environnement : dic
+        dictionnaire des pokemon que l'on peut attraper
+    nb_starter : int
+        endroit où on se trouve dans le choix du starter
+    Equipe : dic
+       dictionnaire des Pokemon dans l'équipe
+
+    """
+    if e.key() == Qt.Key_Right:
+        nb_starter= (nb_starter + 1) % (len(starter))
+        affiche_choix_starter(self, Equipe, starter, Pokedex, nb_starter)
+        return mode, nb_starter, environnement, Equipe
+    
+    if e.key() == Qt.Key_Left:
+        nb_starter= (nb_starter - 1) % (len(starter))
+        affiche_choix_starter(self, Equipe, starter, Pokedex, nb_starter)
+        return mode, nb_starter, environnement, Equipe
+    
+    if e.key() == Qt.Key_Space:
+        cle_starter = list(starter.keys())
+        self.hide()
+        self.carteUI()
+        mode = 1
+        id_starter = cle_starter[nb_starter]
+        del environnement[id_starter]
+        Equipe[id_starter] = Pokedex[id_starter]
+        return mode, nb_starter, environnement, Equipe
+    
+    else: 
+        return mode, nb_starter, environnement, Equipe

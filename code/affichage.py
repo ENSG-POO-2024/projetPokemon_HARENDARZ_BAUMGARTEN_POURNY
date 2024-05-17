@@ -7,8 +7,7 @@ Created on Sun May  5 16:48:22 2024
 
 import sys
 from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QMainWindow, QApplication, QLabel, QWidget
-from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QMainWindow, QApplication, QLabel
 from PIL import Image, ImageDraw, ImageFont
 import numpy as np
 from PyQt5 import QtCore, QtWidgets, QtMultimedia
@@ -16,46 +15,33 @@ from PyQt5 import QtGui
 
 import carte as c
 import deplacement as d
-import random as rd
-
 import affichage_deplacement as de
 import affichage_combat as ac
 import affichage_inventaire as ai
-
+import intro
 import pokemon as p
 
-import csv
-import numpy as np
-
-
-
-global Pokedex
-global Equipe
-global collection
-global environnement
-global nb_inventory
-global nb_team
-global player
-
 # =============================================================================
-# IMPORTANT : VOIR BUG CHANGEMRNT DE POKEMON
+# INITIALISATION DES VARIABLES
 # =============================================================================
-
 
 Pokedex, Pokelist = p.creation_pokedex() 
-
-Equipe = {1: Pokedex[1], 3: Pokedex[3]}
-collection  = {2: Pokedex[2], 4: Pokedex[4]}
+Equipe = {}
+collection  = {}
+starter = {1: Pokedex[2], 4: Pokedex[4], 7:Pokedex[7], 25: Pokedex[25]}
 environnement, autre = p.creation_pokedex() 
 
 nb_inventory = 0
 nb_team = 0
+nb_starter = 0
+slide = 1
 
 
 pix = 232
 piy = 400
 area = 0
 
+#Création de la carte
 img0 = Image.open("..\code\gui\Safari_Zone_entrance_RBY.png")
 img1 = Image.open("..\code\gui\Safari_Zone_area_1_RBY.png")
 img2 = Image.open("..\code\gui\Safari_Zone_area_2_RBY.png")
@@ -88,31 +74,28 @@ test_area3 = c.Area(3,test3)
 test_map = c.Map([test_area0,test_area1, test_area2, test_area3])
 
 case_depart = c.Case(50,29,0)
-a = 1
-
-
 
 j1 = d.joueur(case_depart, test_map)
 id_Poke = 0
 
 
-
+# =============================================================================
+# CREATION DES FENETRES
+# =============================================================================
 class MainWindow(QMainWindow):
 
     def __init__(self):
+        global mode 
+        global id_Poke
         super().__init__()
         self.setWindowIcon(QtGui.QIcon('gui\logos\py_symbol.png'))
         self.resize(640,300)
-        global mode 
-        global id_Poke
-        global phase
         id_Poke = 0
         mode = 0
         self.menuUI()
         self.son()
-        
-        
     
+#Fenêtre de l'ecran d'acceuille
     def menuUI(self):
         self.resize(840,500)
         self.setWindowIcon(QtGui.QIcon('gui\logos\py_symbol.png'))
@@ -120,11 +103,12 @@ class MainWindow(QMainWindow):
         self.setWindowTitle(self.title)
         label = QLabel(self)
         self.setCentralWidget(label)
-        pixmap = QPixmap("gui\logos\menu_background.png")
+        pixmap = QPixmap("gui\logos\Retropix.png")
         label.setPixmap(pixmap)
         label.setScaledContents(True)
         self.show()
 
+#Fenêtre de la carte
     def carteUI(self):
         super(MainWindow, self).__init__()
         self.resize(840,500)
@@ -138,6 +122,7 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(label)
         self.show()
     
+#Fenêtre de l'inventaire
     def inventaireUI(self):
         global nb_inventory
         super(MainWindow, self).__init__()
@@ -148,6 +133,7 @@ class MainWindow(QMainWindow):
         ai.affiche_poke(self,Equipe,collection,Pokedex,nb_inventory)
         nb_inventory = 0
         
+#Fenêtre de l'équipe
     def teamUI(self):
         global nb_team
         super(MainWindow, self).__init__()
@@ -158,6 +144,7 @@ class MainWindow(QMainWindow):
         ai.affiche_team_poke(self,Equipe,collection,Pokedex,nb_team)
         nb_team = 0
         
+#Fenêtre des combats
     def combatUI(self):
         global id_Poke
         global phase
@@ -187,15 +174,32 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(label)
         self.show()
         
+#Fenêtre du choix du starter
+    def choix_pokeUI(self):
+        global starter
+        global nb_starter
+        super(MainWindow, self).__init__()
+        self.resize(840,500)
+        self.setWindowIcon(QtGui.QIcon('gui\logos\py_symbol.png'))
+        self.title = "Pykémon"
+        self.setWindowTitle(self.title)
+        ai.affiche_choix_starter(self,Equipe,starter,Pokedex,nb_starter)
         
+#Fenêtre de l'introduction
+    def introUI(self):
+        super(MainWindow, self).__init__()
+        self.resize(840,500)
+        self.setWindowIcon(QtGui.QIcon('gui\logos\py_symbol.png'))
+        self.title = "Pykémon"
+        self.setWindowTitle(self.title)
+        intro.affiche_intro(self,"Hello there !\nAnd welcome to the world of Pokemon !")
         
-    
-        
+#Gère le son
     def son(self):
         global player
         global player2
         app = QtWidgets.QApplication(sys.argv)
-        filename = "..\code\gui\The Great Marsh & Pal Park [Pokémon Diamond & Pearl].mp3"
+        filename = "..\code\gui\Toad Sinatra - My Way (No AI, No practice, SINGLE take).mp3"
         filename2 = "..\code\gui\Pokémon Black & White - Battle! Elite Four (CPS-2 Remix).mp3"
         fullpath = QtCore.QDir.current().absoluteFilePath(filename)
         fullpath2 = QtCore.QDir.current().absoluteFilePath(filename2)
@@ -210,11 +214,8 @@ class MainWindow(QMainWindow):
         player.play()
         sys.exit(app.exec_())
         
-        
-        
-       
-    
-    
+  
+#Gère les commandes    
     def keyPressEvent(self, e):
         global j1
         global all_img
@@ -226,40 +227,53 @@ class MainWindow(QMainWindow):
         global poke_combattant
         global nb_inventory
         global nb_team
+        global nb_starter
         global collection
         global environnement
+        global slide
     
-        
+#Chaque mode permet de gérer une partie du jeu
+    
+#Mode de l'écran d'acceuille
         if mode == 0:        
-            mode = 1
+            mode = 7
             self.hide()
-            self.carteUI()
-            
+            self.introUI()
+
+#Mode de la carte
         elif mode == 1:
             player2.stop()
             player.play()
             mode, id_Poke = de.affiche_deplacement(self, j1, e, Pokedex,environnement)
             mode, nb_inventory = ai.affiche_inventaire(self,mode,Equipe,collection,Pokedex,nb_inventory,e)
             
-        
+#Mode de l'introduction du combat
         elif mode == 2:
             player.stop()
             player2.play()
             self.hide()
             self.combatUI()
             mode = 3
-        
+ 
+#Mode du combat
         elif mode == 3:
                 mode, phase, poke_combattant = ac.affiche_combat(self,mode, id_Poke, Equipe, Pokedex, e, phase, collection, environnement, poke_combattant)
-                
+ 
+#Mode de l'inventaire
         elif mode == 4:
             mode, nb_inventory = ai.affiche_inventaire(self,mode,Equipe,collection,Pokedex,nb_inventory,e)
-        
+
+#Mode de l'équipe        
         elif mode == 5:
             mode, nb_team, collection, Equipe = ai.affiche_team(self,mode,Equipe,collection,Pokedex,nb_team,nb_inventory,e)
-            
-            
-            
+
+#Mode du choix du starter            
+        elif mode == 6:
+            mode, nb_starter, environnement, Equipe = ai.affiche_starter(self, mode, Equipe, starter, Pokedex, environnement, nb_starter, e)
+ 
+#Mode de l'intoduction
+        elif mode == 7:
+            mode, slide = intro.suite(self,mode,slide, e)
             
                 
             
