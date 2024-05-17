@@ -39,12 +39,6 @@ def affiche_intro(self,txt,slide = None):
     draw = ImageDraw.Draw(img_fond)
     draw.text((45, 225), txt, font = fnt, fill =(0, 0, 0))
     img_fond.save("oak_intro2.png")
-    label = QLabel(self)
-    pixmap = QPixmap("oak_intro2.png")
-    label.setPixmap(pixmap) 
-    label.setScaledContents(True)
-    self.setCentralWidget(label)
-    self.show()
     
 def suite(self,mode,slide,e):
     """
@@ -67,7 +61,7 @@ def suite(self,mode,slide,e):
         Numero de la slide a afficher
 
     """
-    if e.key() == Qt.Key_Space:
+    if e.key() == 65:
         if slide == 0:
             txt = "Hello there !\nAnd welcome to the world of Pokemon !"
             affiche_intro(self,txt,slide)
@@ -111,7 +105,7 @@ def suite(self,mode,slide,e):
             return mode, slide, False
         
         if slide == 7:
-            self.hide()
+            self.intro.widgetHide()
             self.choix_pokeUI()
             mode = 6
             return mode, slide, True

@@ -61,5 +61,13 @@ class Widget2(QWidget):
         new_x = int((s_width-width)/2)
         new_y = int((s_height-height)/2)
         self.setGeometry(QRect(new_x, new_y, width, height))
+
+    def widgetHide(self):
+        self.setEnabled(False)
+        self.setVisible(False)
+
+    def widgetShow(self):
+        self.setEnabled(True)
+        self.setVisible(True)
         
         

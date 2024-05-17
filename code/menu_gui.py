@@ -13,7 +13,7 @@ class Ui_LateralMenuButton(QtWidgets.QPushButton):
         super().__init__(parent)
         self.setGeometry(QtCore.QRect(40, 40, 70, 70))
         self.setMaximumSize(70, 70)
-        self.setStyleSheet("background-color: rgba(255, 255, 255, 0);")
+        self.setStyleSheet("color: rgba(255, 255, 255, 255);")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/icons/Hamburger_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.setIcon(icon)
@@ -29,7 +29,7 @@ class optionsMenu(Widget2):
     def __init__(self, parent):
         super().__init__(parent)
         # self.setStyleSheet("background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(203, 159, 1, 255), stop:1 rgba(255, 204, 3, 255));")
-        self.setStyleSheet("background-color: rgb(0, 255, 255);")
+        self.setStyleSheet("background-color: rgba(0, 255, 255, 255);")
         self.setGeometry(QtCore.QRect(100, 100, 400, 340))
         self.setAutoFillBackground(True)
 

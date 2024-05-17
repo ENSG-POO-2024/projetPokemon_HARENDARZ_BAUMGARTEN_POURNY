@@ -81,8 +81,7 @@ def affiche_deplacement(self,j1,e,Pokedex,environnement):
         label = QLabel(self)
         pixmap = QPixmap("gui\maps\game.png")
         label.setPixmap(pixmap)
-        label.setScaledContents(True)
-        self.setCentralWidget(label)
+        
         return mode,0
     if e.key() == Qt.Key_Down:
         j1.deplacement("down")
@@ -107,8 +106,7 @@ def affiche_deplacement(self,j1,e,Pokedex,environnement):
         label = QLabel(self)
         pixmap = QPixmap("gui\maps\game.png")
         label.setPixmap(pixmap)
-        label.setScaledContents(True)
-        self.setCentralWidget(label)
+        
         return mode,0
     if e.key() == Qt.Key_Left:
         j1.deplacement("left")
@@ -133,8 +131,7 @@ def affiche_deplacement(self,j1,e,Pokedex,environnement):
         label = QLabel(self)
         pixmap = QPixmap("gui\maps\game.png")
         label.setPixmap(pixmap)
-        label.setScaledContents(True)
-        self.setCentralWidget(label)
+        
         return mode,0
     if e.key() == Qt.Key_Right:
         j1.deplacement("right")
@@ -159,8 +156,7 @@ def affiche_deplacement(self,j1,e,Pokedex,environnement):
         label = QLabel(self)
         pixmap = QPixmap("gui\maps\game.png")
         label.setPixmap(pixmap)
-        label.setScaledContents(True)
-        self.setCentralWidget(label)
+        
         return mode,0
     else:
         return mode,0

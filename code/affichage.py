@@ -27,6 +27,7 @@ from gui import gui_resources
 from menu_gui import *
 from music_gui import *
 from widget_surcharge_gui import Widget, Widget2
+from other_widgets_gui import *
 
 # =============================================================================
 # INITIALISATION DES VARIABLES
@@ -75,18 +76,19 @@ class MainWindow(QMainWindow, Widget):
         
         id_Poke = 0
         mode = 0
-        #self.menuUI()
 
         self.centralwidget = QWidget(self)
         self.centralwidget.setObjectName("centralwidget")
         self.setCentralWidget(self.centralwidget) 
        
         self.player = MusicJukebox()
+        self.main_menu = menuUi_class(self.max_width, self.max_height, self.centralwidget)
+        self.main_menu.widgetShow()
         
         self.lateralMenu = optionsMenu(self.centralwidget)
         self.lateralMenu.centerWidget(self.max_width, self.max_height)
-        self.lateralMenuButton = Ui_LateralMenuButton(self.centralwidget)
-        self.lateralMenuButton.clicked.connect(self.lateralMenu.test_for_hiding)
+        # self.lateralMenuButton = Ui_LateralMenuButton(self.centralwidget)
+        # self.lateralMenuButton.clicked.connect(self.lateralMenu.test_for_hiding)
         
         self.lateralMenu.volumeHorizontalSlider.valueChanged.connect(self.changeVolume)
         self.lateralMenu.closeButton.clicked.connect(sys.exit)
@@ -117,51 +119,28 @@ class MainWindow(QMainWindow, Widget):
     
 #Fenêtre de l'ecran d'acceuille
     def menuUI(self):
-        self.resize(840,500)
-        self.setWindowIcon(QtGui.QIcon('gui\logos\py_symbol.png'))
-        self.title = "Pykémon"
-        self.setWindowTitle(self.title)
-        label = QLabel(self)
-        self.setCentralWidget(label)
-        pixmap = QPixmap("gui\logos\Retropix.png")
-        label.setPixmap(pixmap)
-        label.setScaledContents(True)
-        self.show()
+        self.menu = menuUi_class(self.max_width,self.max_height,self.centralwidget)
+        self.menu.widgetShow()
 
 #Fenêtre de la carte
     def carteUI(self):
-        super(MainWindow, self).__init__()
-        self.resize(840,500)
-        self.setWindowIcon(QtGui.QIcon('gui\ logos\py_symbol.png'))
-        self.title = "Pykémon"
-        self.setWindowTitle(self.title)
-        label = QLabel(self)
-        pixmap = QPixmap("gui\maps\game.png")
-        label.setPixmap(pixmap)
-        label.setScaledContents(True)
-        self.setCentralWidget(label)
-        self.show()
+        self.carte = carteUi_class(self.max_width,self.max_height,self.centralwidget)
+        self.carte.widgetShow()
     
 #Fenêtre de l'inventaire
     def inventaireUI(self):
         global nb_inventory
-        super(MainWindow, self).__init__()
-        self.resize(840,500)
-        self.setWindowIcon(QtGui.QIcon('gui\logos\py_symbol.png'))
-        self.title = "Pykémon"
-        self.setWindowTitle(self.title)
         ai.affiche_poke(self,Equipe,collection,Pokedex,nb_inventory)
+        self.inventaire = inventraireUi_class(self.max_width,self.max_height,self.centralwidget)
+        self.inventaire.widgetShow()
         nb_inventory = 0
         
 #Fenêtre de l'équipe
     def teamUI(self):
         global nb_team
-        super(MainWindow, self).__init__()
-        self.resize(840,500)
-        self.setWindowIcon(QtGui.QIcon('gui\logos\py_symbol.png'))
-        self.title = "Pykémon"
-        self.setWindowTitle(self.title)
         ai.affiche_team_poke(self,Equipe,collection,Pokedex,nb_team)
+        self.inventaire = inventraireUi_class(self.max_width,self.max_height,self.centralwidget)
+        self.inventaire.widgetShow()
         nb_team = 0
         
 #Fenêtre des combats
@@ -169,11 +148,6 @@ class MainWindow(QMainWindow, Widget):
         global id_Poke
         global phase
         global poke_combattant
-        super(MainWindow, self).__init__()
-        self.resize(840,500)
-        self.setWindowIcon(QtGui.QIcon('gui\logos\py_symbol.png'))
-        self.title = "Pykémon"
-        self.setWindowTitle(self.title)
         img_Poke_ennemie = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
         img_fond = Image.open(path+"\\gui\\battle\\intro_fight.png")
         img_fight = img_fond 
@@ -185,34 +159,25 @@ class MainWindow(QMainWindow, Widget):
         txt = Pokedex[id_Poke].name
         draw.text((15, 105), txt, font = fnt, fill =(0, 0, 0))
         img_fight.save("fight.png")
-        label = QLabel(self)
-        pixmap = QPixmap("fight.png")
-        label.setPixmap(pixmap) 
-        label.setScaledContents(True)
+        
+        self.combat = combatUi_class(self.max_width,self.max_height,self.centralwidget)
+
         phase = "intro"
         poke_combattant = None
-        self.setCentralWidget(label)
-        self.show()
         
 #Fenêtre du choix du starter
     def choix_pokeUI(self):
         global starter
         global nb_starter
-        super(MainWindow, self).__init__()
-        self.resize(840,500)
-        self.setWindowIcon(QtGui.QIcon('gui\logos\py_symbol.png'))
-        self.title = "Pykémon"
-        self.setWindowTitle(self.title)
         ai.affiche_choix_starter(self,Equipe,starter,Pokedex,nb_starter)
+        self.inventaire = inventraireUi_class(self.max_width,self.max_height,self.centralwidget)
+        self.inventaire.widgetShow()
         
 #Fenêtre de l'introduction
     def introUI(self):
-        super(MainWindow, self).__init__()
-        self.resize(840,500)
-        self.setWindowIcon(QtGui.QIcon('gui\logos\py_symbol.png'))
-        self.title = "Pykémon"
-        self.setWindowTitle(self.title)
         intro.affiche_intro(self,"Hello there !\nAnd welcome to the world of Pokemon !")
+        self.intro = introUi_class(self.max_width,self.max_height,self.centralwidget)
+        self.intro.widgetShow()
         
   
 ### Gère les commandes    
@@ -234,16 +199,20 @@ class MainWindow(QMainWindow, Widget):
         global music_state
                                   
 #Chaque mode permet de gérer une partie du jeu
+        if e.key() == Qt.Key_Escape:
+            self.lateralMenu.test_for_hiding()
     
 #Mode de l'écran d'acceuille
         if mode == 0:        
             mode = 7
-            self.hide() 
             self.introUI()
+            self.main_menu.widgetHide()
 
 #Mode de la carte
         elif mode == 1:
             self.player.play_song('Exploration')
+            self.carte.reloadPixmap(self.max_width, self.max_height )
+            self.carte.widgetShow()
             mode, id_Poke = de.affiche_deplacement(self, j1, e, Pokedex,environnement)
             mode, nb_inventory = ai.affiche_inventaire(self,mode,Equipe,collection,Pokedex,nb_inventory,e)
             
@@ -252,32 +221,39 @@ class MainWindow(QMainWindow, Widget):
         elif mode == 2:
             self.player.stop_song()
             self.player.play_song(rd.choice(['Combat1','Combat2']))
-            self.hide()
+            self.inventaire.widgetHide()
+            self.carte.widgetHide()
+
             self.combatUI()
+            self.combat.widgetShow()
             mode = 3
  
 #Mode du combat
         elif mode == 3:
             mode, phase, poke_combattant = ac.affiche_combat(self,mode, id_Poke, Equipe, Pokedex, e, phase, collection, environnement, poke_combattant)
+            self.combat.reloadPixmap(self.max_width, self.max_height)
             if mode == 1:
                 self.player.stop_song()
  
 #Mode de l'inventaire
         elif mode == 4:
             mode, nb_inventory = ai.affiche_inventaire(self,mode,Equipe,collection,Pokedex,nb_inventory,e)
+            self.inventaire.reloadPixmap(self.max_width, self.max_height)
+
             
 
 #Mode de l'équipe        
         elif mode == 5:
             mode, nb_team, collection, Equipe = ai.affiche_team(self,mode,Equipe,collection,Pokedex,nb_team,nb_inventory,e)
-
 #Mode du choix du starter            
         elif mode == 6:
             mode, nb_starter, environnement, Equipe = ai.affiche_starter(self, mode, Equipe, starter, Pokedex, environnement, nb_starter, e)
+            self.inventaire.reloadPixmap(self.max_width, self.max_height)
  
 #Mode de l'intoduction
         elif mode == 7:
             mode, slide, music_state = intro.suite(self,mode,slide, e)
+            self.intro.reloadPixmap(self.max_width, self.max_height)
             if music_state:
                 self.player.stop_song()
                 music_state == False  
@@ -287,7 +263,6 @@ class MainWindow(QMainWindow, Widget):
         
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    
     w = MainWindow(app)
     w.show()
     sys.exit(app.exec_())
