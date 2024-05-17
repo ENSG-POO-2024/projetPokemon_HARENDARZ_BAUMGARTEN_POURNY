@@ -27,7 +27,7 @@ import pokemon as p
 
 Pokedex, Pokelist = p.creation_pokedex() 
 Equipe = {}
-collection  = {}
+collection  = {10: Pokedex[10 ]}
 starter = {1: Pokedex[2], 4: Pokedex[4], 7:Pokedex[7], 25: Pokedex[25]}
 environnement, autre = p.creation_pokedex() 
 
@@ -199,7 +199,7 @@ class MainWindow(QMainWindow):
         global player
         global player2
         app = QtWidgets.QApplication(sys.argv)
-        filename = "..\code\gui\Toad Sinatra - My Way (No AI, No practice, SINGLE take).mp3"
+        filename = "..\code\gui\The Great Marsh & Pal Park [Pokémon Diamond & Pearl].mp3"
         filename2 = "..\code\gui\Pokémon Black & White - Battle! Elite Four (CPS-2 Remix).mp3"
         fullpath = QtCore.QDir.current().absoluteFilePath(filename)
         fullpath2 = QtCore.QDir.current().absoluteFilePath(filename2)
