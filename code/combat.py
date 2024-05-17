@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+        # -*- coding: utf-8 -*-
 """
 Created on Fri May  3 14:16:37 2024
 
@@ -7,106 +7,147 @@ Created on Fri May  3 14:16:37 2024
 
 import csv
 import numpy as np
-import math as m
+import pokemon
+import utilitaire
+import random as rd
 
-List_type = ['Steel','Fighting', 'Dragon','Water','Electric','Fire','Fairy','Ice','Bug','Normal','Grass','Poison','Psychic','Rock','Ground','Ghost','Shadow','Flying']
+List_type = ['Steel','Fighting', 'Dragon','Water','Electric','Fire','Fairy','Ice','Bug','Normal','Grass','Poison','Psychic','Rock','Ground','Ghost','Dark','Flying']
 
-##Permet de récupérer les indices des types. Traduction de ténèbres à vérifier ? 
+##Permet de récupérer les indices des types.
 
 
 table_type = np.genfromtxt('../data/Types.csv',delimiter = ',')
 
 
-def formule_attack(at,df1,df2):
-    '''
-    at : attaque de l attaquant
-    df : défenses des pokémons 
 
-    Returns
-    -------
-    Formule du calcul de dégâts
-    Sans les coefficients d efficacité de type!
-    
-    '''
-    return at*(df1/df2)
-
-
-def attack(at1,df1,df2):
-    '''
-    Parameters
-    ----------
-    at1 : attaque de l attaquant
-    df1 : défense de l attaquant
-    df2 : défense du défenseur
-        
-    Returns
-    -------
-    Dégâts.
-    '''
-    return formule_attack(at, df1, df2)
-
-
-def special_attack(tp1,at_spc1,df_spc1,tp2,df_spc2):
-    """
-    tp1 : type de l attaquant
-    at_spc1 : attaque spéciale de l attaquant
-    df_spc1 : défense spéciale de l attaquant
-    tp2 : type du défenseur
-    df_spc2 : défense spécialedu défenseur
-
-    Returns
-    -------
-    Cherche le coefficient d efficacité de type.
-    Multiplie le résultat de la formule d attaque par le coef
-    Renvoie l entier supérieur le plus proche si le résultat est relatif
-    """
-    i1,i2 = List_type.index(tp1), List_type.index(tp2)
-    coef = table_type[i1][i2]
-    return m.ceil(formule_attack(at_spc1,df_spc1,df_spc2)*coef)
+'''
+Environnement : Dictionnaire, variable globale, des pokémons dans l environnement
+Equipe : Dictionnaire des pokémons actifs dans l équipe du dresseur
+Collection : Dictionnaire des pokémons possédés par le dresseur
+poke_att : pokémon infligeant les dégâts
+poke_def : pokémon recevant les dégâts
+'''
 
 
 
+## INTERFACE!! ##
 
-
-
-
-
-def tour_joueur(poke_att, poke_def):
+def tour_joueur(poke_att, poke_def, choix_attaque):
     '''
     poke_att : pokémon actif du joueur
     poke_def : pokémon sauvage
     
-    Au tour du joueur, il peut choisir entre attaquer, choisir un autre pokémon ou fuir
+    Attaque du joueur. Explicite: selon le choix d attaque du joueur, calcule les dégâts correspondants.
     '''
-    pass
+    ##Interface
+    ## à construire avec l'interface, le joueur doit choisir entre une attaque spéciale et une attaque normale
+    
+    if choix_attaque == 'normale':
+        damage = poke_att.attack(poke_def)
+        
+    elif choix_attaque == 'speciale':
+        damage = poke_att.special_attack(poke_def)
+    
+    poke_def.pv = poke_def.pv - damage
+
+## INTERFACE!! ##
+
 
 
 def tour_environnement(poke_att, poke_def):
     '''
     poke_att : pokémon sauvage
     poke_def : pokémon actif du joueur
+    reserve : nombre de pokémons combattants restants du dresseur
     
-    Au tour du pokémon sauvage, il attaque le pokémon adverse
+    Au tour du pokémon sauvage, il attaque le pokémon adverse.
+    Le pokémon sauvage choisit automatiquement l attaque la plus léthale.
     '''
     ## Le pokémon sauvage considère ses options : il utilisera l'attaque la plus efficace    
-    degats = attack(poke_att.at,poke_att.df,poke_def.df)
-    degats_spc = special_attack(poke_att.tp,poke_att.at,poke_att.df,poke_def.tp,poke_def.df)
+    degats = poke_att.attack(poke_def)
+    degats_spc = poke_att.special_attack(poke_def)
+    damage = max(degats,degats_spc)
     
     ## Il inflige des dommages au pokémon actif du joueur
-    damage = max(degats,degats_spc)
     poke_def.pv = poke_def.pv - damage
     
-    
-    
-    
+    ## s'il vainc son adversaire, l'équipe du joueur comprend un pokémon de moins et il devra immédiatemment choisir un nouveau pokémon
+    if poke_def.pv <= 0:
+        poke_def.etat = False
+
+
+
+
+## INTERFACE!! ##
+        
+def choix_pokemon(Equipe):
+    '''
+    Parameters
+    ----------
+    Equipe : Dictionnaire des pokémons dans l équipe du dresseur
+        Le pokémon actif au combat sera choisi dans ce dictionnaire
+
+    Fonction permettant au dresseur de choisir son pokémon actif.
+    '''
+    L = list(Equipe.keys())
+    list_poke_vie = []
+    for cle in L:
+        if Equipe[cle].etat:
+            list_poke_vie.append(Equipe[cle])
+    poke_actif = list_poke_vie[rd.randint(0, len(list_poke_vie) - 1)]
+    return poke_actif
+
+## INTERFACE!! ##
+
+
+
+
+def fin_combat(Equipe,Collection,poke_sauvage,Environnement):
+    ## Soin après bataille, ajout du pokémon vaincu à l'Equipe
+    if not poke_sauvage.pv > 0:
+        if len(Equipe) < 6:
+            Equipe[poke_sauvage.id] = poke_sauvage
+        else:
+            Collection[poke_sauvage.id] = poke_sauvage
+        del Environnement[poke_sauvage.id]
+    else:
+        poke_sauvage.pv = poke_sauvage.pv_totaux
+    utilitaire.soin(Equipe)
+    utilitaire.soin(Collection)
+
+    ## Doit supprimer le pokémon de la case si vaincu
+    ## Doit bouger de la case si perdu    
     
 
-def combat(Equipe,poke_sauvage):
-    fleeing = False ##Flag déterminant si la fuite et donc fin du combat est active.
+
+'''
+La fonction combat va être intégrée dans la structure de l interface.
+
+Cette fonction a structuré notre vision du combat. Elle n a pas pu être utilisée telle quelle.
+Elle reste cependant assez claire pour visualiser notre système de combat par rapport au code de l interface.
+'''
+
+## INTERFACE!! ##
+def combat(Equipe,Collection,poke_sauvage):
+    '''
+    Parameters
+    ----------
+    Equipe : Dictionnaire des pokémons dans l équipe du dresseur
+        Le pokémon actif au combat sera choisi dans ce dictionnaire
+    poke_sauvage : Objet de classe pokémon, Adversaire
+         Pokémon rencontré dans la nature
+         
+    ----------
+    Fonction gérant le combat
+    Fait appel aux Fonctions de Tour, qui permettant aux participants de choisir leur action
+    A la fin du combat, tous les pokémons sont soignés. Un éventuel pokémon sauvage vaincu est ajouté à l équipe.
+    '''
+    fleeing = False         ## Flag déterminant si la fuite et donc fin du combat est active.
+    reserve = len(Equipe)   ## Compteur des pokémons du dresseur. Si atteint 0, fin du combat.
+    changement = False      ## Flag déterminant si le dresseur doit choisir un nouveau pokémon suite à une attaque du pokémon sauvage
     
     ## Choix pokémon
-    choix = input("Veuillez entrer l'indice du pokémon choisi dans votre équipe: ")
-    poke_actif = Equipe[choix]
+    poke_actif = choix_pokemon(Equipe)
     
     ## Détermination de l'ordre du tour
     if poke_actif.sp >= poke_sauvage.sp:
@@ -114,26 +155,52 @@ def combat(Equipe,poke_sauvage):
     else:
         initiative = False
     
-    while poke_sauvage.pv > 0  or fleeing == False:
+    while poke_sauvage.pv > 0  or fleeing == False or reserve > 0:
         if initiative:
-            tour_joueur(poke_actif, poke_sauvage)
+            ##Interface
+            choix_joueur = None 
+            ## devra être modifié pour inclure le choix
+            ## Choix entre Fuir, Changer de pokémon, Attaquer
+            
+            if choix_joueur == 'Fuir':
+                fleeing == True ## doit changer le booléen fleeing en True pour atteindre la fin du combat
+            elif choix_joueur == 'Changer':
+                poke_actif = choix_pokemon(Equipe) ## doit déclencher la fonction choix_pokemon
+            elif choix_joueur == 'Attaquer':
+                tour_joueur(poke_actif, poke_sauvage)  ## doit déclencher la fonction tour_joueur
+                           
         else:
-            tour_environnement(poke_sauvage,poke_actif)
-    
+            changement = tour_environnement(poke_sauvage,poke_actif,reserve)
+            """
+            Voir la fonction tour environnement dans l archive. La fonction renvoie un booléen correspondant 
+            à l état de santé du pokémon défenseur.
+            """
+            
+        ## Si le pokémon combattant est vaincu, le dresseur en choisit un autre
+        if changement == True:
+            poke_actif = choix_pokemon(Equipe)
+            changement = False
+            
         ## Inversion de l'initiative
-        initiative = not initiative 
+        initiative = not initiative
         
         
-    
         
     ## Pokemon actif doit avoir vie > 0
     ## Si le pokemon actif meurt, on doit en choisir un autre
-    ## 
+    
+    ## Appel de la fin du combat
         
-        
+    fin_combat(Equipe,Collection,poke_sauvage,Environnement)
+    
+    
     
 
-
-
+        
+## INTERFACE!! ##
+    
+    
+    
+    
 
 
