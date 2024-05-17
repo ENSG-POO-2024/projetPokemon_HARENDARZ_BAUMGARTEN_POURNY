@@ -21,6 +21,7 @@ import affichage_combat as ac
 import affichage_inventaire as ai
 import intro
 import pokemon as p
+from gui.saving_mechanics import *
 
 # =============================================================================
 # INITIALISATION DES VARIABLES
@@ -114,7 +115,7 @@ class MainWindow(QMainWindow):
     def carteUI(self):
         super(MainWindow, self).__init__()
         self.resize(840,500)
-        self.setWindowIcon(QtGui.QIcon('gui\logos\py_symbol.png'))
+        self.setWindowIcon(QtGui.QIcon('gui\ logos\py_symbol.png'))
         self.title = "Pykémon"
         self.setWindowTitle(self.title)
         label = QLabel(self)
@@ -122,6 +123,8 @@ class MainWindow(QMainWindow):
         label.setPixmap(pixmap)
         label.setScaledContents(True)
         self.setCentralWidget(label)
+        global_variables = {'Equipe': None, 'collection': None, 'environnement':None, 'nb_inventory':None, 'nb_team':None, 'slide':None, 'case_depart':None} 
+        fill_global_variables(global_variables)
         self.show()
     
 #Fenêtre de l'inventaire
@@ -217,7 +220,7 @@ class MainWindow(QMainWindow):
         sys.exit(app.exec_())
         
   
-#Gère les commandes    
+### Gère les commandes    
     def keyPressEvent(self, e):
         global j1
         global all_img
@@ -282,6 +285,7 @@ class MainWindow(QMainWindow):
         
 if __name__ == "__main__":
     app = QApplication(sys.argv)
+    
     w = MainWindow()
     w.show()
     sys.exit(app.exec_())
