@@ -171,6 +171,7 @@ class MainWindow(QMainWindow, Widget):
         global nb_starter
         ai.affiche_choix_starter(self,Equipe,starter,Pokedex,nb_starter)
         self.inventaire = inventraireUi_class(self.max_width,self.max_height,self.centralwidget)
+        self.inventaire.centerWidget(self.max_width, self.max_height)
         self.inventaire.widgetShow()
         
 #Fenêtre de l'introduction
