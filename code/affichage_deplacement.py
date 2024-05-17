@@ -73,7 +73,7 @@ def affiche_deplacement(self,j1,e,Pokedex,environnement):
             if id_Poke <= 151:
                 if id_Poke in environnement:
                     mode = 2
-                    img5 = Image.open("..\code\gui\spr_rb-supgb_" + affiche_id(id_Poke) + ".png")
+                    img5 = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + affiche_id(id_Poke) + ".png")
                     new_image.paste(img5, (j1.case.y * 8, j1.case.x * 8))
                     new_image.save("gui\maps\game.png")
                     return mode,id_Poke
@@ -99,7 +99,7 @@ def affiche_deplacement(self,j1,e,Pokedex,environnement):
             if id_Poke <= 151:
                 if id_Poke in environnement:
                     mode = 2
-                    img5 = Image.open("..\code\gui\spr_rb-supgb_" + affiche_id(id_Poke) + ".png")
+                    img5 = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + affiche_id(id_Poke) + ".png")
                     new_image.paste(img5, (j1.case.y * 8, j1.case.x * 8))
                     new_image.save("gui\maps\game.png")
                     return mode,id_Poke
@@ -125,7 +125,7 @@ def affiche_deplacement(self,j1,e,Pokedex,environnement):
             if id_Poke <= 151:
                 if id_Poke in environnement:
                     mode = 2
-                    img5 = Image.open("..\code\gui\spr_rb-supgb_" + affiche_id(id_Poke) + ".png")
+                    img5 = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + affiche_id(id_Poke) + ".png")
                     new_image.paste(img5, (j1.case.y * 8, j1.case.x * 8))
                     new_image.save("gui\maps\game.png")
                     return mode,id_Poke
@@ -151,7 +151,7 @@ def affiche_deplacement(self,j1,e,Pokedex,environnement):
             if id_Poke <= 151:
                 if id_Poke in environnement:
                     mode = 2
-                    img5 = Image.open("..\code\gui\spr_rb-supgb_" + affiche_id(id_Poke) + ".png")
+                    img5 = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + affiche_id(id_Poke) + ".png")
                     new_image.paste(img5, (j1.case.y * 8, j1.case.x * 8))
                     new_image.save("gui\maps\game.png")
                     return mode,id_Poke

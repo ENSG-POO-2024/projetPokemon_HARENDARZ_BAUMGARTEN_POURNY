@@ -63,12 +63,12 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
         else:
             Poke_player = poke_combattant
         phase = "choix_action_fight"
-        img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
+        img_Poke_ennemie = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
         img_fond = Image.open(path + "\\gui\\battle\\action_choice.png")
         img_fight = img_fond 
         fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 8)
         img_fight.paste(img_Poke_ennemie, (100,5))
-        img_poke_player = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
+        img_poke_player = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
         img_fight.paste(img_poke_player, (10,40))
         draw = ImageDraw.Draw(img_fight)
         txt_ennemie = Pokedex[id_Poke].name
@@ -96,12 +96,12 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
     if phase == "choix_action_fight":
         if e.key() == Qt.Key_Right:
             Poke_player = poke_combattant
-            img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
+            img_Poke_ennemie = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
             img_fond = Image.open(path + "\\gui\\battle\\action_choice.png")
             img_fight = img_fond 
             fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 8)
             img_fight.paste(img_Poke_ennemie, (100,5))
-            img_poke_player = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
+            img_poke_player = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
             img_fight.paste(img_poke_player, (10,40))
             draw = ImageDraw.Draw(img_fight)
             txt_ennemie = Pokedex[id_Poke].name
@@ -128,12 +128,12 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
         
         if e.key() == Qt.Key_Space:
             Poke_player = poke_combattant
-            img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
+            img_Poke_ennemie = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
             img_fond = Image.open(path + "\\gui\\battle\\attack_choice.png")
             img_fight = img_fond 
             fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 8)
             img_fight.paste(img_Poke_ennemie, (100,5))
-            img_poke_player = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
+            img_poke_player = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
             img_fight.paste(img_poke_player, (10,40))
             draw = ImageDraw.Draw(img_fight)
             txt_ennemie = Pokedex[id_Poke].name
@@ -166,12 +166,12 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
     if phase == "choix_action_poke":
         if e.key() == Qt.Key_Down:
             Poke_player = poke_combattant
-            img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
+            img_Poke_ennemie = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
             img_fond = Image.open(path + "\\gui\\battle\\action_choice.png")
             img_fight = img_fond 
             fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 8)
             img_fight.paste(img_Poke_ennemie, (100,5))
-            img_poke_player = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
+            img_poke_player = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
             img_fight.paste(img_poke_player, (10,40))
             draw = ImageDraw.Draw(img_fight)
             txt_ennemie = Pokedex[id_Poke].name
@@ -200,12 +200,12 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
         
         if e.key() == Qt.Key_Left:
             Poke_player = poke_combattant
-            img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
+            img_Poke_ennemie = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
             img_fond = Image.open(path + "\\gui\\battle\\action_choice.png")
             img_fight = img_fond 
             fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 8)
             img_fight.paste(img_Poke_ennemie, (100,5))
-            img_poke_player = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
+            img_poke_player = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
             img_fight.paste(img_poke_player, (10,40))
             draw = ImageDraw.Draw(img_fight)
             txt_ennemie = Pokedex[id_Poke].name
@@ -232,12 +232,12 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
     
         if e.key() == Qt.Key_Space:
             Poke_player = poke_combattant
-            img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
+            img_Poke_ennemie = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
             img_fond = Image.open(path + "\\gui\\battle\\attack_result.png")
             img_fight = img_fond 
             fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 8)
             img_fight.paste(img_Poke_ennemie, (100,5))
-            img_poke_player = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
+            img_poke_player = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
             img_fight.paste(img_poke_player, (10,40))
             draw = ImageDraw.Draw(img_fight)
             txt_ennemie = Pokedex[id_Poke].name
@@ -277,12 +277,12 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
     if phase == "choix_poke1":
         if e.key() == Qt.Key_Down:
             Poke_player = poke_combattant
-            img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
+            img_Poke_ennemie = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
             img_fond = Image.open(path + "\\gui\\battle\\attack_result.png")
             img_fight = img_fond 
             fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 8)
             img_fight.paste(img_Poke_ennemie, (100,5))
-            img_poke_player = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
+            img_poke_player = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
             img_fight.paste(img_poke_player, (10,40))
             draw = ImageDraw.Draw(img_fight)
             txt_ennemie = Pokedex[id_Poke].name
@@ -317,12 +317,12 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
         
         if e.key() == Qt.Key_Right:
             Poke_player = poke_combattant
-            img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
+            img_Poke_ennemie = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
             img_fond = Image.open(path + "\\gui\\battle\\attack_result.png")
             img_fight = img_fond 
             fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 8)
             img_fight.paste(img_Poke_ennemie, (100,5))
-            img_poke_player = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
+            img_poke_player = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
             img_fight.paste(img_poke_player, (10,40))
             draw = ImageDraw.Draw(img_fight)
             txt_ennemie = Pokedex[id_Poke].name
@@ -360,12 +360,12 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
             if len(cle) >= 1 and Equipe[cle[0]].etat:
                 Poke_player = Equipe[cle[0]]
                 phase = "ennemie_turn"
-                img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
+                img_Poke_ennemie = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
                 img_fond = Image.open(path + "\\gui\\battle\\attack_result.png")
                 img_fight = img_fond 
                 fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 8)
                 img_fight.paste(img_Poke_ennemie, (100,5))
-                img_poke_player = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
+                img_poke_player = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
                 img_fight.paste(img_poke_player, (10,40))
                 draw = ImageDraw.Draw(img_fight)
                 txt_ennemie = Pokedex[id_Poke].name
@@ -399,12 +399,12 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
     if phase == "choix_poke2":
         if e.key() == Qt.Key_Down:
             Poke_player = poke_combattant
-            img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
+            img_Poke_ennemie = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
             img_fond = Image.open(path + "\\gui\\battle\\attack_result.png")
             img_fight = img_fond 
             fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 8)
             img_fight.paste(img_Poke_ennemie, (100,5))
-            img_poke_player = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
+            img_poke_player = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
             img_fight.paste(img_poke_player, (10,40))
             draw = ImageDraw.Draw(img_fight)
             txt_ennemie = Pokedex[id_Poke].name
@@ -439,12 +439,12 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
         
         if e.key() == Qt.Key_Up:
             Poke_player = poke_combattant
-            img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
+            img_Poke_ennemie = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
             img_fond = Image.open(path + "\\gui\\battle\\attack_result.png")
             img_fight = img_fond 
             fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 8)
             img_fight.paste(img_Poke_ennemie, (100,5))
-            img_poke_player = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
+            img_poke_player = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
             img_fight.paste(img_poke_player, (10,40))
             draw = ImageDraw.Draw(img_fight)
             txt_ennemie = Pokedex[id_Poke].name
@@ -479,12 +479,12 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
         
         if e.key() == Qt.Key_Right:
             Poke_player = poke_combattant
-            img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
+            img_Poke_ennemie = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
             img_fond = Image.open(path + "\\gui\\battle\\attack_result.png")
             img_fight = img_fond 
             fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 8)
             img_fight.paste(img_Poke_ennemie, (100,5))
-            img_poke_player = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
+            img_poke_player = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
             img_fight.paste(img_poke_player, (10,40))
             draw = ImageDraw.Draw(img_fight)
             txt_ennemie = Pokedex[id_Poke].name
@@ -522,12 +522,12 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
             if len(cle) >= 2 and Equipe[cle[1]].etat:
                 Poke_player = Equipe[cle[1]]
                 phase = "ennemie_turn"
-                img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
+                img_Poke_ennemie = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
                 img_fond = Image.open(path + "\\gui\\battle\\attack_result.png")
                 img_fight = img_fond 
                 fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 8)
                 img_fight.paste(img_Poke_ennemie, (100,5))
-                img_poke_player = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
+                img_poke_player = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
                 img_fight.paste(img_poke_player, (10,40))
                 draw = ImageDraw.Draw(img_fight)
                 txt_ennemie = Pokedex[id_Poke].name
@@ -560,12 +560,12 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
     if phase == "choix_poke3":
         if e.key() == Qt.Key_Up:
             Poke_player = poke_combattant
-            img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
+            img_Poke_ennemie = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
             img_fond = Image.open(path + "\\gui\\battle\\attack_result.png")
             img_fight = img_fond 
             fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 8)
             img_fight.paste(img_Poke_ennemie, (100,5))
-            img_poke_player = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
+            img_poke_player = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
             img_fight.paste(img_poke_player, (10,40))
             draw = ImageDraw.Draw(img_fight)
             txt_ennemie = Pokedex[id_Poke].name
@@ -600,12 +600,12 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
         
         if e.key() == Qt.Key_Right:
             Poke_player = poke_combattant
-            img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
+            img_Poke_ennemie = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
             img_fond = Image.open(path + "\\gui\\battle\\attack_result.png")
             img_fight = img_fond 
             fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 8)
             img_fight.paste(img_Poke_ennemie, (100,5))
-            img_poke_player = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
+            img_poke_player = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
             img_fight.paste(img_poke_player, (10,40))
             draw = ImageDraw.Draw(img_fight)
             txt_ennemie = Pokedex[id_Poke].name
@@ -643,12 +643,12 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
             if len(cle) >= 3 and Equipe[cle[2]].etat:
                 Poke_player = Equipe[cle[2]]
                 phase = "ennemie_turn"
-                img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
+                img_Poke_ennemie = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
                 img_fond = Image.open(path + "\\gui\\battle\\attack_result.png")
                 img_fight = img_fond 
                 fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 8)
                 img_fight.paste(img_Poke_ennemie, (100,5))
-                img_poke_player = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
+                img_poke_player = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
                 img_fight.paste(img_poke_player, (10,40))
                 draw = ImageDraw.Draw(img_fight)
                 txt_ennemie = Pokedex[id_Poke].name
@@ -682,12 +682,12 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
     if phase == "choix_poke4":
         if e.key() == Qt.Key_Down:
             Poke_player = poke_combattant
-            img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
+            img_Poke_ennemie = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
             img_fond = Image.open(path + "\\gui\\battle\\attack_result.png")
             img_fight = img_fond 
             fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 8)
             img_fight.paste(img_Poke_ennemie, (100,5))
-            img_poke_player = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
+            img_poke_player = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
             img_fight.paste(img_poke_player, (10,40))
             draw = ImageDraw.Draw(img_fight)
             txt_ennemie = Pokedex[id_Poke].name
@@ -722,12 +722,12 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
         
         if e.key() == Qt.Key_Left:
             Poke_player = poke_combattant
-            img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
+            img_Poke_ennemie = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
             img_fond = Image.open(path + "\\gui\\battle\\attack_result.png")
             img_fight = img_fond 
             fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 8)
             img_fight.paste(img_Poke_ennemie, (100,5))
-            img_poke_player = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
+            img_poke_player = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
             img_fight.paste(img_poke_player, (10,40))
             draw = ImageDraw.Draw(img_fight)
             txt_ennemie = Pokedex[id_Poke].name
@@ -765,12 +765,12 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
             if len(cle) >= 4 and Equipe[cle[3]].etat:
                 Poke_player = Equipe[cle[3]]
                 phase = "ennemie_turn"
-                img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
+                img_Poke_ennemie = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
                 img_fond = Image.open(path + "\\gui\\battle\\attack_result.png")
                 img_fight = img_fond 
                 fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 8)
                 img_fight.paste(img_Poke_ennemie, (100,5))
-                img_poke_player = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
+                img_poke_player = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
                 img_fight.paste(img_poke_player, (10,40))
                 draw = ImageDraw.Draw(img_fight)
                 txt_ennemie = Pokedex[id_Poke].name
@@ -804,12 +804,12 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
     if phase == "choix_poke5":
         if e.key() == Qt.Key_Down:
             Poke_player = poke_combattant
-            img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
+            img_Poke_ennemie = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
             img_fond = Image.open(path + "\\gui\\battle\\attack_result.png")
             img_fight = img_fond 
             fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 8)
             img_fight.paste(img_Poke_ennemie, (100,5))
-            img_poke_player = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
+            img_poke_player = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
             img_fight.paste(img_poke_player, (10,40))
             draw = ImageDraw.Draw(img_fight)
             txt_ennemie = Pokedex[id_Poke].name
@@ -844,12 +844,12 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
         
         if e.key() == Qt.Key_Up:
             Poke_player = poke_combattant
-            img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
+            img_Poke_ennemie = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
             img_fond = Image.open(path + "\\gui\\battle\\attack_result.png")
             img_fight = img_fond 
             fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 8)
             img_fight.paste(img_Poke_ennemie, (100,5))
-            img_poke_player = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
+            img_poke_player = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
             img_fight.paste(img_poke_player, (10,40))
             draw = ImageDraw.Draw(img_fight)
             txt_ennemie = Pokedex[id_Poke].name
@@ -884,12 +884,12 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
         
         if e.key() == Qt.Key_Left:
             Poke_player = poke_combattant
-            img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
+            img_Poke_ennemie = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
             img_fond = Image.open(path + "\\gui\\battle\\attack_result.png")
             img_fight = img_fond 
             fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 8)
             img_fight.paste(img_Poke_ennemie, (100,5))
-            img_poke_player = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
+            img_poke_player = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
             img_fight.paste(img_poke_player, (10,40))
             draw = ImageDraw.Draw(img_fight)
             txt_ennemie = Pokedex[id_Poke].name
@@ -927,12 +927,12 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
             if len(cle) >= 5 and Equipe[cle[4]].etat:
                 Poke_player = Equipe[cle[4]]
                 phase = "ennemie_turn"
-                img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
+                img_Poke_ennemie = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
                 img_fond = Image.open(path + "\\gui\\battle\\attack_result.png")
                 img_fight = img_fond 
                 fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 8)
                 img_fight.paste(img_Poke_ennemie, (100,5))
-                img_poke_player = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
+                img_poke_player = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
                 img_fight.paste(img_poke_player, (10,40))
                 draw = ImageDraw.Draw(img_fight)
                 txt_ennemie = Pokedex[id_Poke].name
@@ -965,12 +965,12 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
     if phase == "choix_poke6":
         if e.key() == Qt.Key_Up:
             Poke_player = poke_combattant
-            img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
+            img_Poke_ennemie = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
             img_fond = Image.open(path + "\\gui\\battle\\attack_result.png")
             img_fight = img_fond 
             fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 8)
             img_fight.paste(img_Poke_ennemie, (100,5))
-            img_poke_player = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
+            img_poke_player = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
             img_fight.paste(img_poke_player, (10,40))
             draw = ImageDraw.Draw(img_fight)
             txt_ennemie = Pokedex[id_Poke].name
@@ -1005,12 +1005,12 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
         
         if e.key() == Qt.Key_Left:
             Poke_player = poke_combattant
-            img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
+            img_Poke_ennemie = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
             img_fond = Image.open(path + "\\gui\\battle\\attack_result.png")
             img_fight = img_fond 
             fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 8)
             img_fight.paste(img_Poke_ennemie, (100,5))
-            img_poke_player = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
+            img_poke_player = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
             img_fight.paste(img_poke_player, (10,40))
             draw = ImageDraw.Draw(img_fight)
             txt_ennemie = Pokedex[id_Poke].name
@@ -1048,12 +1048,12 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
             if len(cle) >= 6 and Equipe[cle[5]].etat:
                 Poke_player = Equipe[cle[5]]
                 phase = "ennemie_turn"
-                img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
+                img_Poke_ennemie = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
                 img_fond = Image.open(path + "\\gui\\battle\\attack_result.png")
                 img_fight = img_fond 
                 fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 8)
                 img_fight.paste(img_Poke_ennemie, (100,5))
-                img_poke_player = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
+                img_poke_player = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
                 img_fight.paste(img_poke_player, (10,40))
                 draw = ImageDraw.Draw(img_fight)
                 txt_ennemie = Pokedex[id_Poke].name
@@ -1085,12 +1085,12 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
     if phase == "choix_action_fuite":
         if e.key() == Qt.Key_Up:
             Poke_player = poke_combattant
-            img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
+            img_Poke_ennemie = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
             img_fond = Image.open(path + "\\gui\\battle\\action_choice.png")
             img_fight = img_fond 
             fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 8)
             img_fight.paste(img_Poke_ennemie, (100,5))
-            img_poke_player = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
+            img_poke_player = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
             img_fight.paste(img_poke_player, (10,40))
             draw = ImageDraw.Draw(img_fight)
             txt_ennemie = Pokedex[id_Poke].name
@@ -1118,12 +1118,12 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
         if e.key() == Qt.Key_Space:
             co.fin_combat(Equipe, collection, Pokedex[id_Poke], environnement)
             Poke_player = poke_combattant
-            img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
+            img_Poke_ennemie = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
             img_fond = Image.open(path + "\\gui\\battle\\attack_result.png")
             img_fight = img_fond 
             fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 8)
             img_fight.paste(img_Poke_ennemie, (100,5))
-            img_poke_player = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
+            img_poke_player = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
             img_fight.paste(img_poke_player, (10,40))
             draw = ImageDraw.Draw(img_fight)
             txt_ennemie = Pokedex[id_Poke].name
@@ -1157,12 +1157,12 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
     if phase == "attack_choice_n":
         if e.key() == Qt.Key_Down:
             Poke_player = poke_combattant
-            img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
+            img_Poke_ennemie = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
             img_fond = Image.open(path + "\\gui\\battle\\attack_choice.png")
             img_fight = img_fond 
             fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 8)
             img_fight.paste(img_Poke_ennemie, (100,5))
-            img_poke_player = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
+            img_poke_player = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
             img_fight.paste(img_poke_player, (10,40))
             draw = ImageDraw.Draw(img_fight)
             txt_ennemie = Pokedex[id_Poke].name
@@ -1190,12 +1190,12 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
         if e.key() == Qt.Key_Space:
             co.tour_joueur(poke_combattant, Pokedex[id_Poke], 'normale')
             Poke_player = poke_combattant
-            img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
+            img_Poke_ennemie = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
             img_fond = Image.open(path + "\\gui\\battle\\attack_result.png")
             img_fight = img_fond 
             fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 8)
             img_fight.paste(img_Poke_ennemie, (100,5))
-            img_poke_player = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
+            img_poke_player = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
             img_fight.paste(img_poke_player, (10,40))
             draw = ImageDraw.Draw(img_fight)
             txt_ennemie = Pokedex[id_Poke].name
@@ -1230,12 +1230,12 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
     if phase == "attack_choice_sp":
         if e.key() == Qt.Key_Up:
             Poke_player = poke_combattant
-            img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
+            img_Poke_ennemie = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
             img_fond = Image.open(path + "\\gui\\battle\\attack_choice.png")
             img_fight = img_fond 
             fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 8)
             img_fight.paste(img_Poke_ennemie, (100,5))
-            img_poke_player = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
+            img_poke_player = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
             img_fight.paste(img_poke_player, (10,40))
             draw = ImageDraw.Draw(img_fight)
             txt_ennemie = Pokedex[id_Poke].name
@@ -1263,12 +1263,12 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
         if e.key() == Qt.Key_Space:
             co.tour_joueur(poke_combattant, Pokedex[id_Poke], 'speciale')
             Poke_player = poke_combattant
-            img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
+            img_Poke_ennemie = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
             img_fond = Image.open(path + "\\gui\\battle\\attack_result.png")
             img_fight = img_fond 
             fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 8)
             img_fight.paste(img_Poke_ennemie, (100,5))
-            img_poke_player = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
+            img_poke_player = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
             img_fight.paste(img_poke_player, (10,40))
             draw = ImageDraw.Draw(img_fight)
             txt_ennemie = Pokedex[id_Poke].name
@@ -1307,12 +1307,12 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
         if e.key() == Qt.Key_Space:
             co.tour_environnement(Pokedex[id_Poke],poke_combattant)
             Poke_player = poke_combattant
-            img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
+            img_Poke_ennemie = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
             img_fond = Image.open(path + "\\gui\\battle\\attack_result.png")
             img_fight = img_fond 
             fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 8)
             img_fight.paste(img_Poke_ennemie, (100,5))
-            img_poke_player = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
+            img_poke_player = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
             img_fight.paste(img_poke_player, (10,40))
             draw = ImageDraw.Draw(img_fight)
             txt_ennemie = Pokedex[id_Poke].name
@@ -1352,12 +1352,12 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
     if phase == "poke_mort":
         if e.key() == Qt.Key_Space:
             Poke_player = poke_combattant
-            img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
+            img_Poke_ennemie = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
             img_fond = Image.open(path + "\\gui\\battle\\attack_result.png")
             img_fight = img_fond 
             fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 8)
             img_fight.paste(img_Poke_ennemie, (100,5))
-            img_poke_player = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
+            img_poke_player = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
             img_fight.paste(img_poke_player, (10,40))
             draw = ImageDraw.Draw(img_fight)
             txt_ennemie = Pokedex[id_Poke].name
@@ -1396,12 +1396,12 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
         if e.key() == Qt.Key_Space:
             co.fin_combat(Equipe, collection, Pokedex[id_Poke], environnement)
             Poke_player = poke_combattant
-            img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
+            img_Poke_ennemie = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
             img_fond = Image.open(path + "\\gui\\battle\\attack_result.png")
             img_fight = img_fond 
             fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 8)
             img_fight.paste(img_Poke_ennemie, (100,5))
-            img_poke_player = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
+            img_poke_player = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
             img_fight.paste(img_poke_player, (10,40))
             draw = ImageDraw.Draw(img_fight)
             txt_ennemie = Pokedex[id_Poke].name
@@ -1431,12 +1431,12 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
         if e.key() == Qt.Key_Space:
             co.fin_combat(Equipe, collection, Pokedex[id_Poke], environnement)
             Poke_player = poke_combattant
-            img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
+            img_Poke_ennemie = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
             img_fond = Image.open(path + "\\gui\\battle\\attack_result.png")
             img_fight = img_fond 
             fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 8)
             img_fight.paste(img_Poke_ennemie, (100,5))
-            img_poke_player = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
+            img_poke_player = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(Poke_player.id) + ".png")
             img_fight.paste(img_poke_player, (10,40))
             draw = ImageDraw.Draw(img_fight)
             txt_ennemie = Pokedex[id_Poke].name

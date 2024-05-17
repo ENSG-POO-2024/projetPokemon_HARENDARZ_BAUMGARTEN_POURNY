@@ -39,7 +39,7 @@ def affiche_poke(self,Equipe,collection,Pokedex,nb_inventory):
     """
     if len(collection) != 0:
         cle = list(collection.keys())
-        img_poke = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(cle[nb_inventory]) + ".png")
+        img_poke = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(cle[nb_inventory]) + ".png")
         img_fond = Image.open("gui\inventory\inventory.png")
         img_fond.paste(img_poke, (60, 40))
         fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 11)
@@ -76,7 +76,7 @@ def affiche_team_poke(self,Equipe,collection,Pokedex,nb_team):
 
     """
     cle = list(Equipe.keys())
-    img_poke = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(cle[nb_team]) + ".png")
+    img_poke = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(cle[nb_team]) + ".png")
     img_fond = Image.open(path+"\\gui\\inventory\\team.png")
     img_fond.paste(img_poke, (60, 40))
     fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 11)
@@ -112,7 +112,7 @@ def affiche_choix_starter(self,Equipe,starter,Pokedex,nb_starter):
 
     """
     cle = list(starter.keys())
-    img_poke = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(cle[nb_starter]) + ".png")
+    img_poke = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(cle[nb_starter]) + ".png")
     img_fond = Image.open("gui\inventory\inventory.png")
     img_fond.paste(img_poke, (60, 40))
     fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 11)

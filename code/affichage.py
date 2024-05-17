@@ -159,7 +159,7 @@ class MainWindow(QMainWindow):
         self.setWindowIcon(QtGui.QIcon('gui\logos\py_symbol.png'))
         self.title = "Pykémon"
         self.setWindowTitle(self.title)
-        img_Poke_ennemie = Image.open("..\code\gui\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
+        img_Poke_ennemie = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
         img_fond = Image.open(path+"\\gui\\battle\\intro_fight.png")
         img_fight = img_fond 
         fnt = ImageFont.truetype("gui/Retro_Gaming.ttf", 11)
