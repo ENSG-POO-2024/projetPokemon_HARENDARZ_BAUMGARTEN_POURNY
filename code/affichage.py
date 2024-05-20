@@ -130,18 +130,12 @@ class MainWindow(QMainWindow, Widget):
 #Fenêtre de l'inventaire
     def inventaireUI(self):
         global nb_inventory
+        global nb_team
         ai.affiche_poke(self,Equipe,collection,Pokedex,nb_inventory)
         self.inventaire = inventraireUi_class(self.max_width,self.max_height,self.centralwidget)
-        self.inventaire.widgetShow()
         nb_inventory = 0
-        
-#Fenêtre de l'équipe
-    def teamUI(self):
-        global nb_team
-        ai.affiche_team_poke(self,Equipe,collection,Pokedex,nb_team)
-        self.inventaire = inventraireUi_class(self.max_width,self.max_height,self.centralwidget)
-        self.inventaire.widgetShow()
         nb_team = 0
+        
         
 #Fenêtre des combats
     def combatUI(self):
@@ -175,7 +169,6 @@ class MainWindow(QMainWindow, Widget):
         self.inventaire = inventraireUi_class(self.max_width,self.max_height,self.centralwidget)
         self.inventaire.centerWidget(self.max_width, self.max_height)
         self.inventaire.widgetShow()
-        ai.affiche_choix_starter(self,Equipe,starter,Pokedex,nb_starter)
         
 #Fenêtre de l'introduction
     def introUI(self):
@@ -221,7 +214,7 @@ class MainWindow(QMainWindow, Widget):
             self.carte.reloadPixmap(self.max_width, self.max_height)
             self.carte.widgetShow()
             mode, id_Poke = de.affiche_deplacement(self, j1, e, Pokedex,environnement)
-            mode, nb_inventory = ai.affiche_inventaire(self,mode,Equipe,collection,Pokedex,nb_inventory,e)
+            mode, nb_inventory = ai.affiche_inventaire(self,mode,Equipe,collection,Pokedex,nb_inventory,nb_team,e)
             
              
 #Mode de l'introduction du combat
@@ -243,7 +236,7 @@ class MainWindow(QMainWindow, Widget):
  
 #Mode de l'inventaire
         elif mode == 4:
-            mode, nb_inventory = ai.affiche_inventaire(self,mode,Equipe,collection,Pokedex,nb_inventory,e)
+            mode, nb_inventory = ai.affiche_inventaire(self,mode,Equipe,collection,Pokedex,nb_inventory,nb_team,e)
             self.inventaire.reloadPixmap(self.max_width, self.max_height)
 
             
@@ -253,6 +246,7 @@ class MainWindow(QMainWindow, Widget):
             mode, nb_team, collection, Equipe = ai.affiche_team(self,mode,Equipe,collection,Pokedex,nb_team,nb_inventory,e)
 #Mode du choix du starter            
         elif mode == 6:
+            ai.affiche_choix_starter(self,Equipe,starter,Pokedex,nb_starter)
             mode, nb_starter, environnement, Equipe = ai.affiche_starter(self, mode, Equipe, starter, Pokedex, environnement, nb_starter, e)
             self.inventaire.reloadPixmap(self.max_width, self.max_height)
  

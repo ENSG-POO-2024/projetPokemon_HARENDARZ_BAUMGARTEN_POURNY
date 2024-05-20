@@ -112,7 +112,7 @@ def affiche_choix_starter(self,Equipe,starter,Pokedex,nb_starter):
     img_fond.save("inventory_poke.png")
     self.inventaire.reloadPixmap(self.max_width, self.max_height)
 
-def affiche_inventaire(self,mode,Equipe,collection,Pokedex,nb_inventory,e):
+def affiche_inventaire(self,mode,Equipe,collection,Pokedex,nb_inventory, nb_team,e):
     """
     
 
@@ -141,7 +141,7 @@ def affiche_inventaire(self,mode,Equipe,collection,Pokedex,nb_inventory,e):
     """
     print("Fonction")
     if e.key() == Qt.Key_Tab and mode == 1 and len(collection) != 0:
-        self.inventaireUI()
+        print("If")
         self.carte.widgetHide()
         self.inventaire.widgetShow()
         mode = 4
@@ -158,7 +158,8 @@ def affiche_inventaire(self,mode,Equipe,collection,Pokedex,nb_inventory,e):
         return mode, nb_inventory
     
     if e.key() == Qt.Key_Space and mode == 4:
-        self.teamUI()
+        print("Hello")
+        affiche_team_poke(self,Equipe,collection,Pokedex,nb_team)
         mode = 5
         return mode, nb_inventory
     
@@ -209,6 +210,7 @@ def affiche_team(self,mode,Equipe,collection,Pokedex,nb_team,nb_inventory,e):
         return mode, nb_team, collection, Equipe
     
     if e.key() == Qt.Key_Space:
+        print('Et ici ?')
         cle_equipe = list(Equipe.keys())
         cle_collection = list(collection.keys())
         self.inventaire.widgetHide()
