@@ -146,7 +146,7 @@ class MainWindow(QMainWindow, Widget):
 #Fenêtre des combats
     def combatUI(self):
         global id_Poke
-        global phase
+        global phase 
         global poke_combattant
         img_Poke_ennemie = Image.open("..\code\gui\pokemon\spr_rb-supgb_" + de.affiche_id(id_Poke) + ".png")
         img_fond = Image.open(path+"\\gui\\battle\\intro_fight.png")
@@ -161,6 +161,9 @@ class MainWindow(QMainWindow, Widget):
         img_fight.save("fight.png")
         
         self.combat = combatUi_class(self.max_width,self.max_height,self.centralwidget)
+        self.combat.centerWidget(self.max_width, self.max_height)
+        self.combat.widgetShow()
+
 
         phase = "intro"
         poke_combattant = None
@@ -169,15 +172,16 @@ class MainWindow(QMainWindow, Widget):
     def choix_pokeUI(self):
         global starter
         global nb_starter
-        ai.affiche_choix_starter(self,Equipe,starter,Pokedex,nb_starter)
         self.inventaire = inventraireUi_class(self.max_width,self.max_height,self.centralwidget)
         self.inventaire.centerWidget(self.max_width, self.max_height)
         self.inventaire.widgetShow()
+        ai.affiche_choix_starter(self,Equipe,starter,Pokedex,nb_starter)
         
 #Fenêtre de l'introduction
     def introUI(self):
         intro.affiche_intro(self,"Hello there !\nAnd welcome to the world of Pokemon !")
         self.intro = introUi_class(self.max_width,self.max_height,self.centralwidget)
+        self.intro.centerWidget(self.max_width, self.max_height)  
         self.intro.widgetShow()
         
   
@@ -198,6 +202,8 @@ class MainWindow(QMainWindow, Widget):
         global environnement
         global slide
         global music_state
+
+        print(mode)
                                   
 #Chaque mode permet de gérer une partie du jeu
         if e.key() == Qt.Key_Escape:
@@ -212,7 +218,7 @@ class MainWindow(QMainWindow, Widget):
 #Mode de la carte
         elif mode == 1:
             self.player.play_song('Exploration')
-            self.carte.reloadPixmap(self.max_width, self.max_height )
+            self.carte.reloadPixmap(self.max_width, self.max_height)
             self.carte.widgetShow()
             mode, id_Poke = de.affiche_deplacement(self, j1, e, Pokedex,environnement)
             mode, nb_inventory = ai.affiche_inventaire(self,mode,Equipe,collection,Pokedex,nb_inventory,e)
@@ -223,8 +229,7 @@ class MainWindow(QMainWindow, Widget):
             self.player.stop_song()
             self.player.play_song(rd.choice(['Combat1','Combat2']))
             self.inventaire.widgetHide()
-            self.carte.widgetHide()
-
+            self.carte.widgetHide() 
             self.combatUI()
             self.combat.widgetShow()
             mode = 3

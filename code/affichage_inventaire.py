@@ -47,6 +47,7 @@ def affiche_poke(self,Equipe,collection,Pokedex,nb_inventory):
         draw = ImageDraw.Draw(img_fond)
         draw.text((45, 100), txt_poke, font = fnt, fill =(0, 0, 0))
         img_fond.save("inventory_poke.png")
+        self.inventaire.reloadPixmap(self.max_width, self.max_height)
     
     
 def affiche_team_poke(self,Equipe,collection,Pokedex,nb_team):
@@ -78,6 +79,7 @@ def affiche_team_poke(self,Equipe,collection,Pokedex,nb_team):
     draw = ImageDraw.Draw(img_fond)
     draw.text((45, 100), txt_poke, font = fnt, fill =(0, 0, 0))
     img_fond.save("inventory_poke.png")
+    self.inventaire.reloadPixmap(self.max_width, self.max_height)
     
 def affiche_choix_starter(self,Equipe,starter,Pokedex,nb_starter):
     """
@@ -108,6 +110,7 @@ def affiche_choix_starter(self,Equipe,starter,Pokedex,nb_starter):
     draw = ImageDraw.Draw(img_fond)
     draw.text((45, 100), txt_poke, font = fnt, fill =(0, 0, 0))
     img_fond.save("inventory_poke.png")
+    self.inventaire.reloadPixmap(self.max_width, self.max_height)
 
 def affiche_inventaire(self,mode,Equipe,collection,Pokedex,nb_inventory,e):
     """
@@ -136,8 +139,11 @@ def affiche_inventaire(self,mode,Equipe,collection,Pokedex,nb_inventory,e):
        endroit où on se trouve dans l'inventaire
 
     """
-    if e.key() == 16777217 and mode == 1 and len(collection) != 0:
+    print("Fonction")
+    if e.key() == Qt.Key_Tab and mode == 1 and len(collection) != 0:
         self.inventaireUI()
+        self.carte.widgetHide()
+        self.inventaire.widgetShow()
         mode = 4
         return mode, nb_inventory
 
@@ -152,7 +158,6 @@ def affiche_inventaire(self,mode,Equipe,collection,Pokedex,nb_inventory,e):
         return mode, nb_inventory
     
     if e.key() == Qt.Key_Space and mode == 4:
-        self.inventaire.widgetHide()
         self.teamUI()
         mode = 5
         return mode, nb_inventory
@@ -207,7 +212,7 @@ def affiche_team(self,mode,Equipe,collection,Pokedex,nb_team,nb_inventory,e):
         cle_equipe = list(Equipe.keys())
         cle_collection = list(collection.keys())
         self.inventaire.widgetHide()
-        self.carteUI()
+        self.carte.widgetShow()
         mode = 1
         id_collection = cle_collection[nb_inventory]
         id_equipe = cle_equipe[nb_team]

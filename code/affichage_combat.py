@@ -342,12 +342,7 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
                 draw.rectangle([(Poke_player.pv / Poke_player.pv_totaux * 47 + 95, 73), (142, 74)] )
                 draw.rectangle([(Pokedex[id_Poke].pv / Pokedex[id_Poke].pv_totaux * 47 + 31, 17), (78, 18)] )
                 img_fight.save("fight.png")
-                label = QLabel(self)
-                pixmap = QPixmap("fight.png")
-                label.setPixmap(pixmap) 
-                label.setScaledContents(True)
-                self.setCentralWidget(label)
-                self.show()
+                self.combat.reloadPixmap(self.max_width, self.max_height)
             else:
                 Poke_player = poke_combattant
             return mode, phase, Poke_player
@@ -489,12 +484,7 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
                 draw.rectangle([(Poke_player.pv / Poke_player.pv_totaux * 47 + 95, 73), (142, 74)] )
                 draw.rectangle([(Pokedex[id_Poke].pv / Pokedex[id_Poke].pv_totaux * 47 + 31, 17), (78, 18)] )
                 img_fight.save("fight.png")
-                label = QLabel(self)
-                pixmap = QPixmap("fight.png")
-                label.setPixmap(pixmap) 
-                label.setScaledContents(True)
-                self.setCentralWidget(label)
-                self.show()
+                self.combat.reloadPixmap(self.max_width, self.max_height)
             else:
                 Poke_player = poke_combattant
             return mode, phase, Poke_player
@@ -600,12 +590,7 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
                 draw.rectangle([(Poke_player.pv / Poke_player.pv_totaux * 47 + 95, 73), (142, 74)] )
                 draw.rectangle([(Pokedex[id_Poke].pv / Pokedex[id_Poke].pv_totaux * 47 + 31, 17), (78, 18)] )
                 img_fight.save("fight.png")
-                label = QLabel(self)
-                pixmap = QPixmap("fight.png")
-                label.setPixmap(pixmap) 
-                label.setScaledContents(True)
-                self.setCentralWidget(label)
-                self.show()
+                self.combat.reloadPixmap(self.max_width, self.max_height)
             else:
                 Poke_player = poke_combattant
             return mode, phase, Poke_player
@@ -712,12 +697,7 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
                 draw.rectangle([(Poke_player.pv / Poke_player.pv_totaux * 47 + 95, 73), (142, 74)] )
                 draw.rectangle([(Pokedex[id_Poke].pv / Pokedex[id_Poke].pv_totaux * 47 + 31, 17), (78, 18)] )
                 img_fight.save("fight.png")
-                label = QLabel(self)
-                pixmap = QPixmap("fight.png")
-                label.setPixmap(pixmap) 
-                label.setScaledContents(True)
-                self.setCentralWidget(label)
-                self.show()
+                self.combat.reloadPixmap(self.max_width, self.max_height)
             else:
                 Poke_player = poke_combattant
             return mode, phase, Poke_player
@@ -859,12 +839,7 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
                 draw.rectangle([(Poke_player.pv / Poke_player.pv_totaux * 47 + 95, 73), (142, 74)] )
                 draw.rectangle([(Pokedex[id_Poke].pv / Pokedex[id_Poke].pv_totaux * 47 + 31, 17), (78, 18)] )
                 img_fight.save("fight.png")
-                label = QLabel(self)
-                pixmap = QPixmap("fight.png")
-                label.setPixmap(pixmap) 
-                label.setScaledContents(True)
-                self.setCentralWidget(label)
-                self.show()
+                self.combat.reloadPixmap(self.max_width, self.max_height)
             else:
                 Poke_player = poke_combattant
             return mode, phase, Poke_player
@@ -970,12 +945,7 @@ def affiche_combat(self,mode, id_Poke,Equipe,Pokedex,e,phase,collection,environn
                 draw.rectangle([(Poke_player.pv / Poke_player.pv_totaux * 47 + 95, 73), (142, 74)] )
                 draw.rectangle([(Pokedex[id_Poke].pv / Pokedex[id_Poke].pv_totaux * 47 + 31, 17), (78, 18)] )
                 img_fight.save("fight.png")
-                label = QLabel(self)
-                pixmap = QPixmap("fight.png")
-                label.setPixmap(pixmap) 
-                label.setScaledContents(True)
-                self.setCentralWidget(label)
-                self.show()
+                self.combat.reloadPixmap(self.max_width, self.max_height)
             else:
                 Poke_player = poke_combattant
             return mode, phase, Poke_player

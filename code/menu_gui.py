@@ -90,9 +90,11 @@ class optionsMenu(Widget2):
 
     def show(self):
         self.setVisible(True)
+        self.setEnabled(True)
 
     def hide(self):
         self.setVisible(False)
+        self.setEnabled(False)
 
     def test_for_hiding(self):
         if self.isVisible() == True:
