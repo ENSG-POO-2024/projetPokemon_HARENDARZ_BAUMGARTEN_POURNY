@@ -8,8 +8,8 @@ Baladez vous à travers le parc Savane mais prenez garde, de nombreux Pokémons 
 Pour lancer le jeu, lancez le fichier affichage.py. Après avoir observer quelques bug lors du dernier commit, nous vous conseillons d'allez sur la version du dernier commit appelé "Update Readme.md"
 
 ### Commandes
-1.	Dans l’écran d’accueil, cliquez sur n’importe quelle touche pour commencer le dialogue d’introduction du professeur Oak.
-2.	Dans l’introduction, cliquez sur espace afin de passer à la fenêtre de dialogue suivante.
+1.	Dans l’écran d’accueil, cliquez sur n’importe quelle touche pour commencer le dialogue d’introduction du professeur Oak. Si cela ne marche pas cliquez sur la fenêtre du jeu pour qu'elle soit sélectionnée.
+2.	Dans l’introduction, cliquez sur "a" afin de passer à la fenêtre de dialogue suivante.
 3.	Dans la page de choix du starter, utiliser les flèches gauche et droite permet de défiler entre les différents Pokémons disponibles. Cliquer sur espace permet de valider le Pokémon choisi. Le Pokémon choisi sera le 1er Pokémon de l’équipe. 
 4.	 Une fois sur la carte, cliquer sur les flèches directionnelles permet de se déplacer. Sur les bords de la carte certaines zones sont marquées par des flèches. Toucher le bord à ces endroits permet de passer sur d’autres partie de la carte. Si le joueur se balade dans des herbes hautes, il y a un certain pourcentage de chance qu’un combat contre un Pokémon se déclenche.
 5.	Lors d’un combat, le premier Pokémon combattant du joueur sera choisi aléatoirement. Il a ensuite le choix entre 3 actions qui peuvent être choisies avec les touches directionnelles et espace pour valider.
